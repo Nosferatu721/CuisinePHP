@@ -1,3 +1,8 @@
+<!-- El Morris -->
+<link rel="stylesheet" href="<?= baseUrl; ?>assets/morris/morris.css">
+<script src="<?= baseUrl; ?>assets/morris/morris.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<!-- Estilo Propio -->
 <link rel="stylesheet" href="<?= baseUrl; ?>assets/css/styleAll.css">
 <title>CusineSoft</title>
 </head>
@@ -59,6 +64,24 @@
         </div>
       </div>
     </section>
+
+    <div class="container">
+      <h1>Graficas</h1>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Grafica Linea</h2>
+          <hr>
+          <div id="myfirstchart"></div>
+        </div>
+        <div class="col-md-6">
+          <h2>Grafica Area</h2>
+          <hr>
+          <div id="myfirstchart"></div>
+        </div>
+      </div>
+    </div>
+
   </main>
   <!---------------Footer--------------->
   <?php require_once 'views/layout/footer2.php'; ?>

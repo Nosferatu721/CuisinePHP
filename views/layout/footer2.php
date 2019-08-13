@@ -4,8 +4,11 @@
   </div>
 </footer>
 
-<script src="<?= baseUrl ?>assets/jquery/jquery-3.3.1.min.js"></script>
-<script src="<?= baseUrl; ?>assets/popper/popper.min.js"></script>
+<!-- El Pooper -->
+<script src="<?= baseUrl ?>assets/popper/popper.min.js"></script>
+<!-- Bootstrap Bundle - No se que hace :v -->
 <script src="<?= baseUrl ?>assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JS -->
 <script src="<?= baseUrl ?>assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
 <script src="<?= baseUrl ?>assets/datatables/datatables.min.js"></script>
