@@ -10,19 +10,40 @@ class usuarioController
   {
     require_once 'views/login.php';
   }
+  public function olvidoPass()
+  {
+    require_once 'views/olvidePass.php';
+  }
+  public function d(){
+    if (isset($_POST) && !empty($_POST['id'])) {
+      $u = new Usuario();
+      $u->setId($_POST['id']);
+      $dataUser = $u->findUserID();
+      if ($dataUser && is_object($dataUser)) {
+        require_once 'librerias/emails/contra.php';
+      } else {
+        $_SESSION['recuperar'] = 'UsuarioError';
+        header('Location: ' . baseUrl . 'usuario/olvidoPass');
+      }
+    } else {
+      $_SESSION['recuperar'] = 'ErrorDatos';
+      header('Location: ' . baseUrl . 'usuario/olvidoPass');
+    }
+  }
 
   public function consultarUsuarios()
   {
     Utils::isAdmin();
     $usuario = new Usuario();
     $users = $usuario->findUsers();
+    $usuario2 = new Usuario();
+    $porcentaje = $usuario2->countUsers();
     require_once 'views/usuario/consultarUsuarios.php';
   }
   // Registro
   public function registro()
   {
     Utils::isAdmin();
-
     require_once 'views/usuario/registrar.php';
   }
 
@@ -30,7 +51,7 @@ class usuarioController
   {
     Utils::isAdmin();
     // Verificamos si hay datos por POST
-    if (isset($_POST) && isset($_POST['nombres']) && isset($_POST['apellidos']) && isset($_POST['pass']) && isset($_POST['rol']) && isset($_POST['restaurante'])) {
+    if (isset($_POST) && !empty($_POST['nombres']) && !empty($_POST['apellidos']) && !empty($_POST['pass']) && !empty($_POST['rol']) && !empty($_POST['restaurante'])) {
       // Creamos el contenedor del nuevo usuario
       $usuario = new Usuario();
       // Almacenamos cada dato en el contenedor del usuario
@@ -48,19 +69,20 @@ class usuarioController
       } else {
         $save = $usuario->save();
       }
+      
       if ($save) {
         if (isset($_GET['id'])) {
-          $_SESSION['saveUser'] = 'Editado';
+          $_SESSION['saveEdit'] = 'Editado';
         } else {
-          $_SESSION['saveUser'] = 'Registrado';
+          $_SESSION['saveEdit'] = 'Registrado';
         }
         header('Location: ' . baseUrl . 'usuario/consultarUsuarios');
       } else {
-        $_SESSION['saveUser'] = 'ErrorRegistro';
+        $_SESSION['error'] = 'ErrorRegistro';
         header('Location: ' . baseUrl . 'usuario/registro');
       }
     } else {
-      $_SESSION['saveUser'] = 'ErrorDatos';
+      $_SESSION['notData'] = 'ErrorDatos';
       header('Location: ' . baseUrl . 'usuario/registro');
     }
   }

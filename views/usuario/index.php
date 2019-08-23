@@ -15,7 +15,7 @@
   <!--------------Main-------------->
   <main class="main">
     <section class="group group--color">
-      <div class="container">
+      <div class="containersito">
         <h2 class="main__title">Bienvenido al Sistema para tu Restaurante</h2>
         <p class="main__txt">Este Sistema facilitara el control de materias primas, menaje, mermas, alerta de
           agotamiento del Stock, para el restaurante Andrés Carne de Res.</p>
@@ -24,7 +24,7 @@
       </div>
     </section>
     <section class="group main__about__description">
-      <div class="container container--flex">
+      <div class="containersito container--flex">
         <div class="column column--50">
           <img src="<?= baseUrl; ?>assets/img/logo-AR.png" alt="" class="img__descrip">
         </div>
@@ -41,7 +41,7 @@
     <!---------------------------------->
     <section class="group today-special">
       <h2 class="group__title">Especial de hoy</h2>
-      <div class="container container--flex">
+      <div class="containersito container--flex">
         <div class="column column--50--25">
           <img src="<?= baseUrl; ?>assets/img/Plato1.jpeg" alt="" class="today-special__img">
           <div class="today-special__title">Algun Titulo</div>
@@ -65,7 +65,7 @@
       </div>
     </section>
 
-    <div class="container">
+    <div class="containersito">
       <h1>Graficas</h1>
       <hr>
       <div class="row">

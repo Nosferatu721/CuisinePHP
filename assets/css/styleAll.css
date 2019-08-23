@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-.container {
+.containersito {
   width: 100%;
   margin: auto;
 }
@@ -43,11 +43,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nameUser{
-  padding: 5px 0px;
+  padding: 8px 0px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   box-shadow: 0px 0px 5px 1px black;
+  font-size: 1em;
 }
 
 .logo {
@@ -77,6 +78,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*---------------------Estilos del banner---------------------*/
+
+.titulo{
+  font-size: 1.2em;
+}
 
 .banner {
   margin-top: 0px;
@@ -115,7 +120,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /*-----------------Estilos Principales-----------------*/
 
-.group--color .container {
+.group--color .containersito {
   background: rgb(244, 119, 39);
   color: white;
   padding: 10px;
@@ -283,7 +288,7 @@ footer{
 }
 
 @media screen and (min-width:1024px) {
-  .container {
+  .containersito {
     width: 900px;
   }
   .logo {
@@ -293,8 +298,8 @@ footer{
   .main-header__contactInfo__phone, .main-header__contactInfo__address {
     font-size: 1.1em;
   }
-  .main-nav {
-    padding: 0;
+  .titulo{
+    font-size: 1.4em;
   }
   .banner__img {
     height: 165px;
@@ -303,19 +308,7 @@ footer{
     color: transparent;
     /* font-size: 2.5em; */
   }
-  .icon-menu {
-    display: none;
-  }
-  .menu {
-    display: flex;
-    height: auto;
-    position: static;
-    width: auto;
-  }
-  .menu__link {
-    padding: 20px;
-  }
-  .group--color .container {
+  .group--color .containersito {
     margin-top: 30px;
     margin-bottom: 30px;
     padding: 20px;
@@ -339,7 +332,7 @@ footer{
 }
 
 @media screen and (min-width:1600px) {
-  .container {
+  .containersito {
     width: 1400px;
   }
   .banner__img {

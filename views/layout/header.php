@@ -11,7 +11,9 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Pacifico&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="<?= baseUrl; ?>assets/bootstrap/css/bootstrap.min.css">
   <!-- Jquery -->
-  <script src="<?= baseUrl ?>assets/jquery/jquery-3.3.1.min.js"></script>
+  <script src="<?= baseUrl ?>assets/js/jquery-3.3.1.min.js"></script>

@@ -10,7 +10,7 @@
   <?php header('Location: ' . baseUrl); ?>
 <?php endif; ?>
 <header class="main-header">
-  <div class="container container--flex">
+  <div class="containersito container--flex">
     <div class="logo-container column--50">
       <h1 class="logo">CuisineSoft</h1>
     </div>

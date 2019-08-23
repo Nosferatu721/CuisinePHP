@@ -5,7 +5,7 @@
 </footer>
 
 <!-- El Pooper -->
-<script src="<?= baseUrl ?>assets/popper/popper.min.js"></script>
+<script src="<?= baseUrl ?>assets/js/popper.min.js"></script>
 <!-- Bootstrap Bundle - No se que hace :v -->
 <script src="<?= baseUrl ?>assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Bootstrap JS -->

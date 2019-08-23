@@ -108,6 +108,7 @@ class Usuario
     $usuarios = $this->db->query($sql);
     return $usuarios->fetch_object();
   }
+  
   // Guardar Usuario
   public function save()
   {
@@ -150,4 +151,35 @@ class Usuario
 
     return $result;
   }
+
+  //
+  public function countUsers()
+  {
+    $sql = "CALL CUOSER(@a, @b, @c)";
+    $r = $this->db->query($sql);
+    $all = [];
+    while ($fila = mysqli_fetch_assoc($r)) {
+      array_push($all, $fila);
+    }
+
+    // Cantidad de Usuarios
+    $countAdmin = (int)$all[0]['UsersAdmin'];
+    $countCocina = (int)$all[0]['UsersCocina'];
+    $countZona = (int)$all[0]['UsersZona'];
+    //
+    $allUsers = $countAdmin + $countCocina + $countZona;
+    //
+    $porcenAdmin = bcdiv(($countAdmin / $allUsers) * 100, '1', 2);
+    $porcenJCocina = bcdiv(($countCocina / $allUsers) * 100, '1', 2);
+    $porcenJZona = bcdiv(($countZona / $allUsers) * 100, '1', 2);
+
+    // Array Porcentajes
+    $arr = [
+      [(float) $porcenAdmin],
+      [(float) $porcenJCocina],
+      [(float) $porcenJZona]
+    ];
+    return $arr;
+  }
+
 }

@@ -13,17 +13,22 @@
               <div class="col-md-9 col-lg-8 mx-auto">
                 <h3 class="login-heading mb-4">Bienvenido a CuisineSoft</h3>
                 <?php if (isset($_SESSION['login']) && $_SESSION['login'] == 'UsuarioError') : ?>
-                  <div class="alert alert-dark text-danger p-1 text-center animated zoomIn faster" role="alert">
-                    No Coinciden Los Datos <i class="fas fa-poo"></i>
-                  </div>
+                <div class="alert alert-dark text-danger p-1 text-center animated zoomIn faster" role="alert">
+                  No Coinciden Los Datos <i class="fas fa-poo"></i>
+                </div>
                 <?php elseif (isset($_SESSION['login']) && $_SESSION['login'] == 'ErrorDatos') : ?>
-                  <div class="alert alert-dark text-danger p-1 text-center animated zoomIn faster" role="alert">
-                    Existen Campos Vacios <i class="far fa-address-card"></i>
-                  </div>
+                <div class="alert alert-dark text-danger p-1 text-center animated zoomIn faster" role="alert">
+                  Existen Campos Vacios <i class="far fa-address-card"></i>
+                </div>
+                <?php elseif (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'Enviado') : ?>
+                <div class="alert alert-dark text-success p-1 text-center animated zoomIn faster" role="alert">
+                  Revise su Correo se ha enviado su Contraseña <i class="fas fa-envelope-open-text"></i>
+                </div>
                 <?php else : ?>
-                  <hr>
+                <hr>
                 <?php endif; ?>
                 <?php Utils::deleteSession('login') ?>
+                <?php Utils::deleteSession('recuperar') ?>
                 <form action="<?= baseUrl; ?>usuario/logear" method="POST">
                   <div class="form-label-group">
                     <input type="text" id="id" name="id" class="form-control" placeholder="Code User">
@@ -41,6 +46,9 @@
                 </div> -->
                   <button type="submit" class="btn btn-outline-primary btn-block"><i class="fas fa-person-booth"></i> Ingresar</button>
                 </form>
+                <div class="alert text-center alert-secondary p-0 mt-3 shadow" role="alert">
+                  <a href="<?= baseUrl; ?>usuario/olvidoPass" style="color: red">Olvide Mi Contraseña</a>
+                </div>
               </div>
             </div>
           </div>
@@ -52,3 +60,6 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

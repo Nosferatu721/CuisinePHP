@@ -1,0 +1,14 @@
+{
+  "sqltools.connections": [
+    {
+      "askForPassword": false,
+      "connectionTimeout": 30,
+      "database": "cuisinesoft1.0",
+      "dialect": "MySQL",
+      "name": "Hola",
+      "port": 3306,
+      "server": "127.0.0.1",
+      "username": "root"
+    }
+  ]
+}

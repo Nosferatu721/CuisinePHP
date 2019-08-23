@@ -47,7 +47,3 @@ if (class_exists($nombreController)) {
   showError();
 }
 
-
-
-
-require_once 'views/layout/footer.php';
