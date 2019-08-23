@@ -9,6 +9,7 @@ class Usuario
   private $pass;
   private $cargo;
   private $restaurante;
+  private $email;
 
   public function __construct()
   {
@@ -69,6 +70,15 @@ class Usuario
   {
     $this->restaurante = $this->db->real_escape_string($restaurante);
   }
+  //
+  function getEmail()
+  {
+    return $this->email;
+  }
+  function setEmail($email)
+  {
+    $this->email = $this->db->real_escape_string($email);
+  }
 
   // Metodos
   public function login()
@@ -113,7 +123,7 @@ class Usuario
   public function save()
   {
     // Registramos al Usuario
-    $sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getPass()}', '{$this->getCargo()}', '{$this->getRestaurante()}');";
+    $sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getEmail()}', '{$this->getPass()}', '{$this->getCargo()}', '{$this->getRestaurante()}');";
     $save = $this->db->query($sql);
 
     // Verificamos que se ha registrado en la DB
@@ -127,7 +137,7 @@ class Usuario
 
   public function update()
   {
-    $sql = "UPDATE usuarios SET nombre='{$this->getNombre()}', apellido='{$this->getApellido()}', contrasena='{$this->getPass()}', cargo_idcargo='{$this->getCargo()}', restaurante_idrestaurante='{$this->getRestaurante()}' WHERE idusuarios='{$this->id}'";
+    $sql = "UPDATE usuarios SET nombre='{$this->getNombre()}', apellido='{$this->getApellido()}', email='{$this->getEmail()}', contrasena='{$this->getPass()}', cargo_idcargo='{$this->getCargo()}', restaurante_idrestaurante='{$this->getRestaurante()}' WHERE idusuarios='{$this->id}'";
     $update = $this->db->query($sql);
     $result = false;
     if ($update) {

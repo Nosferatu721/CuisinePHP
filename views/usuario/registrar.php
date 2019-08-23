@@ -60,6 +60,10 @@
           <input type="text" id="apellidos" name="apellidos" class="form-control" value="<?= isset($user) && is_object($user) ? $user->apellido : ''; ?>" placeholder="Apellidos">
         </div>
         <div class="form-label-group col-6 py-2">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" value="<?= isset($user) && is_object($user) ? $user->email : ''; ?>" placeholder="example@ex.com">
+        </div>
+        <div class="form-label-group col-6 py-2">
           <label for="pass">Contraseña</label>
           <input type="<?= isset($user) && is_object($user) ? 'text' : 'password'; ?>" id="pass" name="pass" class="form-control" value="<?= isset($user) && is_object($user) ? $user->contrasena : ''; ?>" placeholder="Contraseña">
         </div>

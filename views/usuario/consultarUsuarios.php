@@ -31,12 +31,13 @@
     <a href="<?= baseUrl; ?>usuario/registro" class="btn btn-outline-success"><i class="fas fa-user-plus"></i> Registrar Nuevo Usuario</a>
     <div class="mt-3 p-2">
       <table class="table table-bordered table-responsive-xl table-hover" id="tablaUsuarios">
-        <caption class="text-center">Lista de Usuarios</caption>
+        <caption class="text-center">Lista de Usuarios <a href="<?= baseUrl; ?>librerias/pdf/usuarios/pdfUsuarios" target="blank" class="btn btn-info">Generar PDF</a></caption>
         <thead class="table-info">
           <tr class="font-italic">
             <th scope="col">ID</th>
             <th scope="col">Nombres</th>
             <th scope="col">Apellidos</th>
+            <th scope="col">Email</th>
             <th scope="col">Contraseña</th>
             <th scope="col">Cargo</th>
             <th scope="col">Restaurante</th>
@@ -49,6 +50,7 @@
             <th scope="row"><?= $user->idusuarios; ?></th>
             <td><?= $user->nombre; ?></td>
             <td><?= $user->apellido; ?></td>
+            <td><?= $user->email; ?></td>
             <td><?= $user->contrasena; ?></td>
             <td><?= $user->nombreCargo; ?></td>
             <td><?= $user->nombreRestaurante; ?></td>

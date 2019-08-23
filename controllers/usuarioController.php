@@ -51,7 +51,7 @@ class usuarioController
   {
     Utils::isAdmin();
     // Verificamos si hay datos por POST
-    if (isset($_POST) && !empty($_POST['nombres']) && !empty($_POST['apellidos']) && !empty($_POST['pass']) && !empty($_POST['rol']) && !empty($_POST['restaurante'])) {
+    if (isset($_POST) && !empty($_POST['nombres']) && !empty($_POST['apellidos']) && !empty($_POST['pass']) && !empty($_POST['rol']) && !empty($_POST['restaurante']) && !empty($_POST['email'])) {
       // Creamos el contenedor del nuevo usuario
       $usuario = new Usuario();
       // Almacenamos cada dato en el contenedor del usuario
@@ -60,6 +60,7 @@ class usuarioController
       $usuario->setPass($_POST['pass']);
       $usuario->setCargo($_POST['rol']);
       $usuario->setRestaurante($_POST['restaurante']);
+      $usuario->setEmail($_POST['email']);
       // Realizamos el Registro
 
       if (isset($_GET['id'])) {

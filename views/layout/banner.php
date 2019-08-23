@@ -1,13 +1,13 @@
 <?php if (isset($_SESSION['identity'])) : ?>
-  <?php if (isset($_SESSION['Admin'])) : ?>
-    <h4 class="nameUser"><?= $_SESSION['identity']->nombre ?> <?= $_SESSION['identity']->apellido ?> -- Administrador</h4>
-  <?php elseif (isset($_SESSION['JefeCocina'])) : ?>
-    <h4 class="nameUser"><?= $_SESSION['identity']->nombre ?> <?= $_SESSION['identity']->apellido ?> -- Jefe de Cocina</h4>
-  <?php elseif (isset($_SESSION['JefeZona'])) : ?>
-    <h4 class="nameUser"><?= $_SESSION['identity']->nombre ?> <?= $_SESSION['identity']->apellido ?> -- Jefe de Zona</h4>
-  <?php endif; ?>
+<?php if (isset($_SESSION['Admin'])) : ?>
+<h4 class="nameUser"><?= $_SESSION['identity']->nombre ?> <?= $_SESSION['identity']->apellido ?> - Administrador</h4>
+<?php elseif (isset($_SESSION['JefeCocina'])) : ?>
+<h4 class="nameUser"><?= $_SESSION['identity']->nombre ?> <?= $_SESSION['identity']->apellido ?> - Jefe de Cocina</h4>
+<?php elseif (isset($_SESSION['JefeZona'])) : ?>
+<h4 class="nameUser"><?= $_SESSION['identity']->nombre ?> <?= $_SESSION['identity']->apellido ?> - Jefe de Zona</h4>
+<?php endif; ?>
 <?php else : ?>
-  <?php header('Location: ' . baseUrl); ?>
+<?php header('Location: ' . baseUrl); ?>
 <?php endif; ?>
 <header class="main-header">
   <div class="containersito container--flex">
