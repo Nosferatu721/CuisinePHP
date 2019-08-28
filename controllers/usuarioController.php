@@ -14,7 +14,8 @@ class usuarioController
   {
     require_once 'views/olvidePass.php';
   }
-  public function d(){
+  public function d()
+  {
     if (isset($_POST) && !empty($_POST['id'])) {
       $u = new Usuario();
       $u->setId($_POST['id']);
@@ -70,7 +71,7 @@ class usuarioController
       } else {
         $save = $usuario->save();
       }
-      
+
       if ($save) {
         if (isset($_GET['id'])) {
           $_SESSION['saveEdit'] = 'Editado';
@@ -79,11 +80,11 @@ class usuarioController
         }
         header('Location: ' . baseUrl . 'usuario/consultarUsuarios');
       } else {
-        $_SESSION['error'] = 'ErrorRegistro';
-        header('Location: ' . baseUrl . 'usuario/registro');
+        echo 'Algun Error Pendejo';
+        die();
       }
     } else {
-      $_SESSION['notData'] = 'ErrorDatos';
+      $_SESSION['saveEdit'] = 'Vacios';
       header('Location: ' . baseUrl . 'usuario/registro');
     }
   }
@@ -100,24 +101,21 @@ class usuarioController
       //
       $identity = $usuario->login();
 
-      if ($identity && is_object($identity)) {
+      if ($identity == 'ErrorDatos') {
+        $_SESSION['login'] = 'ErrorDatos';
+        header('Location: ' . baseUrl);
+      } elseif ($identity == 'Inactivo') {
+        $_SESSION['login'] = 'Inactivo';
+        header('Location: ' . baseUrl);
+      } elseif ($identity && is_object($identity)) {
         $_SESSION['identity'] = $identity;
-        if ($identity->cargo_idcargo == 1) {
-          $_SESSION['Admin'] = true;
-        }
-        if ($identity->cargo_idcargo == 2) {
-          $_SESSION['JefeCocina'] = true;
-        }
-        if ($identity->cargo_idcargo == 3) {
-          $_SESSION['JefeZona'] = true;
-        }
         header('Location: ' . baseUrl . 'usuario/index');
       } else {
-        $_SESSION['login'] = 'UsuarioError';
-        header('Location: ' . baseUrl);
+        echo 'Algun Error Pendejo';
+        die();
       }
     } else {
-      $_SESSION['login'] = 'ErrorDatos';
+      $_SESSION['login'] = 'Vacios';
       header('Location: ' . baseUrl);
     }
   }
@@ -160,16 +158,26 @@ class usuarioController
     Utils::isAdmin();
     if (isset($_GET['id'])) {
       $id = $_GET['id'];
-      $usuario = new Usuario();
-      $usuario->setId($id);
-      $delete = $usuario->delete();
-      if ($delete) {
-        $_SESSION['delete'] = 'Eliminado';
+      $usuario1 = new Usuario();
+      $usuario1->setId($id);
+      $un = $usuario1->findUserID();
+      if ($un->estado == 'Activo') {
+        $e = 'Inactivo';
       } else {
-        $_SESSION['delete'] = 'Error';
+        $e = 'Activo';
+      }
+      $usuario2 = new Usuario();
+      $usuario2->setId($id);
+      $usuario2->setEstado($e);
+      // var_dump($usuario2);
+      // die();
+      $delete = $usuario2->delete();
+      $_SESSION['estado'] = 'Cambiado';
+      if (!$delete) {
+        $_SESSION['estado'] = 'Error';
       }
     } else {
-      $_SESSION['delete'] = 'Error';
+      $_SESSION['estado'] = 'Vacios';
     }
     header('Location: ' . baseUrl . 'usuario/consultarUsuarios');
   }

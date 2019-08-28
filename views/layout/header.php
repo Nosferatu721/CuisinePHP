@@ -14,6 +14,7 @@
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="<?= baseUrl; ?>assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lumen/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="<?= baseUrl; ?>assets/bootstrap/css/bootstrap.min.css"> -->
   <!-- Jquery -->
   <script src="<?= baseUrl ?>assets/js/jquery-3.3.1.min.js"></script>

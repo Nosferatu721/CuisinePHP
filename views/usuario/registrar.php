@@ -16,14 +16,14 @@
     <span class="titulo">Registro de Usuarios</span>
     <?php $url_action = baseUrl . 'usuario/registrar'; ?>
     <?php endif; ?>
-    <?php if (isset($_SESSION['notData']) && $_SESSION['notData'] == 'ErrorDatos') : ?>
+    <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Vacios') : ?>
     <div class="alert alert-danger p-1 text-center animated zoomIn faster" role="alert">
       Existen Campos Vacios
     </div>
     <?php else : ?>
     <hr>
     <?php endif; ?>
-    <?php Utils::deleteSession('notData') ?>
+    <?php Utils::deleteSession('saveEdit') ?>
     <form action="<?= $url_action; ?>" method="POST" class="pb-3" id="miFormulario">
       <div class="row">
         <div class="col-6">
@@ -46,7 +46,7 @@
           <select class="custom-select my-1 mr-sm-2" name="restaurante" id="restaurante">
             <option>Eliga...</option>
             <?php while ($rest = $restaurants->fetch_object()) : ?>
-            <option <?= isset($user) && is_object($user) && (int) $user->restaurante_idrestaurante == (int) $rest->idrestaurante ? 'selected' : ''; ?> value="<?= $rest->idrestaurante; ?>"><?= $rest->nombreRestaurante; ?></option>
+            <option <?= isset($user) && is_object($user) && (int) $user->idrestaurante == (int) $rest->idrestaurante ? 'selected' : ''; ?> value="<?= $rest->idrestaurante; ?>"><?= $rest->nombreRestaurante; ?></option>
             <?php endwhile; ?>
           </select>
         </div>

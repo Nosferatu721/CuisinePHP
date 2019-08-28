@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg menu shadow container my-2">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg shadow container my-2">
   <span class="navbar-brand mb-0 h1"><i class="fas fa-angle-double-down"></i></span>
   <button class="navbar-toggler btn-outline-danger" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,8 +8,8 @@
       <li class="nav-item">
         <a class="nav-link" href="<?= baseUrl; ?>usuario/index"><i class="fas fa-home pr-1"></i>Inicio</a>
       </li>
-      <?php if (isset($_SESSION['Admin'])) : ?>
-      <li class="nav-item dropdown border-left border-secondary">
+      <?php if ($_SESSION['identity']->nombreCargo == 'Administrador') : ?>
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="merma" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-store-alt"></i> Restaurantes
         </a>

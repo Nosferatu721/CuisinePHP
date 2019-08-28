@@ -6,10 +6,11 @@ class Usuario
   private $id;
   private $nombre;
   private $apellido;
+  private $email;
   private $pass;
+  private $estado;
   private $cargo;
   private $restaurante;
-  private $email;
 
   public function __construct()
   {
@@ -79,6 +80,15 @@ class Usuario
   {
     $this->email = $this->db->real_escape_string($email);
   }
+  //
+  function getEstado()
+  {
+    return $this->estado;
+  }
+  function setEstado($estado)
+  {
+    $this->estado = $this->db->real_escape_string($estado);
+  }
 
   // Metodos
   public function login()
@@ -88,19 +98,20 @@ class Usuario
     $pass = $this->pass;
 
     // Comprovamos si existe el usuario
-    $sql = "SELECT * FROM usuarios WHERE idusuarios = '$id'";
-    $login = $this->db->query($sql);
+    $login = $this->findUserID();
 
     // Comprobamos si la consulta retorno el usuario
-    if ($login && $login->num_rows == 1) {
+    if ($login && is_object($login)) {
       // Guardamos los datos en un Objeto
-      $usuario = $login->fetch_object();
-
-      if ($pass == $usuario->contrasena) {
-        $result = $usuario;
+      if ($login->estado == 'Activo') {
+        if ($pass == $login->contrasena) {
+          $result = $login;
+        }
+      } elseif ($login->estado == 'Inactivo') {
+        $result = 'Inactivo';
       }
     } else {
-      $result = "error consulta";
+      $result = "ErrorDatos";
     }
     return $result;
   }
@@ -114,16 +125,16 @@ class Usuario
   // Consultar Usuario Por ID
   public function findUserID()
   {
-    $sql = "SELECT * FROM usuarios WHERE idusuarios={$this->getId()}";
+    $sql = "CALL findUserID({$this->getId()})";
     $usuarios = $this->db->query($sql);
     return $usuarios->fetch_object();
   }
-  
+
   // Guardar Usuario
   public function save()
   {
     // Registramos al Usuario
-    $sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getEmail()}', '{$this->getPass()}', '{$this->getCargo()}', '{$this->getRestaurante()}');";
+    $sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getEmail()}', '{$this->getPass()}', 'Activo', '{$this->getCargo()}', '{$this->getRestaurante()}');";
     $save = $this->db->query($sql);
 
     // Verificamos que se ha registrado en la DB
@@ -150,7 +161,7 @@ class Usuario
   public function delete()
   {
     // Eliminamos el usuario
-    $sql = "DELETE FROM usuarios WHERE idusuarios={$this->getId()}";
+    $sql = "UPDATE usuarios SET estado='{$this->getEstado()}' WHERE idusuarios={$this->id}";
     $del = $this->db->query($sql);
 
     // Verificar
@@ -173,9 +184,9 @@ class Usuario
     }
 
     // Cantidad de Usuarios
-    $countAdmin = (int)$all[0]['UsersAdmin'];
-    $countCocina = (int)$all[0]['UsersCocina'];
-    $countZona = (int)$all[0]['UsersZona'];
+    $countAdmin = (int) $all[0]['UsersAdmin'];
+    $countCocina = (int) $all[0]['UsersCocina'];
+    $countZona = (int) $all[0]['UsersZona'];
     //
     $allUsers = $countAdmin + $countCocina + $countZona;
     //
@@ -191,5 +202,4 @@ class Usuario
     ];
     return $arr;
   }
-
 }

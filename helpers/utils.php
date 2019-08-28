@@ -12,7 +12,7 @@ class Utils
 
   public static function isAdmin()
   {
-    if (!isset($_SESSION['Admin'])) {
+    if (!$_SESSION['identity']->nombreCargo == 'Administrador') {
       header('Location: ' . baseUrl . 'usuario/index');
     } else {
       return true;

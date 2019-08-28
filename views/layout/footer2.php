@@ -12,3 +12,6 @@
 <script src="<?= baseUrl ?>assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- DataTables -->
 <script src="<?= baseUrl ?>assets/datatables/datatables.min.js"></script>
+</body>
+
+</html>

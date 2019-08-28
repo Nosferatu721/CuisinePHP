@@ -16,23 +16,23 @@
       <b>Usuario Registrado Exitosamente <i class="fas fa-check-double"></i></b>
     </div>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Editado') : ?>
-    <div class="alert alert-dark text-info p-1 text-center animated zoomIn faster" role="alert">
+    <div class="alert alert-secondary text-primary p-1 text-center animated zoomIn faster" role="alert">
       <b>Usuario Editado Exitosamente <i class="fas fa-check-double"></i></b>
     </div>
-    <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'Eliminado') : ?>
-    <div class="alert alert-dark text-danger p-1 text-center animated zoomIn faster" role="alert">
-      <b>Usuario Eliminado Exitosamente <i class="fas fa-check-double"></i></b>
+    <?php elseif (isset($_SESSION['estado']) && $_SESSION['estado'] == 'Cambiado') : ?>
+    <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
+      <b>Usuario Cambiado Exitosamente <i class="fas fa-check-double"></i></b>
     </div>
     <?php else : ?>
     <hr>
     <?php endif; ?>
     <?php Utils::deleteSession('saveEdit') ?>
-    <?php Utils::deleteSession('delete') ?>
+    <?php Utils::deleteSession('estado') ?>
     <a href="<?= baseUrl; ?>usuario/registro" class="btn btn-outline-success"><i class="fas fa-user-plus"></i> Registrar Nuevo Usuario</a>
     <div class="mt-3 p-2">
-      <table class="table table-bordered table-responsive-xl table-hover" id="tablaUsuarios">
-        <caption class="text-center">Lista de Usuarios <a href="<?= baseUrl; ?>librerias/pdf/usuarios/pdfUsuarios" target="blank" class="btn btn-info">Generar PDF</a></caption>
-        <thead class="table-info">
+      <table class="table table-bordered table-responsive table-hover" id="tablaUsuarios">
+        <caption class="text-center py-1">Lista de Usuarios <a href="<?= baseUrl; ?>librerias/pdf/usuarios/pdfUsuarios" target="blank" class="btn btn-danger">Generar PDF <i class="fas fa-file-pdf"></i></a></caption>
+        <thead class="table-primary">
           <tr class="font-italic">
             <th scope="col">ID</th>
             <th scope="col">Nombres</th>
@@ -46,7 +46,7 @@
         </thead>
         <tbody>
           <?php while ($user = $users->fetch_object()) : ?>
-          <tr>
+          <tr class="table-<?= $user->estado == 'Inactivo' ? 'secondary' : ''; ?>">
             <th scope="row"><?= $user->idusuarios; ?></th>
             <td><?= $user->nombre; ?></td>
             <td><?= $user->apellido; ?></td>
@@ -54,9 +54,9 @@
             <td><?= $user->contrasena; ?></td>
             <td><?= $user->nombreCargo; ?></td>
             <td><?= $user->nombreRestaurante; ?></td>
-            <td class="d-flex justify-content-around border border-light">
-              <a href="<?= baseUrl; ?>usuario/editar&id=<?= $user->idusuarios; ?>" class="btn btn-outline-warning btn-sm"><i class="fas fa-pen-nib pr-1"></i>Editar</a>
-              <a href="<?= baseUrl; ?>usuario/eliminar&id=<?= $user->idusuarios; ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt pr-1"></i>Eliminar</a>
+            <td class="d-flex justify-content-around d-flex" style="width: 160px">
+              <a href="<?= baseUrl; ?>usuario/editar&id=<?= $user->idusuarios; ?>" class="btn btn-warning btn-sm">Editar</a>
+              <a href="<?= baseUrl; ?>usuario/eliminar&id=<?= $user->idusuarios; ?>" class="btn btn-outline-<?= $user->estado == 'Activo' ? 'danger' : ($user->estado == 'Inactivo' ? 'success' : ''); ?> btn-sm"><?= $user->estado == 'Activo' ? 'Inactivar' : ($user->estado == 'Inactivo' ? 'Activar' : ''); ?> <i class="fas fa-toilet"></i></a>
             </td>
           </tr>
           <?php endwhile; ?>

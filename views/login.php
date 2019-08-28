@@ -12,17 +12,21 @@
             <div class="row">
               <div class="col-md-9 col-lg-8 mx-auto">
                 <h3 class="login-heading mb-4">Bienvenido a CuisineSoft</h3>
-                <?php if (isset($_SESSION['login']) && $_SESSION['login'] == 'UsuarioError') : ?>
-                <div class="alert alert-dark text-danger p-1 text-center animated zoomIn faster" role="alert">
+                <?php if (isset($_SESSION['login']) && $_SESSION['login'] == 'ErrorDatos') : ?>
+                <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
                   No Coinciden Los Datos <i class="fas fa-poo"></i>
                 </div>
-                <?php elseif (isset($_SESSION['login']) && $_SESSION['login'] == 'ErrorDatos') : ?>
-                <div class="alert alert-dark text-danger p-1 text-center animated zoomIn faster" role="alert">
+                <?php elseif (isset($_SESSION['login']) && $_SESSION['login'] == 'Vacios') : ?>
+                <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
                   Existen Campos Vacios <i class="far fa-address-card"></i>
                 </div>
                 <?php elseif (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'Enviado') : ?>
-                <div class="alert alert-dark text-success p-1 text-center animated zoomIn faster" role="alert">
+                <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
                   Revise su Correo se ha enviado su Contraseña <i class="fas fa-envelope-open-text"></i>
+                </div>
+                <?php elseif (isset($_SESSION['login']) && $_SESSION['login'] == 'Inactivo') : ?>
+                <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
+                  El Usuario Esta Inactivado <i class="fas fa-poo"></i>
                 </div>
                 <?php else : ?>
                 <hr>

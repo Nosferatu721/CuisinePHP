@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="col-md-8">
-        <table class="table table-bordered table-responsive-xl table-hover" id="tablaUsuarios">
+        <table class="table table-bordered table-responsive-sm table-hover" id="tablaUsuarios">
           <caption class="text-center">Lista de Restaurantes</caption>
           <thead class="table-danger">
             <tr class="font-italic">
