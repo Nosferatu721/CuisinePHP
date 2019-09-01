@@ -12,10 +12,19 @@ class Utils
 
   public static function isAdmin()
   {
-    if (!$_SESSION['identity']->nombreCargo == 'Administrador') {
-      header('Location: ' . baseUrl . 'usuario/index');
-    } else {
+    if ($_SESSION['identity']->idcargo == '1') {
       return true;
+    } else {
+      header('Location: ' . baseUrl . 'usuario/index');
+    }
+  }
+  
+  public static function isCocina()
+  {
+    if ($_SESSION['identity']->idcargo == '2') {
+      return true;
+    } else {
+      header('Location: ' . baseUrl . 'usuario/index');
     }
   }
 }

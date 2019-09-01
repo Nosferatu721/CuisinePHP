@@ -4,6 +4,9 @@ function iniciar() {
   document.getElementById("enviar").addEventListener('click', validar, false);
 }
 
+//Formato Correo
+var expresion = /\w+@\w+\.+[a-z]/;
+
 function validarNombre() {
   var elemento = document.getElementById("nombres");
   if (elemento.value == "" || !isNaN(elemento.value)) {
@@ -20,6 +23,15 @@ function validarApellidos() {
   }
   return true;
 }
+function validarEmail() {
+  var elemento = document.getElementById("email");
+  if (elemento.value == "" || !expresion.test(elemento.value)) {
+    console.log(elemento.value);
+    alertica('Email Erroneo');
+    return false;
+  }
+  return true;
+}
 function validarPass() {
   var elemento = document.getElementById("pass");
   if (elemento.value == "") {
@@ -32,15 +44,22 @@ function validarPass() {
 function validarRestaurante() {
   var elemento = document.getElementById("restaurante");
   if (elemento.value == "Eliga...") {
-    console.log(elemento.value);
     alertica('Eliga Restaurante');
+    return false;
+  }
+  return true;
+}
+function validarCargo() {
+  var elemento = document.getElementById("rol");
+  if (elemento.value == "Eliga...") {
+    alertica('Eliga Cargo');
     return false;
   }
   return true;
 }
 
 function validar(e) {
-  if (validarNombre() && validarApellidos() && validarPass() && validarRestaurante()) {
+  if (validarCargo() && validarRestaurante() && validarNombre() && validarApellidos() && validarEmail() && validarPass()) {
     return true;
   } else {
     e.preventDefault();
@@ -54,11 +73,11 @@ function alertica(mensaje) {
     toast: true,
     position: 'bottom-end',
     showConfirmButton: false,
-    timer: 3000
+    timer: 100000
   });
   Toast.fire({
     type: 'error',
-    title: mensaje,
-    background: 'rgba(255,255,255,0.9)'
+    title: '<span style="color: white">' + mensaje + '</span>',
+    background: 'rgba(0,0,0,0.8)'
   });
 }

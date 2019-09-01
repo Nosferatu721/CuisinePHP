@@ -40,7 +40,7 @@
     <div class="row my-2">
       <div class="col-md-4 d-flex justify-content-center">
         <div class="card mb-3 border-0">
-          <div class="card-header font-italic text-center bg-dark text-danger">
+          <div class="card-header font-italic text-center bg-secondary text-danger">
             <?php if (isset($editar) && isset($restEdit) && is_object($restEdit)) : ?>
             <span class="titulo text-warning animated flash slower">Editar Restaurante = <?= $restEdit->nombreRestaurante; ?></span>
             <?php $url_action = baseUrl . 'restaurante/registrar&id=' . $restEdit->idrestaurante; ?>
@@ -67,7 +67,7 @@
       <div class="col-md-8">
         <table class="table table-bordered table-responsive-sm table-hover" id="tablaUsuarios">
           <caption class="text-center">Lista de Restaurantes</caption>
-          <thead class="table-danger">
+          <thead class="table-dark">
             <tr class="font-italic">
               <th scope="col">ID</th>
               <th scope="col">Nombre</th>
@@ -76,8 +76,8 @@
             </tr>
           </thead>
           <tbody>
-            <?php $restaurants = RestauranteController::getAll(); ?>
-            <?php while ($rest = $restaurants->fetch_object()) : ?>
+            <?php $rets = RestauranteController::getAll(); ?>
+            <?php while ($rest = $rets->fetch_object()) : ?>
             <tr>
               <th scope="row"><?= $rest->idrestaurante; ?></th>
               <td><?= $rest->nombreRestaurante; ?></td>

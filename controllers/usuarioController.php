@@ -111,8 +111,8 @@ class usuarioController
         $_SESSION['identity'] = $identity;
         header('Location: ' . baseUrl . 'usuario/index');
       } else {
-        echo 'Algun Error Pendejo';
-        die();
+        $_SESSION['login'] = 'ErrorPass';
+        header('Location: ' . baseUrl);
       }
     } else {
       $_SESSION['login'] = 'Vacios';
@@ -122,16 +122,8 @@ class usuarioController
   public function logout()
   {
     if (isset($_SESSION['identity'])) {
+      $_SESSION['identity'] = null;
       unset($_SESSION['identity']);
-    }
-    if (isset($_SESSION['Admin'])) {
-      unset($_SESSION['Admin']);
-    } elseif (isset($_SESSION['JefeCocina'])) {
-      unset($_SESSION['JefeCocina']);
-    } elseif (isset($_SESSION['JefeZona'])) {
-      unset($_SESSION['JefeZona']);
-    } elseif (isset($_SESSION['error_login'])) {
-      $_SESSION['JefeZona'] = false;
     }
     header('Location: ' . baseUrl);
   }

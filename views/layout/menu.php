@@ -9,41 +9,33 @@
         <a class="nav-link" href="<?= baseUrl; ?>usuario/index"><i class="fas fa-home pr-1"></i>Inicio</a>
       </li>
       <?php if ($_SESSION['identity']->nombreCargo == 'Administrador') : ?>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="merma" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-store-alt"></i> Restaurantes
-        </a>
-        <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="merma">
-          <a class="dropdown-item" href="<?= baseUrl; ?>restaurante/gestion">Gestionar Restaurantes</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="<?= baseUrl; ?>usuario/registro">Registrar Usuario</a>
-          <a class="dropdown-item" href="<?= baseUrl; ?>usuario/consultarUsuarios">Consultar Usuarios</a>
-        </div>
-      </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="merma" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-store-alt"></i> Restaurantes
+          </a>
+          <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="merma">
+            <a class="dropdown-item" href="<?= baseUrl; ?>restaurante/gestion">Gestionar Restaurantes</a>
+            <div class="dropdown-divider border-warning"></div>
+            <a class="dropdown-item" href="<?= baseUrl; ?>usuario/registro">Registrar Usuario</a>
+            <a class="dropdown-item" href="<?= baseUrl; ?>usuario/consultarUsuarios">Consultar Usuarios</a>
+            <div class="dropdown-divider border-warning"></div>
+            <a class="dropdown-item" href="<?= baseUrl; ?>cargo/gestion">Gestionar Cargos</a>
+          </div>
+        </li>
+      <?php elseif ($_SESSION['identity']->nombreCargo == 'Jefe de Cocina') : ?>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="Stock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-cubes"></i> Stock
+          </a>
+          <div class="dropdown-menu" aria-labelledby="Stock">
+            <a class="dropdown-item" href="<?= baseUrl; ?>stock/consultar">Consultar Stock</a>
+            <a class="dropdown-item" href="<?= baseUrl; ?>producto/gestion">Registrar Producto</a>
+            <a class="dropdown-item" href="<?= baseUrl; ?>stock/registro">Registrar Stock</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Otro</a>
+          </div>
+        </li>
       <?php endif; ?>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="merma" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Merma
-        </a>
-        <div class="dropdown-menu" aria-labelledby="merma">
-          <a class="dropdown-item" href="#">Registrar Merma</a>
-          <a class="dropdown-item" href="#">Consultar Merma</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Graficas :v</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="merma" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Stock
-        </a>
-        <div class="dropdown-menu" aria-labelledby="merma">
-          <a class="dropdown-item" href="#">Registrar Stock</a>
-          <a class="dropdown-item" href="#">Registrar Producto</a>
-          <a class="dropdown-item" href="#">Consultar Stock</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Otro</a>
-        </div>
-      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="merma" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Menaje

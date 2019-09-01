@@ -40,7 +40,7 @@ function alertica(mensaje) {
   });
   Toast.fire({
     type: 'error',
-    title: mensaje,
+    title: '<span style="color: white" >' + mensaje + '</span>',
     background: 'rgba(255,255,255,0.9)'
   });
 }

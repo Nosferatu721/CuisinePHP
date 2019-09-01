@@ -14,7 +14,11 @@
                 <h3 class="login-heading mb-4">Bienvenido a CuisineSoft</h3>
                 <?php if (isset($_SESSION['login']) && $_SESSION['login'] == 'ErrorDatos') : ?>
                 <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-                  No Coinciden Los Datos <i class="fas fa-poo"></i>
+                  El Usuario No Existe <i class="fas fa-poo"></i>
+                </div>
+                <?php elseif (isset($_SESSION['login']) && $_SESSION['login'] == 'ErrorPass') : ?>
+                <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
+                  Contraseña Incorrecta <i class="fas fa-poo"></i>
                 </div>
                 <?php elseif (isset($_SESSION['login']) && $_SESSION['login'] == 'Vacios') : ?>
                 <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
