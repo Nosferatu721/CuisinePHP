@@ -73,7 +73,7 @@ function alertica(mensaje) {
     toast: true,
     position: 'bottom-end',
     showConfirmButton: false,
-    timer: 100000
+    timer: 5000
   });
   Toast.fire({
     type: 'error',

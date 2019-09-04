@@ -31,6 +31,11 @@ class stockController
         //
         $cantActual = $rrr->cantidadProducto;
         $newCant = $cantActual + ($_POST['cantidad']);
+        if($newCant < 0){
+          $_SESSION['saveEdit'] = 'Yuca';
+          header('Location: ' . baseUrl . 'stock/editar&id=' . $_GET['id']);
+          die();
+        }
         //
         $stock->setIdProducto($_GET['id']);
         $stock->setCantidadProducto($newCant);

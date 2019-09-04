@@ -20,6 +20,10 @@
       <div class="alert alert-danger p-1 text-center animated zoomIn faster" role="alert">
         Existen Campos Vacios
       </div>
+    <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Yuca') : ?>
+      <div class="alert alert-secondary p-1 text-center text-danger animated zoomIn faster" role="alert">
+        La cantidad es menor que 0
+      </div>
     <?php else : ?>
       <hr>
     <?php endif; ?>
@@ -64,4 +68,5 @@
   </div>
   <!-- ------------- Footer ------------- -->
   <?php require_once 'views/layout/footer2.php'; ?>
+  <script src="<?= baseUrl; ?>assets/js/validarStock.js"></script>
 </body>
