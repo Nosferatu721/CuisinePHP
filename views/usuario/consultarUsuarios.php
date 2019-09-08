@@ -30,13 +30,13 @@
     <?php Utils::deleteSession('estado') ?>
     <a href="<?= baseUrl; ?>usuario/registro" class="btn btn-outline-success"><i class="fas fa-user-plus"></i> Registrar Nuevo Usuario</a>
     <div class="mt-3 p-2">
-      <table class="table table-bordered table-responsive table-hover" id="tablaUsuarios">
-        <caption class="text-center py-1">Lista de Usuarios <a href="<?= baseUrl; ?>librerias/pdf/usuarios/pdfUsuarios" target="blank" class="btn btn-danger">Generar PDF <i class="fas fa-file-pdf"></i></a></caption>
+      <table class="table table-bordered table-responsive table-hover" id="tabla">
+        <caption class="text-center py-1">Lista de Usuarios <a href="<?= baseUrl; ?>usuario/pdf" target="blank" class="btn btn-danger">Generar PDF <i class="fas fa-file-pdf"></i></a></caption>
         <thead class="table-dark">
           <tr class="font-italic">
             <th scope="col">ID</th>
-            <th scope="col">Nombres</th>
-            <th scope="col">Apellidos</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
             <th scope="col">Email</th>
             <th scope="col">Contraseña</th>
             <th scope="col">Cargo</th>
@@ -55,8 +55,30 @@
               <td><?= $user->nombreCargo; ?></td>
               <td><?= $user->nombreRestaurante; ?></td>
               <td class="d-flex justify-content-around d-flex" style="width: 160px">
-                <a href="<?= baseUrl; ?>usuario/editar&id=<?= $user->idusuarios; ?>" class="btn btn-warning btn-sm">Editar</a>
-                <a href="<?= baseUrl; ?>usuario/eliminar&id=<?= $user->idusuarios; ?>" class="btn btn-outline-<?= $user->estado == 'Activo' ? 'danger' : ($user->estado == 'Inactivo' ? 'success' : ''); ?> btn-sm"><?= $user->estado == 'Activo' ? 'Inactivar' : ($user->estado == 'Inactivo' ? 'Activar' : ''); ?> <i class="fas fa-toilet"></i></a>
+                <!-- Boton Editar -->
+                <a href="<?= baseUrl; ?>usuario/editar&id=<?= $user->idusuarios; ?>" class="btn btn-warning btn-sm">Editar <i class="fas fa-pencil-alt"></i></a>
+                <!-- Boton Eliminar -->
+                <button class="btn btn-outline-<?= $user->estado == 'Activo' ? 'danger' : ($user->estado == 'Inactivo' ? 'success' : ''); ?> btn-sm" data-toggle="modal" data-target=".modal<?= $user->idusuarios ?>"><?= $user->estado == 'Activo' ? 'Inactivar' : ($user->estado == 'Inactivo' ? 'Activar' : ''); ?> <i class="fas fa-exchange-alt"></i></button>
+                <!-- Modal Eliminar -->
+                <div class="modal fade modal<?= $user->idusuarios ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Confirmación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        ¿Desea <?= $user->estado == 'Activo' ? 'Inactivar' : ($user->estado == 'Inactivo' ? 'Activar' : ''); ?> el usuario?
+                      </div>
+                      <div class="modal-footer p-2">
+                        <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal">Cancelar</button>
+                        <a href="<?= baseUrl; ?>usuario/eliminar&id=<?= $user->idusuarios; ?>" class="btn btn-outline-<?= $user->estado == 'Activo' ? 'danger' : ($user->estado == 'Inactivo' ? 'success' : ''); ?> btn-sm"><?= $user->estado == 'Activo' ? 'Inactivar' : ($user->estado == 'Inactivo' ? 'Activar' : ''); ?> <i class="fas fa-exchange-alt"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </td>
             </tr>
           <?php endwhile; ?>
@@ -64,7 +86,7 @@
       </table>
     </div>
     <hr>
-    <span class="titulo">Porcentadje de usuarios en el Sistema</span>
+    <span class="titulo">Porcentaje de usuarios en el Sistema</span>
     <hr>
     <h6>Administradores - <?= $porcentaje[0][0] ?>%</h6>
     <div class="progress mb-4">

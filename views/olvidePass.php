@@ -12,11 +12,11 @@
             <div class="row">
               <div class="col-md-9 col-lg-8 mx-auto">
                 <h3 class="login-heading mb-4">Recuperar Contraseña</h3>
-                <?php if (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'UsuarioError') : ?>
+                <?php if (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'ErrorDatos') : ?>
                 <div class="alert alert-dark text-danger p-1 text-center animated zoomIn faster" role="alert">
                   No Coinciden Los Datos <i class="fas fa-poo"></i>
                 </div>
-                <?php elseif (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'ErrorDatos') : ?>
+                <?php elseif (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'Vacios') : ?>
                 <div class="alert alert-dark text-danger p-1 text-center animated zoomIn faster" role="alert">
                   Existen Campos Vacios <i class="far fa-address-card"></i>
                 </div>

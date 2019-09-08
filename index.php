@@ -6,7 +6,6 @@ require_once 'config/parameters.php';
 // Cargamos helpers :v
 require_once 'helpers/utils.php';
 // LLamamos el header ( head )
-require_once 'views/layout/header.php';
 
 // Mostrar Error 404
 function showError()
@@ -36,6 +35,9 @@ if (class_exists($nombreController)) {
     // Guardamos el action
     $action = $_GET['action'];
     // Ejecutar peticion
+    if ($action != 'pdf') {
+      require_once 'views/layout/header.php';
+    }
     $controller->$action();
   } elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
     $actionDefault = actionDefault;

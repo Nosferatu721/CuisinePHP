@@ -23,13 +23,19 @@ class usuarioController
       if ($dataUser && is_object($dataUser)) {
         require_once 'librerias/emails/contra.php';
       } else {
-        $_SESSION['recuperar'] = 'UsuarioError';
+        $_SESSION['recuperar'] = 'ErrorDatos';
         header('Location: ' . baseUrl . 'usuario/olvidoPass');
       }
     } else {
-      $_SESSION['recuperar'] = 'ErrorDatos';
+      $_SESSION['recuperar'] = 'Vacios';
       header('Location: ' . baseUrl . 'usuario/olvidoPass');
     }
+  }
+
+  public function pdf(){
+    $u = new Usuario();
+    $dataUsers = $u->findUsers();
+    require_once 'librerias/pdf/usuarios/pdfUsuarios.php';
   }
 
   public function consultarUsuarios()
