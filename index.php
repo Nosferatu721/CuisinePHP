@@ -40,6 +40,7 @@ if (class_exists($nombreController)) {
     }
     $controller->$action();
   } elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
+    require_once 'views/layout/header.php';
     $actionDefault = actionDefault;
     $controller->$actionDefault();
   } else {
