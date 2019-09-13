@@ -5,12 +5,11 @@ require_once 'autoload.php';
 require_once 'config/parameters.php';
 // Cargamos helpers :v
 require_once 'helpers/utils.php';
-// LLamamos el header ( head )
-
 // Mostrar Error 404
 function showError()
 {
   $error = new errorController();
+  require_once 'views/layout/header.php';
   $error->index();
 }
 
@@ -37,6 +36,9 @@ if (class_exists($nombreController)) {
     // Ejecutar peticion
     if ($action != 'pdf') {
       require_once 'views/layout/header.php';
+    }
+    if ($action == 'olvidoPas') {
+      Utils::verifySession();
     }
     $controller->$action();
   } elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {

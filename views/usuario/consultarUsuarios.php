@@ -1,6 +1,4 @@
 <link rel="stylesheet" type="text/css" href="<?= baseUrl; ?>assets/datatables/datatables.min.css" />
-<link rel="stylesheet" href="<?= baseUrl; ?>assets/css/styleAll.css">
-<title>CusineSoft - Usuarios</title>
 </head>
 
 <body class="animated fadeIn faster">
@@ -12,7 +10,7 @@
   <div class="container">
     <p class="titulo">Usuarios Registrados</p>
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Registrado') : ?>
-      <div class="alert alert-dark text-success p-1 text-center animated zoomIn faster" role="alert">
+      <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
         <b>Usuario Registrado Exitosamente <i class="fas fa-check-double"></i></b>
       </div>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Editado') : ?>
@@ -41,7 +39,7 @@
             <th scope="col">Contraseña</th>
             <th scope="col">Cargo</th>
             <th scope="col">Restaurante</th>
-            <th scope="col">Acciones</th>
+            <th scope="col" style="width: 100%">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -54,7 +52,7 @@
               <td><?= $user->contrasena; ?></td>
               <td><?= $user->nombreCargo; ?></td>
               <td><?= $user->nombreRestaurante; ?></td>
-              <td class="d-flex justify-content-around d-flex" style="width: 160px">
+              <td class="d-flex justify-content-around d-flex">
                 <!-- Boton Editar -->
                 <a href="<?= baseUrl; ?>usuario/editar&id=<?= $user->idusuarios; ?>" class="btn btn-warning btn-sm">Editar <i class="fas fa-pencil-alt"></i></a>
                 <!-- Boton Eliminar -->

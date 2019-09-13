@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="<?= baseUrl; ?>assets/css/styleLogin.css">
-<title>Login</title>
 </head>
 
 <body class="animated fadeIn faster">
@@ -30,7 +29,7 @@
                 </div>
                 <?php elseif (isset($_SESSION['login']) && $_SESSION['login'] == 'Inactivo') : ?>
                 <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-                  El Usuario Esta Inactivado <i class="fas fa-poo"></i>
+                  El Usuario Esta Inactivado <i class="fas fa-user-times"></i>
                 </div>
                 <?php else : ?>
                 <hr>

@@ -1,10 +1,3 @@
-<!-- El Morris -->
-<link rel="stylesheet" href="<?= baseUrl; ?>assets/morris/morris.css">
-<script src="<?= baseUrl; ?>assets/morris/morris.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<!-- Estilo Propio -->
-<link rel="stylesheet" href="<?= baseUrl; ?>assets/css/styleAll.css">
-<title>CusineSoft</title>
 </head>
 
 <body class="animated fadeIn faster">
@@ -64,40 +57,11 @@
         </div>
       </div>
     </section>
-    <?php if (isset($_SESSION['identity'])) : ?>
-    <?php if (isset($_SESSION['Admin'])) : ?>
-    <h4 class="nameUser"><?= $_SESSION['identity']->nombre ?> <?= $_SESSION['identity']->apellido ?> - Administrador</h4>
-    <?php elseif (isset($_SESSION['JefeCocina'])) : ?>
-    <h4 class="nameUser"><?= $_SESSION['identity']->nombre ?> <?= $_SESSION['identity']->apellido ?> - Jefe de Cocina</h4>
-    <?php elseif (isset($_SESSION['JefeZona'])) : ?>
-    <h4 class="nameUser"><?= $_SESSION['identity']->nombre ?> <?= $_SESSION['identity']->apellido ?> - Jefe de Zona</h4>
-    <?php endif; ?>
-    <?php else : ?>
-    <?php header('Location: ' . baseUrl); ?>
-    <?php endif; ?>
-    <div class="containersito">
-      <h1>Graficas</h1>
-      <hr>
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Grafica Linea</h2>
-          <hr>
-          <div id="myfirstchart"></div>
-        </div>
-        <div class="col-md-6">
-          <h2>Grafica Area</h2>
-          <hr>
-          <div id="myfirstchart"></div>
-        </div>
-      </div>
-    </div>
 
   </main>
   <!---------------Footer--------------->
   <?php require_once 'views/layout/footer2.php'; ?>
   <!---->
-
-
 
 </body>
 

@@ -4,6 +4,9 @@ function iniciar() {
   document.getElementById("enviar").addEventListener('click', validar, false);
 }
 
+//Formato Correo
+var expresion = /\w+@\w+\.+[a-z]/;
+
 function validarNombre() {
   var elemento = document.getElementById("nombre");
   if (elemento.value == "" || !isNaN(elemento.value)) {
@@ -12,17 +15,10 @@ function validarNombre() {
   }
   return true;
 }
-function validarDireccion() {
-  var elemento = document.getElementById("direccion");
-  if (elemento.value == "" || !isNaN(elemento.value)) {
-    alertica('Direccion Erronea');
-    return false;
-  }
-  return true;
-}
+
 
 function validar(e) {
-  if (validarNombre() && validarDireccion()) {
+  if (validarNombre()) {
     return true;
   } else {
     e.preventDefault();
@@ -36,11 +32,11 @@ function alertica(mensaje) {
     toast: true,
     position: 'bottom-end',
     showConfirmButton: false,
-    timer: 3000
+    timer: 5000
   });
   Toast.fire({
     type: 'error',
-    title: '<span style="color: white" >' + mensaje + '</span>',
+    title: '<span style="color: white">' + mensaje + '</span>',
     background: 'rgba(0,0,0,0.9)'
   });
 }

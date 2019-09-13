@@ -134,7 +134,7 @@ class Usuario
   public function save()
   {
     // Registramos al Usuario
-    $sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getEmail()}', '{$this->getPass()}', 'Activo', '{$this->getCargo()}', '{$this->getRestaurante()}');";
+    $sql = "INSERT INTO usuarios VALUES(NULL, '{$this->getNombre()}', '{$this->getApellido()}', '{$this->getPass()}', '{$this->getCargo()}', '{$this->getRestaurante()}', 'Activo', '{$this->getEmail()}');";
     $save = $this->db->query($sql);
 
     // Verificamos que se ha registrado en la DB
@@ -201,5 +201,13 @@ class Usuario
       [(float) $porcenJZona]
     ];
     return $arr;
+  }
+
+  // Exist
+  public function exist()
+  {
+    $sql = "SELECT * FROM usuarios WHERE nombre = '{$this->getNombre()}' OR email = '{$this->getEmail()}';";
+    $r = $this->db->query($sql);
+    return $r;
   }
 }

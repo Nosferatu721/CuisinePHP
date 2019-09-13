@@ -56,7 +56,7 @@ class CargoController
   public function editar()
   {
     Utils::isAdmin();
-    if (isset($_GET['id'])) {
+    if (isset($_GET['id']) && $_GET['id'] != '') {
       $editar = true;
       //
       $id = $_GET['id'];

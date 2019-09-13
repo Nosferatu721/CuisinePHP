@@ -10,6 +10,12 @@ class Utils
     return $name;
   }
 
+  public static function verifySession(){
+    if (!isset($_SESSION['identity'])) {
+      header('Location: ' . baseUrl);
+    }
+  }
+
   public static function isAdmin()
   {
     if ($_SESSION['identity']->idcargo == '1') {

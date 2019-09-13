@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="<?= baseUrl; ?>assets/css/styleAll.css">
-<title>CusineSoft - Stock</title>
 </head>
 
 <body class="animated fadeIn faster">

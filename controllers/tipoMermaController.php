@@ -1,20 +1,20 @@
 <?php
-require_once 'models/producto.php';
+require_once 'models/tipoMerma.php';
 
-class ProductoController
+class TipoMermaController
 {
   public function gestion()
   {
     Utils::isAdmin();
-    $p = new Producto();
-    $ptos = $p->findPtos();
-    require_once 'views/producto/crud.php';
+    $tp = new TipoMerma();
+    $tipos = $tp->findTipos();
+    require_once 'views/merma/tipoMerma/crud.php';
   }
   public static function getAll()
   {
-    $p = new Producto();
-    $ptos = $p->findPtos();
-    return $ptos;
+    $tp = new TipoMerma();
+    $tipos = $tp->findTipos();
+    return $tipos;
   }
   // Registrar
   public function registrar()
@@ -25,16 +25,16 @@ class ProductoController
       // Almacenamos los Datos en variables
       $nombre = $_POST['nombre'];
       // Creamos un Objeto Restaurante
-      $pro = new Producto();
+      $tp = new TipoMerma();
       // Almacenamos los Datos
-      $pro->setNombre($nombre);
+      $tp->setTipo($nombre);
       // Realizamos el INSERT O UPDATE
       if (isset($_GET['id'])) {
         $id = $_GET['id'];
-        $pro->setId($id);
-        $save = $pro->update();
+        $tp->setId($id);
+        $save = $tp->update();
       } else {
-        $save = $pro->save();
+        $save = $tp->save();
       }
       // Verificamos si fue Exitoso :v
       if ($save) {
@@ -49,7 +49,7 @@ class ProductoController
     } else {
       $_SESSION['notData'] = 'ErrorDatos';
     }
-    header('Location: ' . baseUrl . 'producto/gestion');
+    header('Location: ' . baseUrl . 'tipoMerma/gestion');
   }
 
   // Editar
@@ -60,11 +60,11 @@ class ProductoController
       $editar = true;
       //
       $id = $_GET['id'];
-      $pro = new Producto();
+      $tp = new TipoMerma();
       //
-      $pro->setId($id);
-      $proEdit = $pro->findProductoID();
-      require_once 'views/producto/crud.php';
+      $tp->setId($id);
+      $tipoEdit = $tp->findTipoMID();
+      require_once 'views/merma/tipoMerma/crud.php';
     } else {
       header('Location: ' . baseUrl . 'error/index');
     }
@@ -76,15 +76,15 @@ class ProductoController
     Utils::isAdmin();
     if (isset($_GET['id'])) {
       $id = $_GET['id'];
-      $p = new Producto();
-      $p->setId($id);
-      $delete = $p->delete();
+      $tp = new TipoMerma();
+      $tp->setId($id);
+      $delete = $tp->delete();
       if ($delete) {
         $_SESSION['delete'] = 'Eliminado';
       } else {
         $_SESSION['delete'] = 'NoQuery';
       }
     }
-    header('Location: ' . baseUrl . 'producto/gestion');
+    header('Location: ' . baseUrl . 'tipoMerma/gestion');
   }
 }

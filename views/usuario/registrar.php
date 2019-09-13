@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="<?= baseUrl; ?>assets/css/styleAll.css">
-<title>CusineSoft - Usuarios</title>
 </head>
 
 <body class="animated fadeIn faster">
@@ -19,6 +17,10 @@
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Vacios') : ?>
       <div class="alert alert-danger p-1 text-center animated zoomIn faster" role="alert">
         Existen Campos Vacios
+      </div>
+    <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Existe') : ?>
+      <div class="alert alert-secondary p-1 text-center animated zoomIn faster" role="alert">
+        El Usuario Ya Existe <i class="fas fa-user-slash"></i>
       </div>
     <?php else : ?>
       <hr>

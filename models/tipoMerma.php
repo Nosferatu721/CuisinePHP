@@ -1,10 +1,10 @@
 <?php
 
-class Producto
+class TipoMerma
 {
   private $db;
   private $id;
-  private $nombre;
+  private $tipo;
 
   public function __construct()
   {
@@ -21,37 +21,37 @@ class Producto
   }
 
   // GET - SET Nombre
-  function getNombre()
+  function getTipo()
   {
-    return $this->nombre;
+    return $this->tipo;
   }
-  function setNombre($nombre)
+  function setTipo($tipo)
   {
-    $this->nombre = $this->db->real_escape_string($nombre);
+    $this->tipo = $this->db->real_escape_string($tipo);
   }
 
   // Consultar Todos
-  public function findPtos()
+  public function findTipos()
   {
     // Crear Sentencia
-    $sql = "SELECT * FROM producto";
+    $sql = "SELECT * FROM tipomerma";
     // Enviamos La Sentencia
     $result = $this->db->query($sql);
     return $result;
   }
 
   // Consultar Por ID
-  public function findProductoID()
+  public function findTipoMID()
   {
-    $sql = "SELECT * FROM producto WHERE idproducto={$this->getId()}";
-    $producto = $this->db->query($sql);
-    return $producto->fetch_object();
+    $sql = "SELECT * FROM tipomerma WHERE idtipoMerma={$this->getId()}";
+    $tipo = $this->db->query($sql);
+    return $tipo->fetch_object();
   }
 
-  //Registrar
+  // Registrar
   public function save()
   {
-    $sql = "INSERT INTO producto VALUES (NULL, '{$this->getNombre()}')";
+    $sql = "INSERT INTO tipomerma VALUES (NULL, '{$this->getTipo()}')";
     $saved = $this->db->query($sql);
     $result = false;
     if ($saved) {
@@ -62,7 +62,7 @@ class Producto
   // Editar
   public function update()
   {
-    $sql = "UPDATE producto SET nombreProducto='{$this->getNombre()}' WHERE idproducto='{$this->id}'";
+    $sql = "UPDATE tipomerma SET tipoMerma='{$this->getTipo()}' WHERE idtipoMerma='{$this->id}'";
     $update = $this->db->query($sql);
     $result = false;
     if ($update) {
@@ -73,7 +73,7 @@ class Producto
   // Eliminar
   public function delete()
   {
-    $sql = "DELETE FROM producto WHERE idproducto = '{$this->id}'";
+    $sql = "DELETE FROM tipomerma WHERE idtipoMerma = '{$this->id}'";
     $delete = $this->db->query($sql);
     $result = false;
     if ($delete) {

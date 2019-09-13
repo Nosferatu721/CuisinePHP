@@ -32,9 +32,12 @@ class usuarioController
     }
   }
 
-  public function pdf(){
+  public function pdf()
+  {
     $u = new Usuario();
     $dataUsers = $u->findUsers();
+    $u2 = new Usuario();
+    $porcent = $u2->countUsers();
     require_once 'librerias/pdf/usuarios/pdfUsuarios.php';
   }
 
@@ -61,13 +64,18 @@ class usuarioController
     if (isset($_POST) && !empty($_POST['nombres']) && !empty($_POST['apellidos']) && !empty($_POST['pass']) && !empty($_POST['rol']) && !empty($_POST['restaurante']) && !empty($_POST['email'])) {
       // Creamos el contenedor del nuevo usuario
       $usuario = new Usuario();
-      // Almacenamos cada dato en el contenedor del usuario
       $usuario->setNombre($_POST['nombres']);
+      $usuario->setEmail($_POST['email']);
+      $result = $usuario->exist();
+      if (!$result->num_rows == 0) {
+        $_SESSION['saveEdit'] = 'Existe';
+        header('Location: ' . baseUrl . 'usuario/registro');
+        die();
+      }
       $usuario->setApellido($_POST['apellidos']);
       $usuario->setPass($_POST['pass']);
       $usuario->setCargo($_POST['rol']);
       $usuario->setRestaurante($_POST['restaurante']);
-      $usuario->setEmail($_POST['email']);
       // Realizamos el Registro
 
       if (isset($_GET['id'])) {
@@ -137,7 +145,7 @@ class usuarioController
   public function editar()
   {
     Utils::isAdmin();
-    if (isset($_GET['id'])) {
+    if (isset($_GET['id']) && $_GET['id'] != '') {
       $editar = true;
       //
       $id = $_GET['id'];
@@ -147,7 +155,7 @@ class usuarioController
       $user = $usuario->findUserID();
       require_once 'views/usuario/registrar.php';
     } else {
-      header('Location: ' . baseUrl . 'usuario/consultarUsuarios');
+      header('Location: ' . baseUrl . 'error/index');
     }
   }
   // Eliminar

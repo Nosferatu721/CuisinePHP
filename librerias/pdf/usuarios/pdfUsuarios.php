@@ -16,7 +16,7 @@ ob_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>PDf</title>
+  <title>PDF</title>
   <style>
     * {
       padding: 0px;
@@ -68,6 +68,25 @@ ob_start();
     h5 {
       text-align: center
     }
+
+    /* Grafico */
+
+    .grafico {
+      margin: 10px 0px;
+      border-left: 1px solid gray;
+      border-bottom: 1px solid gray;
+      width: 600px;
+      height: 200px;
+    }
+
+    .barra {
+      height: 50px;
+      border: 1px solid gray;
+      background: orangered;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 
@@ -110,6 +129,14 @@ ob_start();
           <?php endwhile; ?>
         </tbody>
       </table>
+      <hr>
+      <div class="grafico">
+        <?php foreach ($porcent as $uP) : ?>
+          <div class="barra" style="width: <?= $uP[0]; ?>%">
+            <?= $uP[0]; ?>
+          </div>
+        <?php endforeach; ?>
+      </div>
     </div>
     <div class="Footer">
       <h5>Generado <?= date('d-m-Y'); ?></h5>

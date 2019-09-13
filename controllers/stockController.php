@@ -77,7 +77,7 @@ class stockController
   public function editar()
   {
     Utils::isCocina();
-    if (isset($_GET['id'])) {
+    if (isset($_GET['id']) && $_GET['id'] != '') {
       $editar = true;
       //
       $id = $_GET['id'];

@@ -1,6 +1,4 @@
 <link rel="stylesheet" type="text/css" href="<?= baseUrl; ?>assets/datatables/datatables.min.css" />
-<link rel="stylesheet" href="<?= baseUrl; ?>assets/css/styleAll.css">
-<title>CusineSoft - Cargo</title>
 </head>
 
 <body class="animated fadeIn faster">

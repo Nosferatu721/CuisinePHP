@@ -41,7 +41,7 @@ class Restaurante
     $this->direccion = $this->db->real_escape_string($direccion);
   }
 
-  // Consultar Todos Los Restaurantes
+  // Consultar Todos
   public function findRestaurant(){
     // Crear Sentencia
     $sql = "SELECT * FROM restaurante ORDER BY nombreRestaurante ASC";
@@ -50,7 +50,7 @@ class Restaurante
     return $result;
   }
 
-  // Consultar Usuario Por ID
+  // Consultar Por ID
   public function findRestaurantID()
   {
     $sql = "SELECT * FROM restaurante WHERE idrestaurante={$this->getId()}";

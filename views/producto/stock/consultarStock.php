@@ -1,6 +1,4 @@
 <link rel="stylesheet" type="text/css" href="<?= baseUrl; ?>assets/datatables/datatables.min.css" />
-<link rel="stylesheet" href="<?= baseUrl; ?>assets/css/styleAll.css">
-<title>CusineSoft - Usuarios</title>
 </head>
 
 <body class="animated fadeIn faster">
@@ -30,7 +28,7 @@
     <?php Utils::deleteSession('delete') ?>
     <a href="<?= baseUrl; ?>stock/registro" class="btn btn-outline-success"><i class="fas fa-user-plus"></i> Registrar Nevo Stock Al Restaurante</a>
     <div class="mt-3 p-2">
-      <table class="table table-bordered table-responsive-md table-hover" id="tablaUsuarios">
+      <table class="table table-bordered table-responsive-md table-hover" id="tabla">
         <caption class="text-center py-1">Lista de Productos Detallada <a href="<?= baseUrl; ?>librerias/pdf/stock/pdfStock" target="blank" class="btn btn-danger">Generar PDF <i class="fas fa-file-pdf"></i></a></caption>
         <thead class="table-dark">
           <tr class="font-italic">
