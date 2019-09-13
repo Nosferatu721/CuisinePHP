@@ -34,10 +34,10 @@ if (class_exists($nombreController)) {
     // Guardamos el action
     $action = $_GET['action'];
     // Ejecutar peticion
-    if ($action != 'pdf') {
+    if ($action != 'pdf' || $action != 'd') {
       require_once 'views/layout/header.php';
     }
-    if ($action == 'olvidoPas') {
+    if ($action != 'olvidoPass') {
       Utils::verifySession();
     }
     $controller->$action();
@@ -51,4 +51,3 @@ if (class_exists($nombreController)) {
 } else {
   showError();
 }
-
