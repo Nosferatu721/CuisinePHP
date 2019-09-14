@@ -8,38 +8,38 @@
   <?php require_once 'views/layout/menu.php'; ?>
 
   <div class="container">
-    <p class="titulo">Usuarios Registrados</p>
+    <p class="titulo"><?= tittleUser ?></p>
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Registrado') : ?>
       <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-        <b>Usuario Registrado Exitosamente <i class="fas fa-check-double"></i></b>
+        <b><?= userRegistrado ?> <i class="fas fa-check-double"></i></b>
       </div>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Editado') : ?>
       <div class="alert alert-secondary text-primary p-1 text-center animated zoomIn faster" role="alert">
-        <b>Usuario Editado Exitosamente <i class="fas fa-check-double"></i></b>
+        <b><?= userEditado ?> <i class="fas fa-check-double"></i></b>
       </div>
     <?php elseif (isset($_SESSION['estado']) && $_SESSION['estado'] == 'Cambiado') : ?>
       <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-        <b>Usuario Cambiado Exitosamente <i class="fas fa-check-double"></i></b>
+        <b><?= userCambiado ?> <i class="fas fa-check-double"></i></b>
       </div>
     <?php else : ?>
       <hr>
     <?php endif; ?>
     <?php Utils::deleteSession('saveEdit') ?>
     <?php Utils::deleteSession('estado') ?>
-    <a href="<?= baseUrl; ?>usuario/registro" class="btn btn-outline-success"><i class="fas fa-user-plus"></i> Registrar Nuevo Usuario</a>
+    <a href="<?= baseUrl; ?>usuario/registro" class="btn btn-outline-success"><i class="fas fa-user-plus"></i> <?= regisNuevoUsuario; ?></a>
     <div class="mt-3 p-2">
       <table class="table table-bordered table-responsive table-hover" id="tabla">
-        <caption class="text-center py-1">Lista de Usuarios <a href="<?= baseUrl; ?>usuario/pdf" target="blank" class="btn btn-danger">Generar PDF <i class="fas fa-file-pdf"></i></a></caption>
+        <caption class="text-center py-1"><?= tittleTableUsuarios; ?> <a href="<?= baseUrl; ?>usuario/pdf" target="blank" class="btn btn-danger"><?= generarPDF; ?> <i class="fas fa-file-pdf"></i></a></caption>
         <thead class="table-dark">
           <tr class="font-italic">
             <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Email</th>
-            <th scope="col">Contraseña</th>
-            <th scope="col">Cargo</th>
-            <th scope="col">Restaurante</th>
-            <th scope="col" style="width: 100%">Acciones</th>
+            <th scope="col"><?= nombre ?></th>
+            <th scope="col"><?= apellido ?></th>
+            <th scope="col"><?= email ?></th>
+            <th scope="col"><?= contraseña ?></th>
+            <th scope="col"><?= cargo ?></th>
+            <th scope="col"><?= restaurante ?></th>
+            <th scope="col" style="width: 100%"><?= acciones ?></th>
           </tr>
         </thead>
         <tbody>
@@ -54,7 +54,7 @@
               <td><?= $user->nombreRestaurante; ?></td>
               <td class="d-flex justify-content-around d-flex">
                 <!-- Boton Editar -->
-                <a href="<?= baseUrl; ?>usuario/editar&id=<?= $user->idusuarios; ?>" class="btn btn-warning btn-sm">Editar <i class="fas fa-pencil-alt"></i></a>
+                <a href="<?= baseUrl; ?>usuario/editar&id=<?= $user->idusuarios; ?>" class="btn btn-warning btn-sm"><?= editar ?> <i class="fas fa-pencil-alt"></i></a>
                 <!-- Boton Eliminar -->
                 <button class="btn btn-outline-<?= $user->estado == 'Activo' ? 'danger' : ($user->estado == 'Inactivo' ? 'success' : ''); ?> btn-sm" data-toggle="modal" data-target=".modal<?= $user->idusuarios ?>"><?= $user->estado == 'Activo' ? 'Inactivar' : ($user->estado == 'Inactivo' ? 'Activar' : ''); ?> <i class="fas fa-exchange-alt"></i></button>
                 <!-- Modal Eliminar -->
@@ -62,17 +62,17 @@
                   <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Confirmación</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle"><?= confirmar ?></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                        ¿Desea <?= $user->estado == 'Activo' ? 'Inactivar' : ($user->estado == 'Inactivo' ? 'Activar' : ''); ?> el usuario?
+                        <?= $user->estado == 'Activo' ? inactivar : ($user->estado == 'Inactivo' ? activar : ''); ?> <?= pregunta ?>
                       </div>
                       <div class="modal-footer p-2">
-                        <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal">Cancelar</button>
-                        <a href="<?= baseUrl; ?>usuario/eliminar&id=<?= $user->idusuarios; ?>" class="btn btn-outline-<?= $user->estado == 'Activo' ? 'danger' : ($user->estado == 'Inactivo' ? 'success' : ''); ?> btn-sm"><?= $user->estado == 'Activo' ? 'Inactivar' : ($user->estado == 'Inactivo' ? 'Activar' : ''); ?> <i class="fas fa-exchange-alt"></i></a>
+                        <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal"><?= cancelar ?></button>
+                        <a href="<?= baseUrl; ?>usuario/eliminar&id=<?= $user->idusuarios; ?>" class="btn btn-outline-<?= $user->estado == 'Activo' ? 'danger' : ($user->estado == 'Inactivo' ? 'success' : ''); ?> btn-sm"><?= $user->estado == 'Activo' ? inactivar : ($user->estado == 'Inactivo' ? activar : ''); ?> <i class="fas fa-exchange-alt"></i></a>
                       </div>
                     </div>
                   </div>

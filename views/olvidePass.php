@@ -10,30 +10,33 @@
           <div class="container">
             <div class="row">
               <div class="col-md-9 col-lg-8 mx-auto">
-                <h3 class="login-heading mb-4">Recuperar Contraseña</h3>
+                <h3 class="login-heading mb-4"><?= tituloRecuperarPass; ?></h3>
                 <?php if (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'ErrorDatos') : ?>
-                <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-                  No Coinciden Los Datos <i class="fas fa-poo"></i>
-                </div>
+                  <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
+                    <?= notExists; ?> <i class="fas fa-poo"></i>
+                  </div>
                 <?php elseif (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'Vacios') : ?>
-                <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-                  Existen Campos Vacios <i class="far fa-address-card"></i>
-                </div>
+                  <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
+                    <?= vacios; ?> <i class="far fa-address-card"></i>
+                  </div>
                 <?php else : ?>
-                <hr>
+                  <hr>
                 <?php endif; ?>
                 <?php Utils::deleteSession('recuperar') ?>
                 <form action="<?= baseUrl; ?>usuario/d" method="POST">
                   <div class="form-label-group">
                     <input type="text" id="id" name="id" class="form-control" placeholder="Code User">
-                    <label for="id"><i class="fab fa-keycdn"></i> Codigo</label>
+                    <label for="id"><i class="fab fa-keycdn"></i> <?= codigo; ?></label>
                   </div>
                   <!-- 
                   <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input" id="customCheck1">
                     <label class="custom-control-label" for="customCheck1">Recordarme</label>
                   </div> -->
-                  <button type="submit" class="btn btn-outline-success btn-block"><i class="far fa-paper-plane"></i> Enviar</button>
+                  <div class="row">
+                    <a href="<?= baseUrl; ?>" class="btn btn-outline-dark col-3"><i class="fas fa-arrow-left"></i> <?= regresar; ?></a>
+                    <button type="submit" class="btn btn-outline-success btn-block col-9"><i class="far fa-paper-plane"></i> <?= btnEnviarEmail; ?></button>
+                  </div>
                 </form>
               </div>
             </div>

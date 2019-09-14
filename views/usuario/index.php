@@ -9,11 +9,9 @@
   <main class="main">
     <section class="group group--color">
       <div class="containersito">
-        <h2 class="main__title">Bienvenido al Sistema para tu Restaurante</h2>
-        <p class="main__txt">Este Sistema facilitara el control de materias primas, menaje, mermas, alerta de
-          agotamiento del Stock, para el restaurante Andrés Carne de Res.</p>
-        <p class="main__txt">Cambiando el metodo de realizar los procesos de forma manual y pasarlos a este Sistema de
-          Información.</p>
+        <h2 class="main__title"><?= tituloIndex; ?></h2>
+        <p class="main__txt"><?= textoIndex1 ?></p>
+        <p class="main__txt"><?= textoIndex2 ?></p>
       </div>
     </section>
     <section class="group main__about__description">
@@ -27,7 +25,7 @@
             carpintero, un letrero hecho a mano, un sol, una luna, y una estrella, se comvirtió poco a poco, con
             empuje,
             talento y verraquera, en un universo que brillo y da calor con su propio fuego.</p>
-          <a href="" class="btn btn-danger">Contact</a>
+          <a href="#" class="btn btn-danger">Contact</a>
         </div>
       </div>
     </section>

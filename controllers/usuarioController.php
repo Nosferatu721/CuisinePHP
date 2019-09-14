@@ -66,23 +66,22 @@ class usuarioController
       $usuario = new Usuario();
       $usuario->setNombre($_POST['nombres']);
       $usuario->setEmail($_POST['email']);
-      $result = $usuario->exist();
-      if (!$result->num_rows == 0) {
-        $_SESSION['saveEdit'] = 'Existe';
-        header('Location: ' . baseUrl . 'usuario/registro');
-        die();
-      }
       $usuario->setApellido($_POST['apellidos']);
       $usuario->setPass($_POST['pass']);
       $usuario->setCargo($_POST['rol']);
       $usuario->setRestaurante($_POST['restaurante']);
       // Realizamos el Registro
-
       if (isset($_GET['id'])) {
         $id = $_GET['id'];
         $usuario->setId($id);
         $save = $usuario->update();
       } else {
+        $result = $usuario->exist();
+        if (!$result->num_rows == 0) {
+          $_SESSION['saveEdit'] = 'Existe';
+          header('Location: ' . baseUrl . 'usuario/registro');
+          die();
+        }
         $save = $usuario->save();
       }
 
@@ -139,7 +138,7 @@ class usuarioController
       $_SESSION['identity'] = null;
       unset($_SESSION['identity']);
     }
-    header('Location: ' . baseUrl);
+    header('Location: ' . baseUrl . '/' . langDefault);
   }
   // Editar
   public function editar()
@@ -186,5 +185,20 @@ class usuarioController
       $_SESSION['estado'] = 'Vacios';
     }
     header('Location: ' . baseUrl . 'usuario/consultarUsuarios');
+  }
+
+  // Idioma
+  public function lang(){
+    if (isset($_GET['lang']) && $_GET['lang'] != '') {
+      $lang = $_GET['lang'];
+      if ($lang == 'en') {
+        $_SESSION['lang'] = $lang;        
+      } elseif ($lang == 'es') {
+        $_SESSION['lang'] = langDefault;
+      }
+      header('Location: ' . baseUrl . 'usuario/index');
+    } else {
+      header('Location: ' . baseUrl . 'error/index');
+    }
   }
 }

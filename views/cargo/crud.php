@@ -8,26 +8,26 @@
   <?php require_once 'views/layout/menu.php'; ?>
 
   <div class="container">
-    <p class="titulo">Control de Cargos</p>
+    <p class="titulo"><?= tittleCargo ?></p>
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Registrado') : ?>
       <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-        <b>Cargo Registrado Exitosamente <i class="fas fa-check-double"></i></b>
+        <b><?= cargoRegistrado ?> <i class="fas fa-check-double"></i></b>
       </div>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Editado') : ?>
       <div class="alert alert-secondary text-primary p-1 text-center animated zoomIn faster" role="alert">
-        <b>Cargo Editado Exitosamente <i class="fas fa-check-double"></i></b>
+        <b><?= cargoEditado ?> <i class="fas fa-check-double"></i></b>
       </div>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'Eliminado') : ?>
       <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-        <b>Cargo Eliminado Exitosamente <i class="fas fa-check-double"></i></b>
+        <b><?= cargoEliminado ?> <i class="fas fa-check-double"></i></b>
       </div>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'NoQuery') : ?>
       <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-        <b>No Se Puede Eliminar <i class="fas fa-exclamation-triangle"></i></b>
+        <b><?= imposibleEliminar ?> <i class="fas fa-exclamation-triangle"></i></b>
       </div>
     <?php elseif (isset($_SESSION['notData']) && $_SESSION['notData'] == 'ErrorDatos') : ?>
       <div class="alert alert-danger p-1 text-center animated zoomIn faster" role="alert">
-        Existen Campos Vacios
+        <?= vacios ?>
       </div>
     <?php else : ?>
       <hr>
@@ -40,32 +40,34 @@
         <div class="card mb-3 border-0">
           <div class="card-header font-italic text-center bg-secondary text-danger">
             <?php if (isset($editar) && isset($carEdit) && is_object($carEdit)) : ?>
-              <span class="titulo text-warning animated flash slower">Editar Cargo = <?= $carEdit->nombreCargo; ?></span>
+              <span class="titulo text-warning animated flash slower"><?= formTittleCargo2 ?> = <?= $carEdit->nombreCargo; ?></span>
               <?php $url_action = baseUrl . 'cargo/registrar&id=' . $carEdit->idcargo; ?>
             <?php else : ?>
-              <span class="titulo text-success">Nuevo Cargo</span>
+              <span class="titulo text-success"><?= formTittleCargo1 ?></span>
               <?php $url_action = baseUrl . 'cargo/registrar'; ?>
             <?php endif; ?>
           </div>
-          <form action="<?= $url_action; ?>" method="POST">
-            <div class="form-label-group p-2">
-              <label for="nombre">Nombre</label>
-              <input type="text" id="nombre" name="nombre" class="form-control" value="<?= isset($carEdit) && is_object($carEdit) ? $carEdit->nombreCargo : ''; ?>" placeholder="Nombre">
-            </div>
-            <div class="p-2 border-top">
-              <input type="submit" class="btn btn-outline-success btn-block" id="enviar" value="<?= isset($carEdit) && is_object($carEdit) ? 'Actualizar' : 'Registrar'; ?>">
-            </div>
-          </form>
+          <div class="card-body">
+            <form action="<?= $url_action; ?>" method="POST">
+              <div class="form-label-group p-2">
+                <label for="nombre"><?= nombreCargo ?></label>
+                <input type="text" id="nombre" name="nombre" class="form-control" value="<?= isset($carEdit) && is_object($carEdit) ? $carEdit->nombreCargo : ''; ?>">
+              </div>
+              <div class="p-2 border-top">
+                <input type="submit" class="btn btn-outline-success btn-block" id="enviar" value="<?= isset($carEdit) && is_object($carEdit) ? actualizar : registrar; ?>">
+              </div>
+            </form>
+          </div>
         </div>
       </div>
       <div class="col-md-8">
         <table class="table table-bordered table-hover" id="tablaUsuarios">
-          <caption class="text-center">Lista de Cargos</caption>
+          <caption class="text-center"><?= tittleTableCargos ?></caption>
           <thead class="table-dark">
             <tr class="font-italic">
               <th scope="col">ID</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Acciones</th>
+              <th scope="col"><?= nombre ?></th>
+              <th scope="col"><?= acciones ?></th>
             </tr>
           </thead>
           <tbody>
@@ -75,8 +77,8 @@
                 <th scope="row"><?= $car->idcargo; ?></th>
                 <td><?= $car->nombreCargo; ?></td>
                 <td class="d-flex justify-content-around border border-light">
-                  <a href="<?= baseUrl; ?>cargo/editar&id=<?= $car->idcargo; ?>" class="btn btn-outline-warning btn-sm"><i class="fas fa-pen-nib"></i> Editar</a>
-                  <a href="<?= baseUrl; ?>cargo/eliminar&id=<?= $car->idcargo; ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> Eliminar</a>
+                  <a href="<?= baseUrl; ?>cargo/editar&id=<?= $car->idcargo; ?>" class="btn btn-outline-warning btn-sm"><i class="fas fa-pen-nib"></i> <?= editar ?></a>
+                  <a href="<?= baseUrl; ?>cargo/eliminar&id=<?= $car->idcargo; ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> <?= eliminar ?></a>
                 </td>
               </tr>
             <?php endwhile; ?>

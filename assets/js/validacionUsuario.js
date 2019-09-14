@@ -43,16 +43,16 @@ function validarPass() {
 
 function validarRestaurante() {
   var elemento = document.getElementById("restaurante");
-  if (elemento.value == "Eliga...") {
-    alertica('Eliga Restaurante');
+  if (elemento.value == "Elija..." || elemento.value == "Choose...") {
+    alertica('Elija Restaurante');
     return false;
   }
   return true;
 }
 function validarCargo() {
   var elemento = document.getElementById("rol");
-  if (elemento.value == "Eliga...") {
-    alertica('Eliga Cargo');
+  if (elemento.value == "Elija..." || elemento.value == "Choose...") {
+    alertica('Elija Cargo');
     return false;
   }
   return true;

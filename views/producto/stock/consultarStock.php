@@ -8,35 +8,35 @@
   <?php require_once 'views/layout/menu.php'; ?>
 
   <div class="container">
-    <p class="titulo">Detalle Productos</p>
+    <p class="titulo"><?= tittleStock ?></p>
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Registrado') : ?>
       <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-        <b>Productos Registrado Exitosamente <i class="fas fa-check-double"></i></b>
+        <b><?= stockRegistrado ?> <i class="fas fa-check-double"></i></b>
       </div>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Editado') : ?>
       <div class="alert alert-secondary text-primary p-1 text-center animated zoomIn faster" role="alert">
-        <b>Productos Editado Exitosamente <i class="fas fa-check-double"></i></b>
+        <b><?= stockEditado ?> <i class="fas fa-check-double"></i></b>
       </div>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'Eliminado') : ?>
       <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-        <b>Productos Cambiado Exitosamente <i class="fas fa-check-double"></i></b>
+        <b><?= stockEliminado ?> <i class="fas fa-check-double"></i></b>
       </div>
     <?php else : ?>
       <hr>
     <?php endif; ?>
     <?php Utils::deleteSession('saveEdit') ?>
     <?php Utils::deleteSession('delete') ?>
-    <a href="<?= baseUrl; ?>stock/registro" class="btn btn-outline-success"><i class="fas fa-user-plus"></i> Registrar Nevo Stock Al Restaurante</a>
+    <a href="<?= baseUrl; ?>stock/registro" class="btn btn-outline-success"><i class="fas fa-plus"></i> <?= regisNuevoStock ?></a>
     <div class="mt-3 p-2">
       <table class="table table-bordered table-responsive-md table-hover" id="tabla">
-        <caption class="text-center py-1">Lista de Productos Detallada <a href="<?= baseUrl; ?>librerias/pdf/stock/pdfStock" target="blank" class="btn btn-danger">Generar PDF <i class="fas fa-file-pdf"></i></a></caption>
+        <caption class="text-center py-1"><?= tittleTableStock ?> <a href="<?= baseUrl; ?>stock/pdf" target="blank" class="btn btn-danger"><?= generarPDF ?> <i class="fas fa-file-pdf"></i></a></caption>
         <thead class="table-dark">
           <tr class="font-italic">
-            <th scope="col">Producto</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Fecha Vencimiento</th>
-            <th scope="col">Lote</th>
-            <th scope="col">Acciones</th>
+            <th scope="col"><?= producto ?></th>
+            <th scope="col"><?= cantidadStock ?></th>
+            <th scope="col"><?= fechaVenciProducto ?></th>
+            <th scope="col"><?= loteStock ?></th>
+            <th scope="col"><?= acciones ?></th>
           </tr>
         </thead>
         <tbody>
@@ -47,8 +47,8 @@
               <td><?= $s->fechaVencimiento; ?></td>
               <td><?= $s->lote; ?></td>
               <td class="d-flex justify-content-around d-flex">
-                <a href="<?= baseUrl; ?>stock/editar&id=<?= $s->idproducto; ?>" class="btn btn-warning btn-sm">Editar</a>
-                <a href="<?= baseUrl; ?>stock/eliminar&id=<?= $s->idproducto; ?>" class="btn btn-outline-danger btn-sm">Eliminar</a>
+                <a href="<?= baseUrl; ?>stock/editar&id=<?= $s->idproducto; ?>" class="btn btn-warning btn-sm"><?= editar ?> <i class="fas fa-pencil-alt"></i></a>
+                <a href="<?= baseUrl; ?>stock/eliminar&id=<?= $s->idproducto; ?>" class="btn btn-outline-danger btn-sm"><?= eliminar ?> <i class="far fa-trash-alt"></i></a>
               </td>
             </tr>
           <?php endwhile; ?>

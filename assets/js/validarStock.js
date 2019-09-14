@@ -67,7 +67,7 @@ function validarLote() {
 
 function validarProducto() {
   var elemento = document.getElementById("producto");
-  if (elemento.value == "Eliga...") {
+  if (elemento.value == "Elija..." || elemento.value == "Choose...") {
     alertica('Eliga Producto');
     return false;
   }

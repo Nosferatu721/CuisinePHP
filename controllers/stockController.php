@@ -16,6 +16,14 @@ class stockController
     require_once 'views/producto/stock/registrar.php';
   }
 
+  //PDF
+  public function pdf()
+  {
+    $st = new Stock();
+    $stock = $st->All();
+    require_once 'librerias/pdf/stock/pdfStock.php';
+  }
+
   public function registrar()
   {
     Utils::isCocina();
@@ -59,7 +67,8 @@ class stockController
         }
         header('Location: ' . baseUrl . 'stock/consultar');
       } else {
-        echo 'Algun Error Pendejo';
+        $_SESSION['saveEdit'] = 'Existe';
+        header('Location: ' . baseUrl . 'stock/registro');
         die();
       }
     } else {
