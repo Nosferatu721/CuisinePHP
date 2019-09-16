@@ -29,9 +29,8 @@ class stockController
     Utils::isCocina();
     // Verificamos si hay datos por POST
     if (isset($_POST) && (!empty($_POST['producto']) || !empty($_GET['id'])) && !empty($_POST['cantidad']) && !empty($_POST['fecha']) && !empty($_POST['lote'])) {
-      // Creamos el contenedor del nuevo usuario
+      // Creamos el contenedor
       $stock = new Stock();
-      // Almacenamos cada dato en el contenedor del usuario
       if (!empty($_GET['id'])) {
         $s = new Stock();
         $s->setIdProducto($_GET['id']);

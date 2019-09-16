@@ -16,18 +16,20 @@ class ProductoController
     $ptos = $p->findPtos();
     return $ptos;
   }
-  // Registrar
+  // Registrar Y Editar
   public function registrar()
   {
     Utils::isAdmin();
     // Verificamos si se Manda Algo por POST
-    if (isset($_POST) && !empty($_POST['nombre'])) {
+    if (isset($_POST) && !empty($_POST['nombre']) && !empty($_POST['precio'])) {
       // Almacenamos los Datos en variables
       $nombre = $_POST['nombre'];
+      $precio = $_POST['precio'];
       // Creamos un Objeto Restaurante
       $pro = new Producto();
       // Almacenamos los Datos
       $pro->setNombre($nombre);
+      $pro->setPrecio($precio);
       // Realizamos el INSERT O UPDATE
       if (isset($_GET['id'])) {
         $id = $_GET['id'];

@@ -5,6 +5,7 @@ class Producto
   private $db;
   private $id;
   private $nombre;
+  private $precio;
 
   public function __construct()
   {
@@ -29,6 +30,16 @@ class Producto
   {
     $this->nombre = $this->db->real_escape_string($nombre);
   }
+  
+  // GET - SET Precio
+  function getPrecio()
+  {
+    return $this->precio;
+  }
+  function setPrecio($precio)
+  {
+    $this->precio = $this->db->real_escape_string($precio);
+  }
 
   // Consultar Todos
   public function findPtos()
@@ -51,7 +62,7 @@ class Producto
   //Registrar
   public function save()
   {
-    $sql = "INSERT INTO producto VALUES (NULL, '{$this->getNombre()}')";
+    $sql = "INSERT INTO producto VALUES (NULL, '{$this->getNombre()}', '{$this->getPrecio()}')";
     $saved = $this->db->query($sql);
     $result = false;
     if ($saved) {
@@ -62,7 +73,7 @@ class Producto
   // Editar
   public function update()
   {
-    $sql = "UPDATE producto SET nombreProducto='{$this->getNombre()}' WHERE idproducto='{$this->id}'";
+    $sql = "UPDATE producto SET nombreProducto='{$this->getNombre()}', precioProducto='{$this->getPrecio()}' WHERE idproducto='{$this->id}'";
     $update = $this->db->query($sql);
     $result = false;
     if ($update) {

@@ -34,6 +34,10 @@ h1, h2, h3, h4, h5, h6 {
 .column {
   width: 100%;
 }
+textarea{
+  min-height: 80px;
+  max-height: 80px;
+}
 
 /*----------------------Estilos Header----------------------*/
 

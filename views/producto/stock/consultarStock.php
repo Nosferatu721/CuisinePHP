@@ -1,4 +1,12 @@
 <link rel="stylesheet" type="text/css" href="<?= baseUrl; ?>assets/datatables/datatables.min.css" />
+<style type="text/css">
+  #container {
+    height: 400px;
+    min-width: 310px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+</style>
 </head>
 
 <body class="animated fadeIn faster">
@@ -18,7 +26,7 @@
         <b><?= stockEditado ?> <i class="fas fa-check-double"></i></b>
       </div>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'Eliminado') : ?>
-      <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
+      <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
         <b><?= stockEliminado ?> <i class="fas fa-check-double"></i></b>
       </div>
     <?php else : ?>
@@ -33,7 +41,7 @@
         <thead class="table-dark">
           <tr class="font-italic">
             <th scope="col"><?= producto ?></th>
-            <th scope="col"><?= cantidadStock ?></th>
+            <th scope="col"><?= cantidad ?></th>
             <th scope="col"><?= fechaVenciProducto ?></th>
             <th scope="col"><?= loteStock ?></th>
             <th scope="col"><?= acciones ?></th>
@@ -55,10 +63,118 @@
         </tbody>
       </table>
     </div>
+    <hr>
+
+    <div id="container" style="height: 400px" class="my-3"></div>
+    <div id="container2" style="height: 400px" class="my-3"></div>
   </div>
 
+  <script type="text/javascript">
+    $(function() {
+      $('#container').highcharts({
+        chart: {
+          type: 'column',
+          margin: 75,
+          options3d: {
+            enabled: true,
+            alpha: 10,
+            beta: 25,
+            depth: 70
+          }
+        },
+        title: {
+          text: 'Productos en el Restaurante'
+        },
+        plotOptions: {
+          column: {
+            depth: 20,
+          },
+        },
+        xAxis: {
+          categories: [
+            <?php
+            foreach ($sto as $p) {
+              ?>
+
+              ['<?php echo $p['nombreProducto']; ?>'],
+
+
+            <?php
+            }
+            ?>
+          ]
+        },
+        yAxis: {
+          title: {
+            text: null
+          }
+        },
+        series: [{
+          name: 'Productos',
+          data: [
+            <?php
+            foreach ($sto as $p) {
+              ?>
+
+              [<?= $p['cantidadProducto'] ?>],
+
+
+            <?php
+            }
+            ?>
+          ]
+        }]
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    $(function() {
+      $('#container2').highcharts({
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false
+        },
+        title: {
+          text: 'Stock del Restaurante'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              style: {
+                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+              }
+            }
+          }
+        },
+        series: [{
+          type: 'pie',
+          name: 'Cantidad',
+          data: [
+            <?php
+            foreach ($sto as $p) {
+              ?>
+              ['<?= $p['nombreProducto'] ?> - <?= $p['cantidadProducto'] ?>', <?= $p['cantidadProducto'] ?>],
+            <?php
+            }
+            ?>
+          ]
+        }]
+      });
+    });
+  </script>
   <!-- ------------- Footer ------------- -->
   <?php require_once 'views/layout/footer2.php'; ?>
+
+  <script src="<?= baseUrl ?>assets/Highcharts-4.1.5/js/highcharts.js"></script>
+  <script src="<?= baseUrl ?>assets/Highcharts-4.1.5/js/highcharts-3d.js"></script>
+  <script src="<?= baseUrl ?>assets/Highcharts-4.1.5/js/modules/exporting.js"></script>
 
   <script type="text/javascript" src="<?= baseUrl; ?>assets/js/tablas.js"></script>
 

@@ -49,7 +49,7 @@
           </div>
         <?php endif; ?>
         <div class="form-label-group col-6 py-2">
-          <label for="cantidad"><?= isset($stock) && is_object($stock) ? addStock : cantidadStock; ?></label>
+          <label for="cantidad"><?= isset($stock) && is_object($stock) ? addStock : cantidad; ?></label>
           <input type="number" id="cantidad" name="cantidad" class="form-control" value="">
         </div>
         <hr>
@@ -69,5 +69,8 @@
   </div>
   <!-- ------------- Footer ------------- -->
   <?php require_once 'views/layout/footer2.php'; ?>
-  <script src="<?= baseUrl; ?>assets/js/validarStock.js"></script>
+  <?php if (!isset($_GET['id'])) : ?>
+    <script src="<?= baseUrl; ?>assets/js/validarStock.js"></script>
+  <?php endif; ?>
+  <script src="<?= baseUrl; ?>assets/js/validarStockEdit.js"></script>
 </body>
