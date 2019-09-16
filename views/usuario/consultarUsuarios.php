@@ -84,24 +84,92 @@
       </table>
     </div>
     <hr>
-    <span class="titulo">Porcentaje de usuarios en el Sistema</span>
-    <hr>
-    <h6>Administradores - <?= $porcentaje[0][0] ?>%</h6>
-    <div class="progress mb-4">
-      <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?= $porcentaje[0][0]; ?>%"></div>
-    </div>
-    <h6>Jefes de Cocina - <?= $porcentaje[1][0] ?>%</h6>
-    <div class="progress mb-4">
-      <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?= $porcentaje[1][0]; ?>%"></div>
-    </div>
-    <h6>Jefes de Zona - <?= $porcentaje[2][0] ?>%</h6>
-    <div class="progress mb-4">
-      <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?= $porcentaje[2][0]; ?>%"></div>
+    <div class="row">
+      <div class="col-6">
+        <span class="titulo">Porcentaje de usuarios en el Sistema</span>
+        <hr>
+        <h6>Administradores - <?= $porcentaje[0][0] ?>%</h6>
+        <div class="progress mb-4">
+          <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?= $porcentaje[0][0]; ?>%"></div>
+        </div>
+        <h6>Jefes de Cocina - <?= $porcentaje[1][0] ?>%</h6>
+        <div class="progress mb-4">
+          <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?= $porcentaje[1][0]; ?>%"></div>
+        </div>
+        <h6>Jefes de Zona - <?= $porcentaje[2][0] ?>%</h6>
+        <div class="progress mb-4">
+          <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?= $porcentaje[2][0]; ?>%"></div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div id="container" style="height: 400px" class="my-3"></div>
+      </div>
     </div>
   </div>
 
+
+  <script type="text/javascript">
+    $(function() {
+      $('#container').highcharts({
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false
+        },
+        title: {
+          text: 'Users'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              style: {
+                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+              }
+            }
+          }
+        },
+        series: [{
+          type: 'pie',
+          name: 'Estado',
+          data: [
+            <?php
+            foreach ($users as $u) {
+              $estado1 = 'Activos';
+              $estado2 = 'Inactivos';
+              $activos = 0;
+              $inactivos = 0;
+              if ($u->estado == 'Activo') {
+                $activos++;
+              }
+              if ($u->estado == 'Inactivo') {
+                $inactivos++;
+              }
+            }
+            ?>
+
+            ['<?= $estado1 ?>', <?= $activos ?>],
+            ['<?= $estado2 ?>', <?= $inactivos ?>],
+
+            <?php
+            ?>
+          ]
+        }]
+      });
+    });
+  </script>
+
   <!-- ------------- Footer ------------- -->
   <?php require_once 'views/layout/footer2.php'; ?>
+
+  <script src="<?= baseUrl ?>assets/Highcharts-4.1.5/js/highcharts.js"></script>
+  <script src="<?= baseUrl ?>assets/Highcharts-4.1.5/js/highcharts-3d.js"></script>
+  <script src="<?= baseUrl ?>assets/Highcharts-4.1.5/js/modules/exporting.js"></script>
 
   <script type="text/javascript" src="<?= baseUrl; ?>assets/js/tablas.js"></script>
 

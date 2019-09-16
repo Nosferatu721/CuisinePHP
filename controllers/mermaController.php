@@ -1,7 +1,8 @@
 <?php
 require_once 'models/merma.php';
 require_once 'models/producto.php';
-class mermaController
+
+class MermaController
 {
   public function consultarMerma()
   {
@@ -20,9 +21,9 @@ class mermaController
   //PDF
   public function pdf()
   {
-    $st = new Stock();
-    $stock = $st->All();
-    require_once 'librerias/pdf/stock/pdfStock.php';
+    $mr = new Merma();
+    $merma = $mr->All();
+    require_once 'librerias/pdf/merma/pdfMerma.php';
   }
 
   public function registrar()

@@ -37,7 +37,7 @@
     <a href="<?= baseUrl; ?>merma/registro" class="btn btn-outline-success"><i class="fas fa-plus"></i> <?= regisNuevaMerma ?></a>
     <div class="mt-3 p-2">
       <table class="table table-bordered table-responsive-lg table-hover" id="tabla">
-        <caption class="text-center py-1"><?= tittleTableMerma ?> <a href="<?= baseUrl; ?>stock/pdf" target="blank" class="btn btn-danger"><?= generarPDF ?> <i class="fas fa-file-pdf"></i></a></caption>
+        <caption class="text-center py-1"><?= tittleTableMerma ?> <a href="<?= baseUrl; ?>merma/pdf" target="blank" class="btn btn-danger"><?= generarPDF ?> <i class="fas fa-file-pdf"></i></a></caption>
         <thead class="table-dark">
           <tr class="font-italic">
             <th scope="col">ID</th>
