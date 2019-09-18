@@ -8,7 +8,11 @@ class usuarioController
   }
   public function login()
   {
-    require_once 'views/login.php';
+    if(!isset($_SESSION['identity'])){
+      require_once 'views/login.php';
+    } else {
+      $this->index();
+    }
   }
   public function olvidoPass()
   {
@@ -48,6 +52,8 @@ class usuarioController
     $users = $usuario->findUsers();
     $usuario2 = new Usuario();
     $porcentaje = $usuario2->countUsers();
+    $usuario3 = new Usuario();
+    $userActivos = $usuario3->activos();
     require_once 'views/usuario/consultarUsuarios.php';
   }
   // Registro

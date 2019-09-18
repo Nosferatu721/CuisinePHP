@@ -72,6 +72,8 @@
     <hr>
     <div id="container" style="height: 400px" class="my-3"></div>
   </div>
+
+  <!-- GRAFICA -->
   <script type="text/javascript">
     $(function() {
       $('#container').highcharts({

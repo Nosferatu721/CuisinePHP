@@ -85,7 +85,7 @@
     </div>
     <hr>
     <div class="row">
-      <div class="col-6">
+      <div class="col-12 col-md-6">
         <span class="titulo">Porcentaje de usuarios en el Sistema</span>
         <hr>
         <h6>Administradores - <?= $porcentaje[0][0] ?>%</h6>
@@ -101,8 +101,8 @@
           <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?= $porcentaje[2][0]; ?>%"></div>
         </div>
       </div>
-      <div class="col-6">
-        <div id="container" style="height: 400px" class="my-3"></div>
+      <div class="col-12 col-md-6">
+        <div id="container" style="height: 250px" class="my-3"></div>
       </div>
     </div>
   </div>
@@ -119,6 +119,7 @@
         title: {
           text: 'Users'
         },
+        colors: ['#27ae60', '#e74c3c'],
         tooltip: {
           pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
         },
@@ -136,27 +137,14 @@
         },
         series: [{
           type: 'pie',
-          name: 'Estado',
+          name: 'Porcentaje',
           data: [
             <?php
-            foreach ($users as $u) {
-              $estado1 = 'Activos';
-              $estado2 = 'Inactivos';
-              $activos = 0;
-              $inactivos = 0;
-              if ($u->estado == 'Activo') {
-                $activos++;
-              }
-              if ($u->estado == 'Inactivo') {
-                $inactivos++;
-              }
-            }
-            ?>
-
-            ['<?= $estado1 ?>', <?= $activos ?>],
-            ['<?= $estado2 ?>', <?= $inactivos ?>],
-
+            $ob = mysqli_fetch_object($userActivos);
+            foreach ($ob as $i => $value) {
+              ?>['<?= $i; ?>', <?= $value; ?>],
             <?php
+            }
             ?>
           ]
         }]

@@ -18,6 +18,15 @@ class MermaController
     require_once 'views/merma/registrar.php';
   }
 
+  // public function ver(){
+  //   Utils::isCocina();
+  //   $idPedido = $_GET['id'];
+  //   $pedHP = new PedidoHP();
+  //   $pedHP->setIdPedido($idPedido);
+  //   $p = $pedHP->find();
+  //   require_once 'views/nose/pedidoHp.php';
+  // }
+
   //PDF
   public function pdf()
   {

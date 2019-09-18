@@ -10,7 +10,7 @@
       </li>
       <?php if ($_SESSION['identity']->nombreCargo == 'Administrador') : ?>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="merma" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-store-alt"></i> <?= restaurantes; ?>
           </a>
           <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="merma">
@@ -23,7 +23,7 @@
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="Stock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-cubes"></i> <?= productos; ?>
           </a>
           <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
@@ -33,7 +33,7 @@
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="Stock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-cubes"></i> <?= merma; ?>
           </a>
           <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
@@ -47,7 +47,7 @@
         </li>
       <?php elseif ($_SESSION['identity']->nombreCargo == 'Jefe de Cocina') : ?>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="Stock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-cubes"></i> <?= stock; ?>
           </a>
           <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
@@ -59,7 +59,7 @@
         </li>
       <?php endif; ?>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="merma" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <?= menaje; ?>
         </a>
         <div class="dropdown-menu" aria-labelledby="merma">
@@ -67,6 +67,11 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Otro</a>
         </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= baseUrl; ?>archivo/gestion">
+          Subir Archivos
+        </a>
       </li>
     </ul>
     <div class="btn-group" role="group">

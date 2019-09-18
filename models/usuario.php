@@ -210,4 +210,10 @@ class Usuario
     $r = $this->db->query($sql);
     return $r;
   }
+
+  public function activos(){
+    $sql = "CALL activos(@a, @b)";
+    $r = $this->db->query($sql);
+    return $r;
+  }
 }

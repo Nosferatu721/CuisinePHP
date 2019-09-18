@@ -2,9 +2,9 @@
 
 define('idioma', 'Ingles');
 define('lang', 'en');
-define('color', 'outline-dark');
+define('color', 'secondary');
 define('salir', 'Salir');
-define('theme', 'litera');
+define('theme', 'superhero');
 
 // Login
 define('titulo', 'Bienvenido a Cuisinesoft');
