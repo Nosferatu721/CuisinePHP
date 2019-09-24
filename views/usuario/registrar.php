@@ -14,10 +14,9 @@
       <span class="titulo"><?= tittleRegisUsuario1; ?></span>
       <?php $url_action = baseUrl . 'usuario/registrar'; ?>
     <?php endif; ?>
+    <!--  -->
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Vacios') : ?>
-      <div class="alert alert-danger p-1 text-center animated zoomIn faster" role="alert">
-        <?= vacios ?>
-      </div>
+      <?= Utils::alerta('danger', vacios) ?>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Existe') : ?>
       <div class="alert alert-secondary p-1 text-center animated zoomIn faster" role="alert">
         <?= existUser ?> <i class="fas fa-user-slash"></i> <a href="<?= baseUrl ?>usuario/consultarUsuarios" class="btn btn-outline-dark btn-sm">Consultar</a>

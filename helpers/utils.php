@@ -10,7 +10,8 @@ class Utils
     return $name;
   }
 
-  public static function verifySession(){
+  public static function verifySession()
+  {
     if (!isset($_SESSION['identity'])) {
       header('Location: ' . baseUrl);
     }
@@ -24,7 +25,7 @@ class Utils
       header('Location: ' . baseUrl . 'usuario/index');
     }
   }
-  
+
   public static function isCocina()
   {
     if ($_SESSION['identity']->idcargo == '2') {
@@ -32,5 +33,13 @@ class Utils
     } else {
       header('Location: ' . baseUrl . 'usuario/index');
     }
+  }
+
+  // Alerts
+  public static function alerta($color, $texto, $icon = '')
+  {
+    echo '
+      <div class="alert alert-secondary  text-' . $color . ' p-1 text-center animated zoomIn faster" role="alert">'
+      . $texto . ' <i class="' . $icon . '"></i></div>';
   }
 }

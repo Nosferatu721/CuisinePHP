@@ -12,13 +12,9 @@
               <div class="col-md-9 col-lg-8 mx-auto">
                 <h3 class="login-heading mb-4"><?= tituloRecuperarPass; ?></h3>
                 <?php if (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'ErrorDatos') : ?>
-                  <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-                    <?= notExists; ?> <i class="fas fa-poo"></i>
-                  </div>
+                  <?= Utils::alerta('danger', notExists, 'fas fa-poo') ?>
                 <?php elseif (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'Vacios') : ?>
-                  <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-                    <?= vacios; ?> <i class="far fa-address-card"></i>
-                  </div>
+                  <?= Utils::alerta('danger', vacios) ?>
                 <?php else : ?>
                   <hr>
                 <?php endif; ?>

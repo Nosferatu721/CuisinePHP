@@ -4,9 +4,6 @@ function iniciar() {
   document.getElementById("enviar").addEventListener('click', validar, false);
 }
 
-//Formato Correo
-var expresion = /\w+@\w+\.+[a-z]/;
-
 function validarNombre() {
   var elemento = document.getElementById("nombre");
   if (elemento.value == "" || !isNaN(elemento.value)) {
@@ -16,9 +13,18 @@ function validarNombre() {
   return true;
 }
 
+function validarPrecio() {
+  var elemento = document.getElementById("precio");
+  if (elemento.value == "" || isNaN(elemento.value)) {
+    alertica('Precio Erroneo');
+    return false;
+  }
+  return true;
+}
+
 
 function validar(e) {
-  if (validarNombre()) {
+  if (validarNombre() && validarPrecio()) {
     return true;
   } else {
     e.preventDefault();

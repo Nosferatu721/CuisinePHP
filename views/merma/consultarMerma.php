@@ -18,17 +18,11 @@
   <div class="container">
     <p class="titulo"><?= tittleMerma ?></p>
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Registrado') : ?>
-      <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= mermaRegistrado ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('success', mermaRegistrado, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Editado') : ?>
-      <div class="alert alert-secondary text-primary p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= mermaEditado ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('primary', mermaEditado, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'Eliminado') : ?>
-      <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= mermaEliminado ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('danger', mermaEliminado, 'fas fa-check-double') ?>
     <?php else : ?>
       <hr>
     <?php endif; ?>
@@ -62,7 +56,28 @@
               <td><?= $mer->fechaMerma; ?></td>
               <td class="d-flex justify-content-around d-flex">
                 <a href="<?= baseUrl; ?>merma/editar&id=<?= $mer->idmerma; ?>" class="btn btn-warning btn-sm"><?= editar ?> <i class="fas fa-pencil-alt"></i></a>
-                <a href="<?= baseUrl; ?>merma/eliminar&id=<?= $mer->idmerma; ?>" class="btn btn-outline-danger btn-sm"><?= eliminar ?> <i class="far fa-trash-alt"></i></a>
+                <!-- Boton Eliminar -->
+                <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target=".modal<?= $mer->idmerma ?>"> <?= eliminar ?> <i class="far fa-trash-alt"></i></button>
+                <!-- Modal Eliminar -->
+                <div class="modal fade modal<?= $mer->idmerma ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle"><?= confirmar ?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Desea eliminar la merma?
+                      </div>
+                      <div class="modal-footer p-2">
+                        <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal"><?= cancelar ?></button>
+                        <a href="<?= baseUrl; ?>merma/eliminar&id=<?= $mer->idmerma; ?>" class="btn btn-outline-danger btn-sm"> <?= eliminar ?> <i class="far fa-trash-alt"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </td>
             </tr>
           <?php endwhile; ?>

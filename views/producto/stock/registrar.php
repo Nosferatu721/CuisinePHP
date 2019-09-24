@@ -14,14 +14,11 @@
       <span class="titulo"><?= tittleRegisStock1 ?></span>
       <?php $url_action = baseUrl . 'stock/registrar'; ?>
     <?php endif; ?>
+    <!--  -->
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Vacios') : ?>
-      <div class="alert alert-danger p-1 text-center animated zoomIn faster" role="alert">
-        <?= vacios ?>
-      </div>
+      <?= Utils::alerta('danger', vacios) ?>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Yuca') : ?>
-      <div class="alert alert-secondary p-1 text-center text-danger animated zoomIn faster" role="alert">
-        <?= mensajeCantidad ?>
-      </div>
+      <?= Utils::alerta('danger', mensajeCantidad) ?>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Existe') : ?>
       <div class="alert alert-secondary p-1 text-center animated zoomIn faster" role="alert">
         <?= existStock ?> <i class="fas fa-layer-group"></i> <a href="<?= baseUrl ?>stock/consultar" class="btn btn-outline-dark btn-sm">Consultar</a>
@@ -69,8 +66,9 @@
   </div>
   <!-- ------------- Footer ------------- -->
   <?php require_once 'views/layout/footer2.php'; ?>
-  <?php if (!isset($_GET['id'])) : ?>
+  <?php if (isset($stock)) : ?>
+    <script src="<?= baseUrl; ?>assets/js/validarStockEdit.js"></script>
+  <?php else : ?>
     <script src="<?= baseUrl; ?>assets/js/validarStock.js"></script>
   <?php endif; ?>
-  <script src="<?= baseUrl; ?>assets/js/validarStockEdit.js"></script>
 </body>

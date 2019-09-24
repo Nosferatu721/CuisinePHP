@@ -20,17 +20,27 @@ class ArchivoController
   {
     if (isset($_GET['id']) && $_GET['id'] != '') {
       $idArc = $_GET['id'];
-      $sql = "DELETE FROM archivos WHERE idArchivo=$idArc AND idUser={$_SESSION['identity']->idusuarios}";
-      $result = $this->db->query($sql);
-      if ($result) {
-        $_SESSION['delete'] = 'Eliminado';
-      } else {
+      $sql0 = "SELECT * FROM archivos WHERE idArchivo=$idArc AND idUser={$_SESSION['identity']->idusuarios}";
+      $result0 = $this->db->query($sql0);
+      $registro = mysqli_fetch_object($result0);
+      if ($result0->num_rows == 0) {
         $_SESSION['delete'] = 'NoSePuede';
+      } else {
+        $sql = "DELETE FROM archivos WHERE idArchivo=$idArc AND idUser={$_SESSION['identity']->idusuarios}";
+        $result = $this->db->query($sql);
+        if ($result) {
+          unlink('uploads/archivos/' . $registro->document);
+          $_SESSION['delete'] = 'Eliminado';
+        } else {
+          echo 'Error';
+        }
       }
       header('Location: ' . baseUrl . 'archivo/gestion');
+    } else {
+      header('Location: ' . baseUrl . 'error/index');
     }
   }
-
+  
   public function registrar()
   {
     if (isset($_POST) && !empty($_POST['descripcion'])) {
@@ -68,8 +78,7 @@ class ArchivoController
               $_SESSION['save'] = 'Registrado';
               header('Location: ' . baseUrl . 'archivo/gestion');
             } else {
-              $_SESSION['save'] = 'Error';
-              header('Location: ' . baseUrl . 'archivo/gestion');
+              echo 'Error';
             }
           } else {
             $_SESSION['save'] = 'NoAdmitido';

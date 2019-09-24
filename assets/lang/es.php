@@ -4,7 +4,12 @@ define('idioma', 'Ingles');
 define('lang', 'en');
 define('color', 'secondary');
 define('salir', 'Salir');
-define('theme', 'superhero');
+define('theme', 'cosmo');
+
+// Roles
+define('admin', 'Administrador');
+define('jefeCocina', 'Jefe de Cocina');
+define('jefeZona', 'Jefe de Zona');
 
 // Login
 define('titulo', 'Bienvenido a Cuisinesoft');
@@ -65,6 +70,7 @@ define('actualizar', 'Actualizar');
 define('editar', 'Editar');
 define('eliminar', 'Eliminar');
 define('activar', 'Activar');
+define('estado', 'Estado');
 define('inactivar', 'Inactivar');
 define('confirmar', 'Confirmar');
 define('pregunta', 'el usuario?');
@@ -184,3 +190,16 @@ define('regisNuevaMerma', 'Registrar Nueva Merma');
 define('mermaRegistrado', 'Merma Registrada Exitosamente');
 define('mermaEditado', 'Merma Editada Exitosamente');
 define('mermaEliminado', 'Merma Eliminada Exitosamente');
+
+
+// Correo
+define('Mensaje', 'Correo en Español');
+
+
+
+// PDF
+define('creadoPor', 'Creado Por');
+define('reporte', 'Reporte');
+define('activado', 'Activo');
+define('inactivado', 'Inactivo');
+define('generado', 'Generado');

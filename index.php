@@ -11,7 +11,7 @@ if (isset($_SESSION['lang']) && $_SESSION['lang'] == 'es') {
 } elseif (isset($_SESSION['lang']) && $_SESSION['lang'] == 'en') {
   require_once 'assets/lang/en.php';
 } else {
-  require_once 'assets/lang/es.php';
+  require_once 'assets/lang/en.php';
 }
 
 // Mostrar Error 404

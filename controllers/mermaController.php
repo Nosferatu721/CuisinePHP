@@ -50,25 +50,28 @@ class MermaController
         //
         $cantActual = $rrr->cantidadMerma;
         $newCant = $cantActual + ($_POST['cantidad']);
-        if ($newCant < 0) {
-          $_SESSION['saveEdit'] = 'Yuca';
-          header('Location: ' . baseUrl . 'stock/editar&id=' . $_GET['id']);
-          die();
-        }
         //
         $merma->setIdMerma($_GET['id']);
         $merma->setIdProducto($rrr->producto_idproducto);
-        $merma->setCantidad($newCant);
       } elseif (!empty($_POST['producto'])) {
         $merma->setIdProducto($_POST['producto']);
-        $merma->setCantidad($_POST['cantidad']);
       }
+      $cantidad = isset($_GET['id']) ? $newCant : (int) $_POST['cantidad'];
+      if ($cantidad < 0) {
+        $_SESSION['saveEdit'] = 'Yuca';
+        if (!empty($_GET['id'])) {
+          header('Location: ' . baseUrl . 'merma/editar&id=' . $_GET['id']);
+        } else {
+          header('Location: ' . baseUrl . 'merma/registro');
+        }
+        exit();
+      }
+      $merma->setCantidad($cantidad);
       $merma->setIdTipoMerma($_POST['tipoMerma']);
       $merma->setMotivo($_POST['motivo']);
       //
       if ($merma->getIdTipoMerma() == 1) {
         // Calcular Perdida
-        $cantidad = isset($_GET['id']) ? $newCant : $_POST['cantidad'];
         $p = new Producto();
         $p->setId(isset($_GET['id']) ? $rrr->producto_idproducto : $_POST['producto']);
         $result = $p->findProductoID();

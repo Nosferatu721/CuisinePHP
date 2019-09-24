@@ -8,7 +8,7 @@ class usuarioController
   }
   public function login()
   {
-    if(!isset($_SESSION['identity'])){
+    if (!isset($_SESSION['identity'])) {
       require_once 'views/login.php';
     } else {
       $this->index();
@@ -144,7 +144,7 @@ class usuarioController
       $_SESSION['identity'] = null;
       unset($_SESSION['identity']);
     }
-    header('Location: ' . baseUrl . '/' . langDefault);
+    header('Location: ' . baseUrl);
   }
   // Editar
   public function editar()
@@ -194,11 +194,12 @@ class usuarioController
   }
 
   // Idioma
-  public function lang(){
+  public function lang()
+  {
     if (isset($_GET['lang']) && $_GET['lang'] != '') {
       $lang = $_GET['lang'];
       if ($lang == 'en') {
-        $_SESSION['lang'] = $lang;        
+        $_SESSION['lang'] = $lang;
       } elseif ($lang == 'es') {
         $_SESSION['lang'] = langDefault;
       }

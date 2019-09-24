@@ -1,4 +1,4 @@
-<h4 class="nameUser"><?= $_SESSION['identity']->nombre ?> <?= $_SESSION['identity']->apellido ?> - <?= $_SESSION['identity']->nombreCargo ?></h4>
+<h4 class="nameUser"><?= $_SESSION['identity']->nombre ?> <?= $_SESSION['identity']->apellido ?> -  <?= $_SESSION['identity']->nombreCargo == 'Administrador' ? admin : ($_SESSION['identity']->nombreCargo == 'Jefe de Cocina' ? jefeCocina : ($_SESSION['identity']->nombreCargo == 'Jefe de Zona' ? jefeZona : '')); ?></h4>
 <header class="main-header">
   <div class="containersito container--flex">
     <div class="logo-container column--50">

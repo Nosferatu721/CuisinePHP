@@ -10,25 +10,15 @@
   <div class="container">
     <p class="titulo"><?= tittleRest; ?></p>
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Registrado') : ?>
-      <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= restRegistrado; ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('success', restRegistrado, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Editado') : ?>
-      <div class="alert alert-secondary text-info p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= restEditado; ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('primary', restEditado, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'Eliminado') : ?>
-      <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= restEliminado; ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('danger', restEliminado, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'NoQuery') : ?>
-      <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= imposibleEliminar; ?> <i class="fas fa-exclamation-triangle"></i></b>
-      </div>
+      <?= Utils::alerta('danger', imposibleEliminar, 'fas fa-exclamation-triangle') ?>
     <?php elseif (isset($_SESSION['notData']) && $_SESSION['notData'] == 'ErrorDatos') : ?>
-      <div class="alert alert-danger p-1 text-center animated zoomIn faster" role="alert">
-        <?= vacios; ?>
-      </div>
+      <?= Utils::alerta('danger', vacios, 'fas fa-exclamation-triangle') ?>
     <?php else : ?>
       <hr>
     <?php endif; ?>
@@ -84,7 +74,28 @@
                 <td><?= $rest->direccionRestaurante; ?></td>
                 <td class="d-flex justify-content-around">
                   <a href="<?= baseUrl; ?>restaurante/editar&id=<?= $rest->idrestaurante; ?>" class="btn btn-outline-warning btn-sm"><i class="fas fa-pen-nib"></i> <?= editar; ?></a>
-                  <a href="<?= baseUrl; ?>restaurante/eliminar&id=<?= $rest->idrestaurante; ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> <?= eliminar; ?></a>
+                  <!-- Boton Eliminar -->
+                  <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target=".modal<?= $rest->idrestaurante ?>"> <?= eliminar ?> <i class="far fa-trash-alt"></i></button>
+                  <!-- Modal Eliminar -->
+                  <div class="modal fade modal<?= $rest->idrestaurante ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle"><?= confirmar ?></h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Desea eliminar el restaurante?
+                        </div>
+                        <div class="modal-footer p-2">
+                          <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal"><?= cancelar ?></button>
+                          <a href="<?= baseUrl; ?>restaurante/eliminar&id=<?= $rest->idrestaurante; ?>" class="btn btn-outline-danger btn-sm"> <?= eliminar ?> <i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </td>
               </tr>
             <?php endwhile; ?>

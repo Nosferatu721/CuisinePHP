@@ -6,24 +6,29 @@ define('color', 'secondary');
 define('salir', 'Logout');
 define('theme', 'lumen');
 
+// Roles
+define('admin', 'Administrator');
+define('jefeCocina', 'Chef');
+define('jefeZona', 'Zone leader');
+
 // Login
 define('titulo', 'Welcome To Cuisinesoft');
 define('codigo', 'Code');
 define('pass', 'Password');
 define('btnIngresar', 'Login');
-define('btnOlvidoPass', 'I forgot My Password');
+define('btnOlvidoPass', 'Forgot Password?');
 
 // login Alerts
-define('vacios', 'Existen campos vacios');
-define('passIncorret', 'Contraseña Incorrecta');
-define('notExists', 'El Usuario No Existe');
-define('sendEmail', 'Revise su Correo se ha enviado su Contraseña');
-define('inactivo', 'El Usuario Esta Inactivado');
+define('vacios', 'There is empty fields');
+define('passIncorret', 'Wrong Password');
+define('notExists', 'User already exist');
+define('sendEmail', 'The password was send to your E-Mail');
+define('inactivo', 'Your user is inactivated');
 
 // Recuperar Contraseña
-define('tituloRecuperarPass', 'Recuperar Contraseña');
-define('btnEnviarEmail', 'Enviar');
-define('regresar', 'Regresar');
+define('tituloRecuperarPass', 'Recover Password');
+define('btnEnviarEmail', 'Send');
+define('regresar', 'Back');
 
 // Menu
 define('inicio', 'Home');
@@ -31,157 +36,171 @@ define('inicio', 'Home');
 define('restaurantes', 'Restaurants');
 // ------
 define('gestionRestaurante', 'Manage Restaurants');
-define('registrarUsuario', 'Register User');
+define('registrarUsuario', 'Create User');
 define('consultUsuarios', 'Consult User');
-define('gestionCargos', 'Manage Charges');
+define('gestionCargos', 'Manage Positions');
 //
 define('productos', 'Products');
 // ------
-define('registrarProduct', 'Register Product');
+define('registrarProduct', 'Create Product');
 //
 define('stock', 'Stock');
 // ------
 define('consultStock', 'Consult Stock');
-define('registrarStock', 'Register Stock');
+define('registrarStock', 'Create Stock');
 //
-define('merma', 'Decrease');
+define('merma', 'Waste or Trim');
 // ------
-define('registrarMerma', 'Register Decrease');
-define('consultMerma', 'Consult Decrease');
-define('gestionTipoMerma', 'Manage Merma Types');
+define('registrarMerma', 'Create Waste or Trim');
+define('consultMerma', 'Consult Waste or Trim');
+define('gestionTipoMerma', 'Manage Waste or Trim Types');
 //
-define('menaje', 'Utensils');
+define('menaje', 'Kitchenware');
 
 
 // Index
-define('tituloIndex', 'Bienvenido al Sistema para tu Restaurante');
-define('textoIndex1', 'Este Sistema facilitara el control de materias primas, menaje, mermas, alerta de agotamiento del Stock, para el restaurante Andrés Carne de Res.');
-define('textoIndex2', 'Cambiando el metodo de realizar los procesos de forma manual y pasarlos a este Sistema de Información.');
+define('tituloIndex', 'Welcome to the information system for your restaurant');
+define('textoIndex1', 'This web development will ease the control on raw products, kitchenware,Waste or Trim for the bussiness Andres Carne de Res Express.');
+define('textoIndex2', 'Changing the manual way of develop their process and make an automatitation with this information system.');
 
 // Form General
-define('registrar', 'Registrar');
-define('actualizar', 'Actualizar');
+define('registrar', 'Create');
+define('actualizar', 'Update');
 
 // Tablas General
-define('editar', 'Editar');
-define('eliminar', 'Eliminar');
-define('activar', 'Activar');
-define('inactivar', 'Inactivar');
-define('confirmar', 'Confirmar');
-define('pregunta', 'el usuario?');
-define('acciones', 'Acciones');
-define('cancelar', 'Cancelar');
-define('nombre', 'Nombre');
-define('apellido', 'Apellido');
-define('producto', 'Producto');
-define('cantidad', 'Cantidad');
-define('fecha', 'Fecha');
-define('fechaMerma', 'Fecha Merma');
-define('motivo', 'Motivo');
-define('perdida', 'Perdida');
-define('tipoMerma', 'Tipo de Merma');
-define('precio', 'Precio');
-define('email', 'Email');
-define('contraseña', 'Contraseña');
-define('cargo', 'Cargo');
-define('restaurante', 'Restaurante');
-define('direccion', 'Dirección');
-define('tittleTableRestaurante', 'Lista de Restaurantes');
-define('tittleTableUsuarios', 'Lista de Usuarios');
-define('tittleTableCargos', 'Lista de Cargos');
-define('tittleTableTipoMerma', 'Lista de Tipos de Merma');
-define('tittleTableProducto', 'Lista de Productos');
-define('tittleTableStock', 'Lista de Stock');
-define('tittleTableMerma', 'Lista de Merma');
-define('generarPDF', 'Generar PDF');
+define('editar', 'Edit');
+define('eliminar', 'Delete');
+define('activar', 'Activate');
+define('estado', 'State');
+define('inactivar', 'Deactivate');
+define('confirmar', 'Confirm');
+define('pregunta', 'user?');
+define('acciones', 'Actions');
+define('cancelar', 'Cancel');
+define('nombre', 'Name');
+define('apellido', 'Lastname');
+define('producto', 'Product');
+define('cantidad', 'Amount');
+define('fecha', 'Date');
+define('fechaMerma', 'Date of Waste or Trim');
+define('motivo', 'Cause');
+define('perdida', 'Loss');
+define('tipoMerma', 'Type of Waste or Trim');
+define('precio', 'Price');
+define('email', 'E-mail');
+define('contraseña', 'Password');
+define('cargo', 'Positions');
+define('restaurante', 'Restaurant');
+define('direccion', 'Address');
+define('tittleTableRestaurante', 'List of Restaurants');
+define('tittleTableUsuarios', 'Lista of Users');
+define('tittleTableCargos', 'List Of Positions');
+define('tittleTableTipoMerma', 'List Type of Waste or Trim');
+define('tittleTableProducto', 'List of Products');
+define('tittleTableStock', 'List Stock');
+define('tittleTableMerma', 'List of Waste or Trim');
+define('generarPDF', 'Create PDF');
 
 // Restaurante
-define('tittleRest', 'Control de Restaurantes');
-define('formTittleRest1', 'Nuevo Restaurante');
-define('formTittleRest2', 'Editar Restaurante');
-define('nombreRestaurante', 'Nombre Restaurante');
-define('direccionRestaurante', 'Dirección Restaurante');
+define('tittleRest', 'Control of Restaurant');
+define('formTittleRest1', 'Create Restaurant');
+define('formTittleRest2', 'Edit Restaurant');
+define('nombreRestaurante', 'Name Restaurant');
+define('direccionRestaurante',  'Restaurant Address');
 // Restaurante Alerts
-define('restRegistrado', 'Restaurante Registrado Exitosamente');
-define('restEditado', 'Restaurante Editado Exitosamente');
-define('restEliminado', 'Restaurante Eliminado Exitosamente');
-define('imposibleEliminar', 'No Se Puede Eliminar');
+define('restRegistrado', 'New Restaurant Created Successfully');
+define('restEditado', 'Restaurant Edited Successfully');
+define('restEliminado', 'Restaurant Deleted Successfully');
+define('imposibleEliminar', 'Can not delete.');
 
 // Usuario
-define('tittleUser', 'Usuarios Registrados');
-define('tittleRegisUsuario1', 'Registro de Usuarios');
-define('tittleRegisUsuario2', 'Editar Usuario');
-define('selectCargo', 'Seleccionar Cargo');
-define('elija', 'Elija...');
-define('selectRestaurante', 'Seleccionar Restaurante');
-define('nombreUsuario', 'Nombre');
-define('apellidoUsuario', 'Apellido');
-define('emailUsuario', 'Email');
-define('passUsuario', 'Contraseña');
-define('regisNuevoUsuario', 'Registrar Nuevo Usuario');
-define('existUser', 'El Usuario Ya Existe');
+define('tittleUser', 'Create Users');
+define('tittleRegisUsuario1', 'User Registration');
+define('tittleRegisUsuario2', 'Edit User');
+define('selectCargo', 'Select Position');
+define('elija', 'Choose...');
+define('selectRestaurante', 'Restaurant Selection');
+define('nombreUsuario', 'Name');
+define('apellidoUsuario', 'Lastname');
+define('emailUsuario', 'E-mail');
+define('passUsuario', 'Password');
+define('regisNuevoUsuario', 'Create New User');
+define('existUser', 'User already on database.');
 
 // Usuario Alerts
-define('userRegistrado', 'Usuario Registrado Exitosamente');
-define('userEditado', 'Usuario Editado Exitosamente');
-define('userCambiado', 'Usuario Cambiado Exitosamente');
+define('userRegistrado', 'User Created Successfully');
+define('userEditado', 'User Edited Successfully');
+define('userCambiado', 'User Update Successfully');
 
 // Cargo
-define('tittleCargo', 'Control de Cargos');
-define('formTittleCargo1', 'Nuevo Cargo');
-define('formTittleCargo2', 'Editar Cargo');
-define('nombreCargo', 'Nombre Cargo');
+define('tittleCargo', 'Manage Positions');
+define('formTittleCargo1', 'New Position');
+define('formTittleCargo2', 'Edit Position');
+define('nombreCargo', 'Position Name');
 // Cargo Alerts
-define('cargoRegistrado', 'Cargo Registrado Exitosamente');
-define('cargoEditado', 'Cargo Editado Exitosamente');
-define('cargoEliminado', 'Cargo Eliminado Exitosamente');
+define('cargoRegistrado', 'Position Created Successfully');
+define('cargoEditado', 'Position Edited Successfully');
+define('cargoEliminado', 'Position Deleted Successfully');
 
 // Tipo Merma
-define('tittleTipoMerma', 'Control de Tipos de Merma');
-define('formTittleTipoMerma1', 'Nuevo Tipo de Merma');
-define('formTittleTipoMerma2', 'Editar Tipo');
-define('nombreTipoMerma', 'Nombre Tipo');
+define('tittleTipoMerma', 'Type Waste or Trim Management');
+define('formTittleTipoMerma1', 'New Type Waste or Trim');
+define('formTittleTipoMerma2', 'Edit Type');
+define('nombreTipoMerma', 'Name Type');
 // Tipo Merma Alerts
-define('tipoMermaRegistrado', 'Tipo de Merma Registrado Exitosamente');
-define('tipoMermaEditado', 'Tipo de Merma Editado Exitosamente');
-define('tipoMermaEliminado', 'Tipo de Merma Eliminado Exitosamente');
+define('tipoMermaRegistrado', 'Type of Waste or Trim Created Successfully.');
+define('tipoMermaEditado', 'Type of Waste or Trim Edited Successfully.');
+define('tipoMermaEliminado', 'Type of Waste or Trim Deleted Successfully.');
 
 // Producto
-define('tittleProducto', 'Control de Productos');
-define('formTittleProducto1', 'Nuevo Producto');
-define('formTittleProducto2', 'Editar Producto');
-define('nombreProducto', 'Nombre Producto');
-define('precioProducto', 'Precio Producto');
+define('tittleProducto', 'Product Management');
+define('formTittleProducto1', 'New Product');
+define('formTittleProducto2', 'Edit Product');
+define('nombreProducto', 'Product Name');
+define('precioProducto', 'Product Price');
 // Producto Alerts
-define('productoRegistrado', 'Producto Registrado Exitosamente');
-define('productoEditado', 'Producto Editado Exitosamente');
-define('productoEliminado', 'Producto Eliminado Exitosamente');
+define('productoRegistrado', 'Product Created Successfully');
+define('productoEditado', 'Product Edited Successfully');
+define('productoEliminado', 'Product Deleted Successfully');
 
 // Stock
-define('tittleStock', 'Control de Stock');
-define('tittleRegisStock1', 'Registro de Stock');
-define('tittleRegisStock2', 'Editar Stock');
-define('selectProducto', 'Seleccionar Producto');
-define('cantidadActualStock', 'Cantidad de Stock Actual = ');
-define('addStock', 'Agregar / Disminuir Stock');
-define('mensajeCantidad', 'La cantidad sería menor que 0');
-define('fechaVenciProducto', 'Fecha Vencimiento');
-define('loteStock', 'Lote');
-define('regisNuevoStock', 'Registrar Nuevo Stock');
-define('existStock', 'El producto ya esta Registrado');
+define('tittleStock', 'Stock Management');
+define('tittleRegisStock1', 'Create Stock ');
+define('tittleRegisStock2', 'Edit Stock');
+define('selectProducto', 'Select Product');
+define('cantidadActualStock', 'Actual Stock Amount = ');
+define('addStock', 'Add / Remove from Stock');
+define('mensajeCantidad', 'The amount will be lesser than 0');
+define('fechaVenciProducto', 'Expiration Date');
+define('loteStock', 'Batch');
+define('regisNuevoStock', 'Create New Stock');
+define('existStock', 'The Product is already Created');
 // Stock Alerts
-define('stockRegistrado', 'Stock Registrado Exitosamente');
-define('stockEditado', 'Stock Editado Exitosamente');
-define('stockEliminado', 'Stock eliminado Exitosamente');
+define('stockRegistrado', 'Stock Created Successfully');
+define('stockEditado', 'Stock Edited Successfully');
+define('stockEliminado', 'Stock Deleted Successfully');
 
 // Merma
-define('tittleMerma', 'Control de Merma');
-define('tittleRegisMerma1', 'Registro de Merma');
-define('tittleRegisMerma2', 'Editar Merma');
-define('cantidadActualMerma', 'Cantidad de Merma Actual = ');
-define('addMerma', 'Agregar / Disminuir Merma');
-define('regisNuevaMerma', 'Registrar Nueva Merma');
+define('tittleMerma', 'Waste or Trim Management');
+define('tittleRegisMerma1', 'Create Waste or Trim');
+define('tittleRegisMerma2', 'Edit Waste or Trim');
+define('cantidadActualMerma', 'Actual Waste or Trim Amount = ');
+define('addMerma', 'Add / Diminish Waste or Trim');
+define('regisNuevaMerma', 'Create New Waste or Trim');
 // Merma Alerts
-define('mermaRegistrado', 'Merma Registrada Exitosamente');
-define('mermaEditado', 'Merma Editada Exitosamente');
-define('mermaEliminado', 'Merma Cambiada Exitosamente');
+define('mermaRegistrado', 'Waste or Trim Created Successfully');
+define('mermaEditado', 'Waste or Trim Edited Successfully');
+define('mermaEliminado', 'Waste or Trim Deleted Successfully');
+
+
+// Correo
+define('Mensaje', 'Correo en Inglesh');
+
+
+
+// PDF
+define('creadoPor', 'Created by');
+define('reporte', 'Report');
+define('activado', 'Active');
+define('inactivado', 'Inactive');
+define('generado', 'Generated');

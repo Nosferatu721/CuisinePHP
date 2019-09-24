@@ -18,17 +18,11 @@
   <div class="container">
     <p class="titulo"><?= tittleStock ?></p>
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Registrado') : ?>
-      <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= stockRegistrado ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('success', stockRegistrado, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Editado') : ?>
-      <div class="alert alert-secondary text-primary p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= stockEditado ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('primary', stockEditado, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'Eliminado') : ?>
-      <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= stockEliminado ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('danger', stockEliminado, 'fas fa-check-double') ?>
     <?php else : ?>
       <hr>
     <?php endif; ?>
@@ -49,6 +43,7 @@
         </thead>
         <tbody>
           <?php while ($s = $sto->fetch_object()) : ?>
+            <?php var_dump($s); ?>
             <tr>
               <td><?= $s->nombreProducto; ?></td>
               <td><?= $s->cantidadProducto; ?></td>
@@ -56,7 +51,28 @@
               <td><?= $s->lote; ?></td>
               <td class="d-flex justify-content-around d-flex">
                 <a href="<?= baseUrl; ?>stock/editar&id=<?= $s->idproducto; ?>" class="btn btn-warning btn-sm"><?= editar ?> <i class="fas fa-pencil-alt"></i></a>
-                <a href="<?= baseUrl; ?>stock/eliminar&id=<?= $s->idproducto; ?>" class="btn btn-outline-danger btn-sm"><?= eliminar ?> <i class="far fa-trash-alt"></i></a>
+                <!-- Boton Eliminar -->
+                <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target=".modal<?= $s->idproducto ?>"> <?= eliminar ?> <i class="far fa-trash-alt"></i></button>
+                <!-- Modal Eliminar -->
+                <div class="modal fade modal<?= $s->idproducto ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle"><?= confirmar ?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Desea eliminar stock?
+                      </div>
+                      <div class="modal-footer p-2">
+                        <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal"><?= cancelar ?></button>
+                        <a href="<?= baseUrl; ?>stock/eliminar&id=<?= $s->idproducto; ?>" class="btn btn-outline-danger btn-sm"> <?= eliminar ?> <i class="far fa-trash-alt"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </td>
             </tr>
           <?php endwhile; ?>
@@ -159,8 +175,7 @@
           data: [
             <?php
             foreach ($sto as $p) {
-              ?>
-              ['<?= $p['nombreProducto'] ?> - <?= $p['cantidadProducto'] ?>', <?= $p['cantidadProducto'] ?>],
+              ?>['<?= $p['nombreProducto'] ?> - <?= $p['cantidadProducto'] ?>', <?= $p['cantidadProducto'] ?>],
             <?php
             }
             ?>

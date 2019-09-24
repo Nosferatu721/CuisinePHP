@@ -12,25 +12,15 @@
               <div class="col-md-9 col-lg-8 mx-auto">
                 <h3 class="login-heading mb-4"><?= titulo; ?></h3>
                 <?php if (isset($_SESSION['login']) && $_SESSION['login'] == 'ErrorDatos') : ?>
-                  <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-                    <?= notExists; ?> <i class="fas fa-poo"></i>
-                  </div>
+                  <?= Utils::alerta('danger', notExists, 'fas fa-poo') ?>
                 <?php elseif (isset($_SESSION['login']) && $_SESSION['login'] == 'ErrorPass') : ?>
-                  <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-                    <?= passIncorret; ?> <i class="fas fa-poo"></i>
-                  </div>
+                  <?= Utils::alerta('danger', passIncorret, 'fas fa-poo') ?>
                 <?php elseif (isset($_SESSION['login']) && $_SESSION['login'] == 'Vacios') : ?>
-                  <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-                    <?= vacios; ?> <i class="far fa-address-card"></i>
-                  </div>
+                  <?= Utils::alerta('danger', vacios) ?>
                 <?php elseif (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'Enviado') : ?>
-                  <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-                    <?= sendEmail; ?> <i class="fas fa-envelope-open-text"></i>
-                  </div>
+                  <?= Utils::alerta('success', sendEmail, 'fas fa-envelope-open-text') ?>
                 <?php elseif (isset($_SESSION['login']) && $_SESSION['login'] == 'Inactivo') : ?>
-                  <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-                    <?= inactivo; ?> <i class="fas fa-user-times"></i>
-                  </div>
+                  <?= Utils::alerta('primary', inactivo, 'fas fa-user-times') ?>
                 <?php else : ?>
                   <hr>
                 <?php endif; ?>

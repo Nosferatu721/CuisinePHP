@@ -10,17 +10,11 @@
   <div class="container">
     <p class="titulo"><?= tittleUser ?></p>
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Registrado') : ?>
-      <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= userRegistrado ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('success', userRegistrado, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Editado') : ?>
-      <div class="alert alert-secondary text-primary p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= userEditado ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('primary', userEditado, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['estado']) && $_SESSION['estado'] == 'Cambiado') : ?>
-      <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= userCambiado ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('warning', userCambiado, 'fas fa-check-double') ?>
     <?php else : ?>
       <hr>
     <?php endif; ?>
@@ -50,13 +44,13 @@
               <td><?= $user->apellido; ?></td>
               <td><?= $user->email; ?></td>
               <td><?= $user->contrasena; ?></td>
-              <td><?= $user->nombreCargo; ?></td>
+              <td><?= $user->nombreCargo == 'Administrador' ? admin : ($user->nombreCargo == 'Jefe de Cocina' ? jefeCocina : ($user->nombreCargo == 'Jefe de Zona' ? jefeZona : '')); ?></td>
               <td><?= $user->nombreRestaurante; ?></td>
               <td class="d-flex justify-content-around d-flex">
                 <!-- Boton Editar -->
                 <a href="<?= baseUrl; ?>usuario/editar&id=<?= $user->idusuarios; ?>" class="btn btn-warning btn-sm"><?= editar ?> <i class="fas fa-pencil-alt"></i></a>
                 <!-- Boton Eliminar -->
-                <button class="btn btn-outline-<?= $user->estado == 'Activo' ? 'danger' : ($user->estado == 'Inactivo' ? 'success' : ''); ?> btn-sm" data-toggle="modal" data-target=".modal<?= $user->idusuarios ?>"><?= $user->estado == 'Activo' ? 'Inactivar' : ($user->estado == 'Inactivo' ? 'Activar' : ''); ?> <i class="fas fa-exchange-alt"></i></button>
+                <button class="btn btn-outline-<?= $user->estado == 'Activo' ? 'danger' : ($user->estado == 'Inactivo' ? 'success' : ''); ?> btn-sm" data-toggle="modal" data-target=".modal<?= $user->idusuarios ?>"><?= $user->estado == 'Activo' ? inactivar : ($user->estado == 'Inactivo' ? activar : ''); ?> <i class="fas fa-exchange-alt"></i></button>
                 <!-- Modal Eliminar -->
                 <div class="modal fade modal<?= $user->idusuarios ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered modal-sm" role="document">

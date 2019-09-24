@@ -10,25 +10,15 @@
   <div class="container">
     <p class="titulo"><?= tittleProducto ?></p>
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Registrado') : ?>
-      <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= productoRegistrado ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('success', productoRegistrado, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Editado') : ?>
-      <div class="alert alert-secondary text-primary p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= productoEditado ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('primary', productoEditado, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'Eliminado') : ?>
-      <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= productoEliminado ?> <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('success', productoEliminado, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'NoQuery') : ?>
-      <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-        <b><?= imposibleEliminar ?> <i class="fas fa-exclamation-triangle"></i></b>
-      </div>
+      <?= Utils::alerta('danger', imposibleEliminar, 'fas fa-exclamation-triangle') ?>
     <?php elseif (isset($_SESSION['notData']) && $_SESSION['notData'] == 'ErrorDatos') : ?>
-      <div class="alert alert-danger p-1 text-center animated zoomIn faster" role="alert">
-        <?= vacios ?>
-      </div>
+      <?= Utils::alerta('danger', vacios) ?>
     <?php else : ?>
       <hr>
     <?php endif; ?>
@@ -84,7 +74,28 @@
                 <td><?= $pro->precioProducto; ?></td>
                 <td class="d-flex justify-content-around border border-light">
                   <a href="<?= baseUrl; ?>producto/editar&id=<?= $pro->idproducto; ?>" class="btn btn-outline-warning btn-sm"><i class="fas fa-pen-nib"></i> <?= editar ?></a>
-                  <a href="<?= baseUrl; ?>producto/eliminar&id=<?= $pro->idproducto; ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> <?= eliminar ?></a>
+                  <!-- Boton Eliminar -->
+                  <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target=".modal<?= $pro->idproducto ?>"> <?= eliminar ?> <i class="far fa-trash-alt"></i></button>
+                  <!-- Modal Eliminar -->
+                  <div class="modal fade modal<?= $pro->idproducto ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle"><?= confirmar ?></h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          Desea eliminar el producto?
+                        </div>
+                        <div class="modal-footer p-2">
+                          <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal"><?= cancelar ?></button>
+                          <a href="<?= baseUrl; ?>producto/eliminar&id=<?= $pro->idproducto; ?>" class="btn btn-outline-danger btn-sm"> <?= eliminar ?> <i class="far fa-trash-alt"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </td>
               </tr>
             <?php endwhile; ?>
@@ -92,11 +103,60 @@
         </table>
       </div>
     </div>
+    <hr>
+
+    <div id="container2" style="height: 400px" class="my-3"></div>
+
+    <script type="text/javascript">
+      $(function() {
+        $('#container2').highcharts({
+          chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+          },
+          title: {
+            text: 'Stock del Restaurante'
+          },
+          tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+          },
+          plotOptions: {
+            pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+                enabled: true,
+                style: {
+                  color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+              }
+            }
+          },
+          series: [{
+            type: 'pie',
+            name: 'Cantidad',
+            data: [
+              <?php
+              foreach ($p as $pr) {
+                ?>['<?= $pr['nombreProducto'] ?>', <?= $pr['precioProducto'] ?>],
+              <?php
+              }
+              ?>
+            ]
+          }]
+        });
+      });
+    </script>
 
   </div>
 
   <!-- ------------- Footer ------------- -->
   <?php require_once 'views/layout/footer2.php'; ?>
+
+  <script src="<?= baseUrl ?>assets/Highcharts-4.1.5/js/highcharts.js"></script>
+  <script src="<?= baseUrl ?>assets/Highcharts-4.1.5/js/highcharts-3d.js"></script>
+  <script src="<?= baseUrl ?>assets/Highcharts-4.1.5/js/modules/exporting.js"></script>
 
   <script type="text/javascript" src="<?= baseUrl; ?>assets/js/tablas.js"></script>
   <script src="<?= baseUrl; ?>assets/js/validarProducto.js"></script>

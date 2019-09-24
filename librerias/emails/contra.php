@@ -32,7 +32,7 @@ try {
   $mail->isHTML(true);
   $mail->CharSet = 'UTF-8';
   $mail->Subject = 'Recuperar Contraseña';
-  $mail->Body = 'La contraseña de ' . $nombre . ' ' . $apellido . ' es: ' . '<b>' . $pass . '</b>';
+  $mail->Body = '' . Mensaje . '<br>La contraseña de ' . $nombre . ' ' . $apellido . ' es: ' . '<b>' . $pass . '</b>';
   if ($mail->send()) {
     $_SESSION['recuperar'] = 'Enviado';
     header('Location: ' . baseUrl);

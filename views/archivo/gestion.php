@@ -9,34 +9,19 @@
 
   <div class="container">
     <p class="titulo">Control de Archivos</p>
+    <!-- TODO: Poner En Inglesh -->
     <?php if (isset($_SESSION['save']) && $_SESSION['save'] == 'Registrado') : ?>
-      <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-        <b>Registrado <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('success', 'Subido', 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'Eliminado') : ?>
-      <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-        <b>Eliminado <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('danger', 'Eliminado', 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'NoSePuede') : ?>
-      <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-        <b>No Se Puede Eliminar - No es tuyo <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('danger', 'No Se Puede Eliminar - No es tuyo', 'far fa-surprise') ?>
     <?php elseif (isset($_SESSION['save']) && $_SESSION['save'] == 'YaExiste') : ?>
-      <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-        <b>Ya Existe <i class="far fa-times-circle"></i></b>
-      </div>
+      <?= Utils::alerta('warning', 'Ya existe el archivo', 'far fa-times-circle') ?>
     <?php elseif (isset($_SESSION['save']) && $_SESSION['save'] == 'NoAdmitido') : ?>
-      <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-        <b>Seleccione Un Archivo Apropiado <i class="fas fa-ban"></i></b>
-      </div>
-    <?php elseif (isset($_SESSION['save']) && $_SESSION['save'] == 'Error') : ?>
-      <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-        <b>Error <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('success', 'Seleccione Un Archivo Apropiado', 'fas fa-ban') ?>
     <?php elseif (isset($_SESSION['notData']) && $_SESSION['notData'] == 'ErrorDatos') : ?>
-      <div class="alert alert-danger p-1 text-center animated zoomIn faster" role="alert">
-        <?= vacios ?>
-      </div>
+      <?= Utils::alerta('success', vacios) ?>
     <?php else : ?>
       <hr>
     <?php endif; ?>
@@ -78,13 +63,34 @@
             <td><?= $doc->document; ?></td>
             <td><?= $doc->idUser == $_SESSION['identity']->idusuarios ? 'Yo' : $doc->nombre . ' ' . $doc->apellido ?></td>
             <td class="d-flex justify-content-around border border-light">
-              <a href="<?= baseUrl; ?>archivo/eliminar&id=<?= $doc->idArchivo; ?>" class="btn btn-outline-danger btn-sm <?= $doc->idUser == $_SESSION['identity']->idusuarios ? '' : 'disabled' ?>"><i class="far fa-trash-alt"></i> <?= eliminar ?></a>
+              <!-- Boton Eliminar -->
+              <button class="btn btn-outline-danger btn-sm <?= $doc->idUser == $_SESSION['identity']->idusuarios ? '' : 'disabled' ?>" data-toggle="modal" data-target=".modal<?= $doc->idArchivo ?>"> <?= eliminar ?> <i class="far fa-trash-alt"></i></button>
+              <!-- Modal Eliminar -->
+              <div class="modal fade modal<?= $doc->idArchivo ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalCenterTitle"><?= confirmar ?></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Desea eliminar el archivo?
+                    </div>
+                    <div class="modal-footer p-2">
+                      <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal"><?= cancelar ?></button>
+                      <a href="<?= baseUrl; ?>archivo/eliminar&id=<?= $doc->idArchivo; ?>" class="btn btn-outline-danger btn-sm"> <?= eliminar ?> <i class="fas fa-exchange-alt"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </td>
           </tr>
         <?php endwhile; ?>
       </tbody>
     </table>
-
+    <br>
   </div>
 
   <!-- ------------- Footer ------------- -->

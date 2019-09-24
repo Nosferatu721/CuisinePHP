@@ -14,18 +14,11 @@
       <span class="titulo"><?= tittleRegisMerma1 ?></span>
       <?php $url_action = baseUrl . 'merma/registrar'; ?>
     <?php endif; ?>
+    <!-- Alertas -->
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Vacios') : ?>
-      <div class="alert alert-danger p-1 text-center animated zoomIn faster" role="alert">
-        <?= vacios ?>
-      </div>
+      <?= Utils::alerta('danger', vacios) ?>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Yuca') : ?>
-      <div class="alert alert-secondary p-1 text-center text-danger animated zoomIn faster" role="alert">
-        <?= mensajeCantidad ?>
-      </div>
-    <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Existe') : ?>
-      <div class="alert alert-secondary p-1 text-center animated zoomIn faster" role="alert">
-        <?= existStock ?> <i class="fas fa-layer-group"></i> <a href="<?= baseUrl ?>stock/consultar" class="btn btn-outline-dark btn-sm">Consultar</a>
-      </div>
+      <?= Utils::alerta('danger', mensajeCantidad) ?>
     <?php else : ?>
       <hr>
     <?php endif; ?>
@@ -74,8 +67,9 @@
   </div>
   <!-- ------------- Footer ------------- -->
   <?php require_once 'views/layout/footer2.php'; ?>
-  <?php if (!isset($_GET['id'])) : ?>
-    <script src="<?= baseUrl; ?>assets/js/validarMerma.js"></script>
+  <?php if (isset($mr)) : ?>
+    <!-- <script src="<?= baseUrl; ?>assets/js/validarMermaEdit.js"></script> -->
+  <?php else : ?>
+    <!-- <script src="<?= baseUrl; ?>assets/js/validarMerma.js"></script> -->
   <?php endif; ?>
-  <script src="<?= baseUrl; ?>assets/js/validarMermaEdit.js"></script>
 </body>

@@ -51,9 +51,14 @@ ob_start();
       text-align: center
     }
 
+    th {
+      padding: 10px 0px;
+    }
+
     td {
-      width: 110px;
-      padding: 5px;
+      width: 130px;
+      padding: 5px 0px;
+      border-bottom: .5px dotted gray
     }
 
     .email {
@@ -93,28 +98,28 @@ ob_start();
 <body>
   <div class="Box">
     <img src="assets/img/LogoCui.jpg" alt="">
-    <h1>Reporte</h1>
+    <h1><?= reporte ?></h1>
     <hr>
     <div class="Head">
-      <h3>Creado Por:</h3>
-      <p>Nombre: <?= $_SESSION['identity']->nombre ?></p>
-      <p>Apellido: <?= $_SESSION['identity']->apellido ?></p>
-      <p>Email: <?= $_SESSION['identity']->email ?></p>
-      <p>Cargo: <?= $_SESSION['identity']->nombreCargo ?></p>
-      <p>Restaurante: <?= $_SESSION['identity']->nombreRestaurante ?> - <?= $_SESSION['identity']->direccionRestaurante ?></p>
+      <h3><?= creadoPor ?>:</h3>
+      <p><?= nombre ?>: <?= $_SESSION['identity']->nombre ?></p>
+      <p><?= apellido ?>: <?= $_SESSION['identity']->apellido ?></p>
+      <p><?= email ?>: <?= $_SESSION['identity']->email ?></p>
+      <p><?= cargo ?>: <?= $_SESSION['identity']->nombreCargo ?></p>
+      <p><?= restaurante ?>: <?= $_SESSION['identity']->nombreRestaurante ?> - <?= $_SESSION['identity']->direccionRestaurante ?></p>
     </div>
     <div class="Body">
       <hr>
-      <h4>Tabla de Usuarios</h4>
+      <h4><?= tittleTableUsuarios ?></h4>
       <hr>
       <table>
         <thead>
           <tr>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Cargo</th>
-            <th>Restaurante</th>
-            <th>Estado</th>
+            <th><?= nombre ?></th>
+            <th><?= email ?></th>
+            <th><?= cargo ?></th>
+            <th><?= restaurante ?></th>
+            <th><?= estado ?></th>
           </tr>
         </thead>
         <tbody>
@@ -122,24 +127,17 @@ ob_start();
             <tr>
               <td><?= $u->nombre; ?> <?= $u->apellido; ?></td>
               <td class="email"><?= $u->email; ?></td>
-              <td><?= $u->nombreCargo; ?></td>
+              <td><?= $u->nombreCargo == 'Administrador' ? admin : ($u->nombreCargo == 'Jefe de Cocina' ? jefeCocina : ($u->nombreCargo == 'Jefe de Zona' ? jefeZona : '')); ?></td>
               <td><?= $u->nombreRestaurante; ?></td>
-              <td><?= $u->estado; ?></td>
+              <td><?= $u->estado == 'Activo' ? activado : ($u->estado == 'Inactivo' ? inactivado : ''); ?></td>
             </tr>
           <?php endwhile; ?>
         </tbody>
       </table>
       <hr>
-      <div class="grafico">
-        <?php foreach ($porcent as $uP) : ?>
-          <div class="barra" style="width: <?= $uP[0]; ?>%">
-            <?= $uP[0]; ?>
-          </div>
-        <?php endforeach; ?>
-      </div>
     </div>
     <div class="Footer">
-      <h5>Generado <?= date('d-m-Y'); ?></h5>
+      <h5><?= generado ?> <?= date('d-m-Y'); ?></h5>
     </div>
   </div>
 </body>

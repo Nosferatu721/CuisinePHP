@@ -642,7 +642,6 @@
 							attr.fill = 'none';
 							delete hover.fill;
 						} else {
-							// TODO: let users set the opacity
 							attr.fill = Color(attr.fill).setOpacity(0.15).get();
 							hover.fill = Color(hover.fill).setOpacity(0.75).get();
 						}
