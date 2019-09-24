@@ -1,92 +1,72 @@
 <?php
 require_once 'models/pedidoHP.php';
 
-class PedidoHPController
+class pedidoHPController
 {
+  public function gestion()
+  {
+    Utils::isCocina();
+    require_once 'views/pedido/pedidoHP.php';
+  }
+  public static function getAll($id)
+  {
+    $p = new PedidoHP();
+    $p->setIdPedido($id);
+    $pedHP = $p->find();
+    return $pedHP;
+  }
+
   public function ver()
   {
-    Utils::isAdmin();
-    $p = new PedidoHP();
-    $pto = $p->findPtosHP();
-    require_once 'views/pedido/ver.php';
+    Utils::isCocina();
+    require_once 'views/pedido/pedidoHP.php';
   }
-  public static function getAll()
+
+
+
+  // Registrar
+  public function registrar()
   {
-    $p = new PedidoHP();
-    $ptos = $p->findPtosHP();
-    return $ptos;
+    Utils::isCocina();
+    if (isset($_POST) && !empty($_POST['producto']) && !empty($_POST['cantidad'])) {
+      // Almacenamos los Datos en variables
+      $producto = $_POST['producto'];
+      $cantidad = $_POST['cantidad'];
+    $idped = $_GET['id'];
+    $pedHP = new PedidoHP();
+    $pedHP-> setIdPedido($idped);
+    $pedHP-> setIdProducto($producto);
+    $pedHP-> setCantProdPed($cantidad);
+    // Almacenamos los Datos
+    // Realizamos el INSERT O UPDATE
+    $save = $pedHP->save();
+    // Verificamos si fue Exitoso :v
+    if ($save) {
+      $_SESSION['saveEdit'] = 'Registrado';
+    } else {
+      $_SESSION['error'] = 'ErrorRegistro';
+    }
   }
-  // Registrar Y Editar
-  // public function registrar()
-  // {
-  //   Utils::isAdmin();
-  //   // Verificamos si se Manda Algo por POST
-  //   if (isset($_POST) && !empty($_POST['nombre']) && !empty($_POST['precio'])) {
-  //     // Almacenamos los Datos en variables
-  //     $nombre = $_POST['nombre'];
-  //     $precio = $_POST['precio'];
-  //     // Creamos un Objeto Restaurante
-  //     $pro = new Producto();
-  //     // Almacenamos los Datos
-  //     $pro->setNombre($nombre);
-  //     $pro->setPrecio($precio);
-  //     // Realizamos el INSERT O UPDATE
-  //     if (isset($_GET['id'])) {
-  //       $id = $_GET['id'];
-  //       $pro->setId($id);
-  //       $save = $pro->update();
-  //     } else {
-  //       $save = $pro->save();
-  //     }
-  //     // Verificamos si fue Exitoso :v
-  //     if ($save) {
-  //       if (isset($_GET['id'])) {
-  //         $_SESSION['saveEdit'] = 'Editado';
-  //       } else {
-  //         $_SESSION['saveEdit'] = 'Registrado';
-  //       }
-  //     } else {
-  //       $_SESSION['error'] = 'ErrorRegistro';
-  //     }
-  //   } else {
-  //     $_SESSION['notData'] = 'ErrorDatos';
-  //   }
-  //   header('Location: ' . baseUrl . 'producto/gestion');
-  // }
+    header('Location: ' . baseUrl . 'pedidoHP/ver&id=' . $_GET['id']);
+  }
 
-  // // Editar
-  // public function editar()
-  // {
-  //   Utils::isAdmin();
-  //   if (isset($_GET['id']) && $_GET['id'] != '') {
-  //     $editar = true;
-  //     //
-  //     $id = $_GET['id'];
-  //     $pro = new Producto();
-  //     //
-  //     $pro->setId($id);
-  //     $proEdit = $pro->findProductoID();
-  //     require_once 'views/producto/crud.php';
-  //   } else {
-  //     header('Location: ' . baseUrl . 'error/index');
-  //   }
-  // }
-
-  // // Eliminar
-  // public function eliminar()
-  // {
-  //   Utils::isAdmin();
-  //   if (isset($_GET['id'])) {
-  //     $id = $_GET['id'];
-  //     $p = new Producto();
-  //     $p->setId($id);
-  //     $delete = $p->delete();
-  //     if ($delete) {
-  //       $_SESSION['delete'] = 'Eliminado';
-  //     } else {
-  //       $_SESSION['delete'] = 'NoQuery';
-  //     }
-  //   }
-  //   header('Location: ' . baseUrl . 'producto/gestion');
-  // }
+  public function eliminar(){
+    Utils::isCocina();
+    if (isset($_GET['id']) && $_GET['id'] != ''  && $_GET['idp'] != '') {
+      $idpro = $_GET['id'];
+      $idped = $_GET['idp'];
+      $p = new PedidoHP();
+      $p->setIdproducto($idpro);
+      $p->setIdPedido($idped);
+      $delete = $p->delete();
+      if ($delete) {
+        $_SESSION['delete'] = 'Eliminado';
+      } else {
+        $_SESSION['delete'] = 'NoQuery';
+      }
+      header('Location: ' . baseUrl . 'pedidoHP/ver&id=' . $_GET['idp']);
+    } else {
+      header('Location: ' . baseUrl . 'error/index');
+    }
+  }
 }

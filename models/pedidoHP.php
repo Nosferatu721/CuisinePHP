@@ -3,25 +3,25 @@
 class PedidoHP
 {
   private $db;
-  private $id;
+  private $idPedido;
   private $idProducto;
-  private $cantidad;
+  private $cantProdPed;
 
   public function __construct()
   {
     $this->db = DataBase::conectar();
   }
   // GET - SET ID
-  function getId()
+  function getIdPedido()
   {
-    return $this->id;
+    return $this->idPedido;
   }
-  function setId($id)
+  function setIdPedido($idPedido)
   {
-    $this->id = $id;
+    $this->idPedido = $idPedido;
   }
 
-  // GET - SET
+  // GET - SET id producto
   function getIdProducto()
   {
     return $this->idProducto;
@@ -31,65 +31,55 @@ class PedidoHP
     $this->idProducto = $this->db->real_escape_string($idProducto);
   }
 
-  // GET - SET
-  function getCantidad()
+  // GET - SET IdRestaurante
+  function getCantProdPed()
   {
-    return $this->cantidad;
+    return $this->cantProdPed;
   }
-  function setCantidad($cantidad)
+  function setCantProdPed($cantProdPed)
   {
-    $this->cantidad = $this->db->real_escape_string($cantidad);
+    $this->cantProdPed = $this->db->real_escape_string($cantProdPed);
   }
 
-  // Consultar Todos
-  public function findPtosHP()
+  // Consultar Todos Los Restaurantes
+  public function find()
   {
     // Crear Sentencia
-    $sql = "SELECT * FROM pedido_has_producto";
+    $sql = "SELECT * FROM pedido_has_producto INNER JOIN producto ON producto_idproducto = idproducto WHERE pedido_idpedido={$this->getIdPedido()}";
+    // $sql = "SELECT pedido_idpedido, producto_idproducto, cantidadProdPed, nombreProducto FROM pedido_has_producto INNER JOIN producto ON pedido_has_producto.producto_idproducto = producto.idproducto";
     // Enviamos La Sentencia
     $result = $this->db->query($sql);
     return $result;
   }
 
-  // Consultar Por ID
-  // public function findProductoID()
-  // {
-  //   $sql = "SELECT * FROM producto WHERE idproducto={$this->getId()}";
-  //   $producto = $this->db->query($sql);
-  //   return $producto->fetch_object();
-  // }
+  //FIXME: crear las consultas SQL
+  public function findID()
+  {
+    $sql = "SELECT * FROM pedido_has_producto WHERE pedido_idpedido={$this->getIdPedido()}";
+    $pedido = $this->db->query($sql);
+    return $pedido->fetch_object();
+  }
 
   //Registrar
-  // public function save()
-  // {
-  //   $sql = "INSERT INTO producto VALUES (NULL, '{$this->getNombre()}', '{$this->getPrecio()}')";
-  //   $saved = $this->db->query($sql);
-  //   $result = false;
-  //   if ($saved) {
-  //     $result = true;
-  //   }
-  //   return $result;
-  // }
-  // // Editar
-  // public function update()
-  // {
-  //   $sql = "UPDATE producto SET nombreProducto='{$this->getNombre()}', precioProducto='{$this->getPrecio()}' WHERE idproducto='{$this->id}'";
-  //   $update = $this->db->query($sql);
-  //   $result = false;
-  //   if ($update) {
-  //     $result = true;
-  //   }
-  //   return $result;
-  // }
-  // // Eliminar
-  // public function delete()
-  // {
-  //   $sql = "DELETE FROM producto WHERE idproducto = '{$this->id}'";
-  //   $delete = $this->db->query($sql);
-  //   $result = false;
-  //   if ($delete) {
-  //     $result = true;
-  //   }
-  //   return $result;
-  // }
+  public function save()
+  {
+    $sql = "INSERT INTO pedido_has_producto VALUES ({$this->getIdPedido()},{$this->getIdProducto()},{$this->getCantProdPed()})";
+    $saved = $this->db->query($sql);
+    $result = false;
+    if ($saved) {
+      $result = true;
+    }
+    return $result;
+  }
+  // Eliminar
+  public function delete()
+  {
+    $sql = "DELETE FROM pedido_has_producto WHERE pedido_idpedido = {$this->getidPedido()} AND producto_idproducto={$this->getIdProducto()} ";
+    $delete = $this->db->query($sql);
+    $result = false;
+    if ($delete) {
+      $result = true;
+    }
+    return $result;
+  }
 }
