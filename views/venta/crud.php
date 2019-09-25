@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?= baseUrl; ?>assets/datatables/datatables.min.css" />
 <link rel="stylesheet" href="<?= baseUrl; ?>assets/css/styleAll.css">
-<title>CusineSoft - Venta</title>
+<title>CusineSoft - <?= sale ?></title>
 </head>
 
 <body class="animated fadeIn faster">
@@ -10,10 +10,10 @@
     <?php require_once 'views/layout/menu.php'; ?>
 
     <div class="container">
-        <p class="titulo">Control de Ventas</p>
+        <p class="titulo"><?= sales ?></p>
         <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Registrado') : ?>
             <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-                <b>Venta Registrada Exitosamente <i class="fas fa-check-double"></i></b>
+                <b><?= saleRegis ?> <i class="fas fa-check-double"></i></b>
             </div>
         <?php else : ?>
             <hr>
@@ -24,24 +24,24 @@
                 <div class="card mb-3 border-0">
                     <div class="card-header font-italic text-center bg-secondary text-danger">
 
-                        <span class="titulo text-success">Nueva Venta</span>
+                        <span class="titulo text-success"><?= newSale?></span>
                     </div>
                     <form action="<?= baseUrl ?>venta/registrar" method="POST">
 
                         <div class="p-2 border-top">
-                            <input type="submit" class="btn btn-outline-success btn-block" id="enviar" value="Crear Venta">
+                            <input type="submit" class="btn btn-outline-success btn-block" id="enviar" value="<?= regisVen ?>">
                         </div>
                     </form>
                 </div>
             </div>
             <div class="col-md-8">
                 <table class="table table-bordered table-hover" id="tabla">
-                    <caption class="text-center">Lista de Ventas</caption>
+                    <caption class="text-center"><?= saleList ?></caption>
                     <thead class="table-dark">
                         <tr class="font-italic">
                             <th scope="col">ID</th>
-                            <th scope="col">Fecha Venta</th>
-                            <th scope="col">Acciones</th>
+                            <th scope="col"><?= saleDate ?></th>
+                            <th scope="col"><?= saleAction ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,7 +51,7 @@
                                 <th scope="row"><?= $v->idventa; ?></th>
                                 <td><?= $v->fechaVenta; ?></td>
                                 <td class="d-flex justify-content-around border border-light">
-                                    <a href="<?= baseUrl; ?>ventaHP/ver&id=<?= $v->idventa; ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> Ver</a>
+                                    <a href="<?= baseUrl; ?>ventaHP/ver&id=<?= $v->idventa; ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> <?= saleView ?></a>
                                 </td>
                             </tr>
                         <?php endwhile; ?>

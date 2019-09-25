@@ -33,7 +33,7 @@ define('regresar', 'Regresar');
 // Menu
 define('inicio', 'Inicio');
 //
-define('restaurantes', 'Restuarantes');
+define('restaurantes', 'Restaurantes');
 // ------
 define('gestionRestaurante', 'Gestionar Restaurantes');
 define('registrarUsuario', 'Registrar Usuario');
@@ -59,8 +59,8 @@ define('menaje', 'Menaje');
 
 // Index
 define('tituloIndex', 'Bienvenido al Sistema para tu Restaurante');
-define('textoIndex1', 'Este Sistema facilitara el control de materias primas, menaje, mermas, alerta de agotamiento del Stock, para el restaurante Andrés Carne de Res.');
-define('textoIndex2', 'Cambiando el metodo de realizar los procesos de forma manual y pasarlos a este Sistema de Información.');
+define('textoIndex1', 'Este Sistema facilitará el control de materias primas, menaje, mermas, alerta de agotamiento del Stock, para el restaurante Andrés Carne de Res.');
+define('textoIndex2', 'Cambiando el método de realizar los procesos de forma manual y realizarlos mediante este Sistema de Información.');
 
 // Form General
 define('registrar', 'Registrar');
@@ -203,3 +203,37 @@ define('reporte', 'Reporte');
 define('activado', 'Activo');
 define('inactivado', 'Inactivo');
 define('generado', 'Generado');
+
+//TODO:Variables Ventas
+define('regisVen','Registrar Venta');
+define('newSale', 'Nueva Venta');
+define('sales', 'Control Ventas');
+define('saleRegis', 'Venta Registrada Exitosamente');
+define('saleList', 'Lista de Ventas');
+define('saleDate', 'Fecha Venta');
+define('saleAction', 'Acciones');
+define('saleView', 'Ver');
+define('sale', 'Venta');
+define('prodVen', 'Producto En Venta Registrado Exitosamente');
+define('prodVen1', 'Producto En Venta Editado Exitosamente');
+define('prodVen2', 'Producto En Venta Eliminado Exitosamente');
+define('prodVen3', 'No Se Puede Eliminar');
+define('prodVen4', 'Existen Campos Vacios');
+define('saleId', 'Id Venta');
+define('canSale', 'Cantidad Vendida');
+define('prod', 'Producto');
+define('proyDate', 'Fecha Proyectada');
+define('proyAmount', 'Cantidad Proyectada');
+define('prodSale', 'Productos de la Venta');
+define('conSale', 'Consultar Ventas');
+define('otro', 'Otros');
+define('addSale', 'Agregar a la Venta');
+
+
+
+//TODO:Variables Pedido
+define('pedido', 'Pedido');
+define('viewOrd', 'Consultar Pedidos');
+
+//TODO: Archivos
+define('subir', 'Subir Archivos');

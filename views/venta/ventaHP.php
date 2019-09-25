@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?= baseUrl; ?>assets/datatables/datatables.min.css" />
 <link rel="stylesheet" href="<?= baseUrl; ?>assets/css/styleAll.css">
-<title>CusineSoft - Venta</title>
+<title>CusineSoft - <?= Sale ?></title>
 </head>
 
 <body class="animated fadeIn faster">
@@ -10,26 +10,27 @@
     <?php require_once 'views/layout/menu.php'; ?>
 
     <div class="container">
-        <p class="titulo">Control de Venta</p>
+        <p class="titulo"><?= sales ?></p>
         <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Registrado') : ?>
             <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-                <b>Producto En Venta Registrado Exitosamente <i class="fas fa-check-double"></i></b>
+                <b><?= prodVen ?> <i class="fas fa-check-double"></i></b>
             </div>
         <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Editado') : ?>
             <div class="alert alert-secondary text-primary p-1 text-center animated zoomIn faster" role="alert">
-                <b>Producto En Venta Editado Exitosamente <i class="fas fa-check-double"></i></b>
+                <b><?= prodVen1 ?> <i class="fas fa-check-double"></i></b>
             </div>
         <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'Eliminado') : ?>
             <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-                <b>Producto En Venta Eliminado Exitosamente <i class="fas fa-check-double"></i></b>
+                <b><?= prodVen2 ?> <i class="fas fa-check-double"></i></b>
             </div>
         <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'NoQuery') : ?>
             <div class="alert alert-secondary text-danger p-1 text-center animated zoomIn faster" role="alert">
-                <b>No Se Puede Eliminar <i class="fas fa-exclamation-triangle"></i></b>
+                <b><?= prodVen3 ?> <i class="fas fa-exclamation-triangle"></i></b>
             </div>
         <?php elseif (isset($_SESSION['notData']) && $_SESSION['notData'] == 'ErrorDatos') : ?>
             <div class="alert alert-danger p-1 text-center animated zoomIn faster" role="alert">
-                Existen Campos Vacios
+                <?= prodVen4 ?>
+
             </div>
         <?php else : ?>
             <hr>
@@ -42,7 +43,7 @@
                 <div class="card mb-3 border-0">
                     <div class="card-header font-italic text-center bg-secondary text-danger">
 
-                        <span class="titulo text-success">Id Venta = <?= $_GET['id'] ?></span>
+                        <span class="titulo text-success"><?= saleId ?> = <?= $_GET['id'] ?></span>
                     </div>
                     <form action="<?= baseUrl ?>ventaHP/registrar&id=<?= $_GET['id']; ?>" method="POST">
                         <div class=" py-2 mt-1">
@@ -56,25 +57,25 @@
                             </select>
                         </div>
                         <div class="form-label-group p-2">
-                            <label for="cantidad">Cantidad Vendida</label>
+                            <label for="cantidad"><?= canSale ?></label>
                             <input type="text" id="cantidad" name="cantidad" class="form-control">
                         </div>
                         <div class="p-2 border-top">
-                            <input type="submit" class="btn btn-outline-success btn-block" id="enviar" value="Agregar a venta">
+                            <input type="submit" class="btn btn-outline-success btn-block" id="enviar" value="<?= addSale ?>">
                         </div>
                     </form>
                 </div>
             </div>
             <div class="col-md-8">
                 <table class="table table-bordered table-hover" id="tabla">
-                    <caption class="text-center">Lista de Productos</caption>
+                    <caption class="text-center"><?= tittleTableProducto ?></caption>
                     <thead class="table-dark">
                         <tr class="font-italic">
-                            <th scope="col">Producto</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Fecha Proyeccion</th>
-                            <th scope="col">Cantidad Proyectada</th>
-                            <th scope="col">Acciones</th>
+                            <th scope="col"><?= prod ?></th>
+                            <th scope="col"><?= cantidad ?></th>
+                            <th scope="col"><?= proyDate ?></th>
+                            <th scope="col"><?= proyAmount ?></th>
+                            <th scope="col"><?= saleAction ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -87,7 +88,7 @@
                                 <td><?= $venHP->proyectadoA; ?></td>
                                 <td><?= $venHP->cantProyectada; ?></td>
                                 <td class="d-flex justify-content-around border border-light">
-                                    <a href="<?= baseUrl; ?>ventaHP/eliminar&id=<?= $venHP->producto_idproducto; ?>&idv=<?= $_GET['id'] ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> Eliminar</a>
+                                    <a href="<?= baseUrl; ?>ventaHP/eliminar&id=<?= $venHP->producto_idproducto; ?>&idv=<?= $_GET['id'] ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> <?= eliminar ?></a>
                                 </td>
                             </tr>
                         <?php endwhile; ?>
@@ -108,7 +109,7 @@
                     plotShadow: false
                 },
                 title: {
-                    text: 'Productos de la Venta'
+                    text: 'Productos En la Venta'
                 },
                 tooltip: {
                     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
