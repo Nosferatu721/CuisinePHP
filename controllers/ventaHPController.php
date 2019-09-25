@@ -68,4 +68,6 @@ class VentaHPController
       header('Location: ' . baseUrl . 'error/index');
     }
   }
+  //TODO:Cambiar metodos a VENTA!!!
+  
 }

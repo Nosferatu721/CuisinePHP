@@ -117,4 +117,12 @@ class VentaHP
     }
     return $result;
   }
+  //TODO: Crear Procedimiento base de datos
+  // Consulta Por Fecha
+  public function findForDate($fechaInicial, $fechaFinal)
+  {
+    $sql = "CALL findMermaDATE({$_SESSION['identity']->idrestaurante}, '$fechaInicial', '$fechaFinal')";
+    $result = $this->db->query($sql);
+    return $result;
+  }
 }

@@ -157,6 +157,7 @@
       });
     });
   </script>
+  
   <script type="text/javascript">
     $(function() {
       $('#container2').highcharts({

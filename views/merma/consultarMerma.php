@@ -93,7 +93,7 @@
 
     <form action="<?= baseUrl; ?>merma/PDFFecha" method="POST" class="row justify-content-around">
       <div class="form-label-group col-3">
-        <label for="fechaInicial">Fech Inicial </label>
+        <label for="fechaInicial">Fecha Inicial </label>
         <input type="date" id="fechaInicial" name="fechaInicial" class="form-control">
       </div>
       <div class="form-label-group col-3">
