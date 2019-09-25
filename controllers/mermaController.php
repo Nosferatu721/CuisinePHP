@@ -18,21 +18,28 @@ class MermaController
     require_once 'views/merma/registrar.php';
   }
 
-  // public function ver(){
-  //   Utils::isCocina();
-  //   $idPedido = $_GET['id'];
-  //   $pedHP = new PedidoHP();
-  //   $pedHP->setIdPedido($idPedido);
-  //   $p = $pedHP->find();
-  //   require_once 'views/nose/pedidoHp.php';
-  // }
+  //PDF For Date
+  public function PDFFecha()
+  {
+    Utils::isAdmin();
+    if (isset($_POST) && !empty($_POST['fechaInicial']) && !empty($_POST['fechaFinal'])) {
+      $fechaIni = $_POST['fechaInicial'];
+      $fechaFin = $_POST['fechaFinal'];
+      $merma = new Merma();
+      $merma = $merma->findForDate($fechaIni, $fechaFin);
+      require_once 'lib/pdf/merma/pdfMerma.php';
+    } else {
+      $_SESSION['pdfFechas'] = 'FechasVacias';
+      header('Location: ' . baseUrl . 'merma/consultarMerma');
+    }
+  }
 
   //PDF
   public function pdf()
   {
     $mr = new Merma();
     $merma = $mr->All();
-    require_once 'librerias/pdf/merma/pdfMerma.php';
+    require_once 'lib/pdf/merma/pdfMerma.php';
   }
 
   public function registrar()

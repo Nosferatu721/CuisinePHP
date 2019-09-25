@@ -16,12 +16,12 @@ class stockController
     require_once 'views/producto/stock/registrar.php';
   }
 
-  //PDF
+  //PDF Todo
   public function pdf()
   {
     $st = new Stock();
     $stock = $st->All();
-    require_once 'librerias/pdf/stock/pdfStock.php';
+    require_once 'lib/pdf/stock/pdfStock.php';
   }
 
   public function registrar()
@@ -38,7 +38,7 @@ class stockController
         //
         $cantActual = $rrr->cantidadProducto;
         $newCant = $cantActual + ($_POST['cantidad']);
-        if($newCant < 0){
+        if ($newCant < 0) {
           $_SESSION['saveEdit'] = 'Yuca';
           header('Location: ' . baseUrl . 'stock/editar&id=' . $_GET['id']);
           die();
@@ -52,6 +52,7 @@ class stockController
       }
       $stock->setFecha($_POST['fecha']);
       $stock->setLote($_POST['lote']);
+
       // Realizamos el Registro
       if (isset($_GET['id'])) {
         $save = $stock->update();

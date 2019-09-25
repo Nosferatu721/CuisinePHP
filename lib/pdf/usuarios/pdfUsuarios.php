@@ -1,6 +1,6 @@
 <?php
 
-require 'librerias/vendor/autoload.php';
+require 'lib/vendor/autoload.php';
 
 use Spipu\Html2Pdf\Html2Pdf;
 
@@ -51,9 +51,14 @@ ob_start();
       text-align: center
     }
 
+    th {
+      padding: 10px 0px;
+    }
+
     td {
-      width: 110px;
-      padding: 5px;
+      width: 130px;
+      padding: 5px 0px;
+      border-bottom: .5px dotted gray
     }
 
     .email {
@@ -93,47 +98,46 @@ ob_start();
 <body>
   <div class="Box">
     <img src="assets/img/LogoCui.jpg" alt="">
-    <h1>Reporte</h1>
+    <h1><?= reporte ?></h1>
     <hr>
     <div class="Head">
-      <h3>Creado Por:</h3>
-      <p>Nombre: <?= $_SESSION['identity']->nombre ?></p>
-      <p>Apellido: <?= $_SESSION['identity']->apellido ?></p>
-      <p>Email: <?= $_SESSION['identity']->email ?></p>
-      <p>Cargo: <?= $_SESSION['identity']->nombreCargo ?></p>
-      <p>Restaurante: <?= $_SESSION['identity']->nombreRestaurante ?> - <?= $_SESSION['identity']->direccionRestaurante ?></p>
+      <h3><?= creadoPor ?>:</h3>
+      <p><?= nombre ?>: <?= $_SESSION['identity']->nombre ?></p>
+      <p><?= apellido ?>: <?= $_SESSION['identity']->apellido ?></p>
+      <p><?= email ?>: <?= $_SESSION['identity']->email ?></p>
+      <p><?= cargo ?>: <?= $_SESSION['identity']->nombreCargo ?></p>
+      <p><?= restaurante ?>: <?= $_SESSION['identity']->nombreRestaurante ?> - <?= $_SESSION['identity']->direccionRestaurante ?></p>
     </div>
     <div class="Body">
       <hr>
-      <h4>Tabla de Merma del Restaurante <?= $_SESSION['identity']->nombreRestaurante ?></h4>
+      <h4><?= tittleTableUsuarios ?></h4>
       <hr>
       <table>
         <thead>
           <tr>
-            <th><?= producto ?></th>
-            <th>Tipo de Merma</th>
-            <th>Cantidad</th>
-            <th>Perdida</th>
-            <th>Motivo</th>
-            <th>Fecha</th>
+            <th><?= nombre ?></th>
+            <th><?= email ?></th>
+            <th><?= cargo ?></th>
+            <th><?= restaurante ?></th>
+            <th><?= estado ?></th>
           </tr>
         </thead>
         <tbody>
-          <?php while ($m = $merma->fetch_object()) : ?>
+          <?php while ($u = $dataUsers->fetch_object()) : ?>
             <tr>
-              <td><?= $m->nombreProducto; ?></td>
-              <td><?= $m->tipoMerma; ?></td>
-              <td><?= $m->cantidadMerma; ?></td>
-              <td><?= $m->perdida; ?></td>
-              <td><?= $m->motivoMerma; ?></td>
-              <td><?= $m->fechaMerma; ?></td>
+              <td><?= $u->nombre; ?> <?= $u->apellido; ?></td>
+              <td class="email"><?= $u->email; ?></td>
+              <td><?= $u->nombreCargo == 'Administrador' ? admin : ($u->nombreCargo == 'Jefe de Cocina' ? jefeCocina : ($u->nombreCargo == 'Jefe de Zona' ? jefeZona : '')); ?></td>
+              <td><?= $u->nombreRestaurante; ?></td>
+              <td><?= $u->estado == 'Activo' ? activado : ($u->estado == 'Inactivo' ? inactivado : ''); ?></td>
             </tr>
           <?php endwhile; ?>
         </tbody>
       </table>
+      <hr>
     </div>
     <div class="Footer">
-      <h5>Generado <?= date('d-m-Y'); ?></h5>
+      <h5><?= generado ?> <?= date('d-m-Y'); ?></h5>
     </div>
   </div>
 </body>
@@ -145,4 +149,4 @@ $content = ob_get_clean();
 
 $html2pdf->setDefaultFont('Arial');
 $html2pdf->writeHTML($content);
-$html2pdf->output("PDFStock.pdf");
+$html2pdf->output("PDFUsuarios.pdf");

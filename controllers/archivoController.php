@@ -29,7 +29,7 @@ class ArchivoController
         $sql = "DELETE FROM archivos WHERE idArchivo=$idArc AND idUser={$_SESSION['identity']->idusuarios}";
         $result = $this->db->query($sql);
         if ($result) {
-          unlink('uploads/archivos/' . $registro->document);
+          unlink('dist/public/' . $registro->document);
           $_SESSION['delete'] = 'Eliminado';
         } else {
           echo 'Error';
@@ -66,10 +66,10 @@ class ArchivoController
           header('Location: ' . baseUrl . 'archivo/gestion');
         } else {
           if ($tipo == 'docx' || $tipo == 'doc' || $tipo == 'pdf') {
-            if (!is_dir('uploads')) {
-              mkdir('uploads/archivos', 0777, true);
+            if (!is_dir('dist')) {
+              mkdir('dist/public', 0777, true);
             }
-            move_uploaded_file($file['tmp_name'], 'uploads/archivos/' . $name);
+            move_uploaded_file($file['tmp_name'], 'dist/public/' . $name);
 
             $sql = "INSERT INTO archivos VALUES (NULL, '$descripcion', '$name', {$_SESSION['identity']->idusuarios})";
 

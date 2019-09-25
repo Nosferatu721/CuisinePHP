@@ -8,8 +8,8 @@ $apellido = $dataUser->apellido;
 $email = $dataUser->email;
 $pass = $dataUser->contrasena;
 
-require 'librerias/vendor/autoload.php';
-require 'librerias/emails/constante.php';
+require 'lib/vendor/autoload.php';
+require 'lib/emails/constante.php';
 
 $mail = new PHPMailer(true);
 
@@ -31,7 +31,7 @@ try {
 
   $mail->isHTML(true);
   $mail->CharSet = 'UTF-8';
-  $mail->Subject = 'Recuperar Contraseña';
+  $mail->Subject = tituloRecuperarPass;
   $mail->Body = '' . Mensaje . '<br>La contraseña de ' . $nombre . ' ' . $apellido . ' es: ' . '<b>' . $pass . '</b>';
   if ($mail->send()) {
     $_SESSION['recuperar'] = 'Enviado';

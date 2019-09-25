@@ -46,7 +46,7 @@ if (class_exists($nombreController)) {
     if ($action != 'olvidoPass') {
       Utils::verifySession();
     }
-    if (!($action == 'pdf')) {
+    if (!($action == 'pdf' || $action == 'PDFFecha')) {
       require_once 'views/layout/header.php';
     }
     $controller->$action();

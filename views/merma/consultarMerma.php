@@ -84,6 +84,27 @@
         </tbody>
       </table>
     </div>
+    <?php if (isset($_SESSION['pdfFechas']) && $_SESSION['pdfFechas'] == 'FechasVacias') : ?>
+      <?= Utils::alerta('warning', vacios) ?>
+    <?php else : ?>
+      <hr>
+    <?php endif; ?>
+    <?php Utils::deleteSession('pdfFechas') ?>
+
+    <form action="<?= baseUrl; ?>merma/PDFFecha" method="POST" class="row justify-content-around">
+      <div class="form-label-group col-3">
+        <label for="fechaInicial">Fech Inicial </label>
+        <input type="date" id="fechaInicial" name="fechaInicial" class="form-control">
+      </div>
+      <div class="form-label-group col-3">
+        <label for="fechaFinal">Fecha Final </label>
+        <input type="date" id="fechaFinal" name="fechaFinal" class="form-control">
+      </div>
+      <div class="d-flex align-items-center">
+        <button type="submit" id="generarPDF" class="btn btn-outline-danger"><?= generarPDF ?> <i class="fas fa-file-pdf"></i></button>
+      </div>
+    </form>
+
     <hr>
     <div id="container" style="height: 400px" class="my-3"></div>
   </div>
@@ -148,6 +169,8 @@
   </script>
   <!-- ------------- Footer ------------- -->
   <?php require_once 'views/layout/footer2.php'; ?>
+
+  <script src="<?= baseUrl ?>assets/js/validarFechasPDF.js"></script>
 
   <script src="<?= baseUrl ?>assets/Highcharts-4.1.5/js/highcharts.js"></script>
   <script src="<?= baseUrl ?>assets/Highcharts-4.1.5/js/highcharts-3d.js"></script>

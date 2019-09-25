@@ -25,7 +25,7 @@ class usuarioController
       $u->setId($_POST['id']);
       $dataUser = $u->findUserID();
       if ($dataUser && is_object($dataUser)) {
-        require_once 'librerias/emails/contra.php';
+        require_once 'lib/emails/contra.php';
       } else {
         $_SESSION['recuperar'] = 'ErrorDatos';
         header('Location: ' . baseUrl . 'usuario/olvidoPass');
@@ -42,7 +42,7 @@ class usuarioController
     $dataUsers = $u->findUsers();
     $u2 = new Usuario();
     $porcent = $u2->countUsers();
-    require_once 'librerias/pdf/usuarios/pdfUsuarios.php';
+    require_once 'lib/pdf/usuarios/pdfUsuarios.php';
   }
 
   public function consultarUsuarios()

@@ -36,15 +36,13 @@ function validarFecha() {
     var fechaActual = mes + '/' + dia + '/' + año;
     //
 
-    var arr = elemento.value.split('-');
     //Tomar fecha del FORM y damos Formato MES/DIA/AÑO
+    var arr = elemento.value.split('-');
     var fechaFrom = arr[1] + '/' + arr[2] + '/' + arr[0];
 
     var fechaInput = Date.parse(fechaFrom);
     var fechaAct = Date.parse(fechaActual);
 
-    console.log(fechaFrom);
-    console.log(fechaActual);
 
     if (fechaAct == fechaInput) {
       alertica('La fecha no puede ser de hoy');
@@ -56,6 +54,7 @@ function validarFecha() {
     return true;
   }
 }
+
 function validarLote() {
   var elemento = document.getElementById("lote");
   if (elemento.value == "") {

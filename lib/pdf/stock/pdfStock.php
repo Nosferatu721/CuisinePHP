@@ -1,6 +1,6 @@
 <?php
 
-require 'librerias/vendor/autoload.php';
+require 'lib/vendor/autoload.php';
 
 use Spipu\Html2Pdf\Html2Pdf;
 

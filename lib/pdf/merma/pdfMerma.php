@@ -1,6 +1,6 @@
 <?php
 
-require 'librerias/vendor/autoload.php';
+require 'lib/vendor/autoload.php';
 
 use Spipu\Html2Pdf\Html2Pdf;
 
@@ -56,7 +56,7 @@ ob_start();
     }
 
     td {
-      width: 130px;
+      width: 110px;
       padding: 5px 0px;
       border-bottom: .5px dotted gray
     }
@@ -110,31 +110,32 @@ ob_start();
     </div>
     <div class="Body">
       <hr>
-      <h4><?= tittleTableUsuarios ?></h4>
+      <h4><?= tittleTableMerma ?> - <?= $_SESSION['identity']->nombreRestaurante ?></h4>
       <hr>
       <table>
         <thead>
           <tr>
-            <th><?= nombre ?></th>
-            <th><?= email ?></th>
-            <th><?= cargo ?></th>
-            <th><?= restaurante ?></th>
-            <th><?= estado ?></th>
+            <th><?= producto ?></th>
+            <th><?= tipoMerma ?></th>
+            <th><?= cantidad ?></th>
+            <th><?= perdida ?></th>
+            <th><?= motivo ?></th>
+            <th><?= fecha ?></th>
           </tr>
         </thead>
         <tbody>
-          <?php while ($u = $dataUsers->fetch_object()) : ?>
+          <?php while ($m = $merma->fetch_object()) : ?>
             <tr>
-              <td><?= $u->nombre; ?> <?= $u->apellido; ?></td>
-              <td class="email"><?= $u->email; ?></td>
-              <td><?= $u->nombreCargo == 'Administrador' ? admin : ($u->nombreCargo == 'Jefe de Cocina' ? jefeCocina : ($u->nombreCargo == 'Jefe de Zona' ? jefeZona : '')); ?></td>
-              <td><?= $u->nombreRestaurante; ?></td>
-              <td><?= $u->estado == 'Activo' ? activado : ($u->estado == 'Inactivo' ? inactivado : ''); ?></td>
+              <td><?= $m->nombreProducto; ?></td>
+              <td><?= $m->tipoMerma; ?></td>
+              <td><?= $m->cantidadMerma; ?></td>
+              <td>$<?= $m->perdida; ?></td>
+              <td><?= $m->motivoMerma; ?></td>
+              <td><?= $m->fechaMerma; ?></td>
             </tr>
           <?php endwhile; ?>
         </tbody>
       </table>
-      <hr>
     </div>
     <div class="Footer">
       <h5><?= generado ?> <?= date('d-m-Y'); ?></h5>
@@ -149,4 +150,4 @@ $content = ob_get_clean();
 
 $html2pdf->setDefaultFont('Arial');
 $html2pdf->writeHTML($content);
-$html2pdf->output("PDFUsuarios.pdf");
+$html2pdf->output("PDFStock.pdf");

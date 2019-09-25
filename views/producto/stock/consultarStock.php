@@ -43,7 +43,6 @@
         </thead>
         <tbody>
           <?php while ($s = $sto->fetch_object()) : ?>
-            <?php var_dump($s); ?>
             <tr>
               <td><?= $s->nombreProducto; ?></td>
               <td><?= $s->cantidadProducto; ?></td>
@@ -81,6 +80,21 @@
     </div>
     <hr>
 
+    <form action="<?= baseUrl; ?>stock/PDFFecha" method="POST" target="black" class="row justify-content-around">
+      <div class="form-label-group col-3">
+        <label for="fechaInicial">Fech Inicial </label>
+        <input type="date" id="fechaInicial" name="fechaInicial" class="form-control">
+      </div>
+      <div class="form-label-group col-3">
+        <label for="fechaFinal">Fecha Final </label>
+        <input type="date" id="fechaFinal" name="fechaFinal" class="form-control">
+      </div>
+      <div class="d-flex align-items-center">
+        <button target="blank" id="generarPDF" class="btn btn-outline-danger"><?= generarPDF ?> <i class="fas fa-file-pdf"></i></button>
+      </div>
+    </form>
+
+    <hr>
     <div id="container" style="height: 400px" class="my-3"></div>
     <div id="container2" style="height: 400px" class="my-3"></div>
   </div>
