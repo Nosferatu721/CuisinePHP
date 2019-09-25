@@ -96,43 +96,58 @@
                 </table>
             </div>
         </div>
+        
         <hr>
         <div id="container" style="height: 400px" class="my-3"></div>
+        <div id="container2" style="height: 400px" class="my-3"></div>
     </div>
 
     <script type="text/javascript">
         $(function() {
             $('#container').highcharts({
                 chart: {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false
+                    type: 'column',
+                    margin: 75,
+                    options3d: {
+                        enabled: true,
+                        alpha: 10,
+                        beta: 25,
+                        depth: 70
+                    }
                 },
                 title: {
-                    text: 'Productos En la Venta'
-                },
-                tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    text: 'Productos en la Venta'
                 },
                 plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: true,
-                            style: {
-                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                            }
+                    column: {
+                        depth: 20,
+                    },
+                },
+                xAxis: {
+                    categories: [
+                        <?php
+                        foreach ($v as $vHP) {
+                            ?>
+
+                            ['<?php echo $vHP['nombreProducto']; ?>'],
+
+
+                        <?php
                         }
+                        ?>
+                    ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Cantidad'
                     }
                 },
                 series: [{
-                    type: 'pie',
-                    name: 'Cantidad',
+                    name: 'Productos',
                     data: [
                         <?php
-                        foreach ($v as $ven) {
-                            ?>['<?= $ven['nombreProducto'] ?> - <?= $ven['cantidadVendida'] ?>', <?= $ven['cantidadVendida'] ?>],
+                        foreach ($v as $vHP) {
+                            ?>[<?= $vHP['cantidadVendida'] ?>],
                         <?php
                         }
                         ?>
@@ -141,6 +156,70 @@
             });
         });
     </script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#container2').highcharts({
+                chart: {
+                    type: 'column',
+                    margin: 75,
+                    options3d: {
+                        enabled: true,
+                        alpha: 10,
+                        beta: 25,
+                        depth: 70
+                    }
+                },
+                title: {
+                    text: 'Productos Venta Vs Proyección'
+                },
+                plotOptions: {
+                    column: {
+                        depth: 20,
+                    },
+                },
+                xAxis: {
+                    categories: [
+                        <?php
+                        foreach ($v as $vHP) {
+                            ?>['<?php echo $vHP['nombreProducto']; ?>'],
+                        <?php
+                        }
+                        ?>
+                    ]
+                },
+                yAxis: {
+                    title: {
+                        text: 'Cantidad'
+                    }
+                },
+                series: [{
+                        name: 'Venta',
+                        data: [
+                            <?php
+                            foreach ($v as $vHP) {
+                                ?>[<?= $vHP['cantidadVendida'] ?>],
+                            <?php
+                            }
+                            ?>
+                        ]
+                    },
+                    {
+                        name: 'Proyeccion',
+                        data: [
+                            <?php
+                            foreach ($v as $vHP) {
+                                ?>[<?= $vHP['cantProyectada'] ?>],
+                            <?php
+                            }
+                            ?>
+                        ]
+                    }
+                ]
+            });
+        });
+    </script>
+
     <!-- ------------- Footer ------------- -->
     <?php require_once 'views/layout/footer2.php'; ?>
 

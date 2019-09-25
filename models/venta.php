@@ -92,4 +92,12 @@ class Venta
     }
     return $result;
   }
+
+  // Consulta Por Fecha
+  public function findForDate($fechaInicial, $fechaFinal)
+  {
+    $sql = "CALL findProFec('$fechaInicial', '$fechaFinal',{$_SESSION['identity']->idrestaurante})";
+    $result = $this->db->query($sql);
+    return $result;
+  }
 }

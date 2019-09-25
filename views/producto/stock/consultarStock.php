@@ -43,10 +43,6 @@
         </thead>
         <tbody>
           <?php while ($s = $sto->fetch_object()) : ?>
-<<<<<<< HEAD
-=======
-            <?php  ?>
->>>>>>> dfc813f43c07369cdc715ff698eb4f398311e875
             <tr>
               <td><?= $s->nombreProducto; ?></td>
               <td><?= $s->cantidadProducto; ?></td>
@@ -161,6 +157,7 @@
       });
     });
   </script>
+  
   <script type="text/javascript">
     $(function() {
       $('#container2').highcharts({

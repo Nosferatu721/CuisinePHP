@@ -24,7 +24,7 @@
                 <div class="card mb-3 border-0">
                     <div class="card-header font-italic text-center bg-secondary text-danger">
 
-                        <span class="titulo text-success"><?= newSale?></span>
+                        <span class="titulo text-success"><?= newSale ?></span>
                     </div>
                     <form action="<?= baseUrl ?>venta/registrar" method="POST">
 
@@ -59,7 +59,27 @@
                 </table>
             </div>
         </div>
+        <?php if (isset($_SESSION['pdfFechas']) && $_SESSION['pdfFechas'] == 'FechasVacias') : ?>
+            <?= Utils::alerta('warning', vacios) ?>
+        <?php else : ?>
+            <hr>
+        <?php endif; ?>
+        <?php Utils::deleteSession('pdfFechas') ?>
 
+        <form action="<?= baseUrl; ?>venta/PDFFecha" method="POST" class="row justify-content-around">
+            <div class="form-label-group col-3">
+                <label for="fechaInicial">Fecha Inicial </label>
+                <input type="date" id="fechaInicial" name="fechaInicial" class="form-control">
+            </div>
+            <div class="form-label-group col-3">
+                <label for="fechaFinal">Fecha Final </label>
+                <input type="date" id="fechaFinal" name="fechaFinal" class="form-control">
+            </div>
+            <div class="d-flex align-items-center">
+                <button type="submit" id="generarPDF" class="btn btn-outline-danger"><?= generarPDF ?> <i class="fas fa-file-pdf"></i></button>
+            </div>
+        </form>
+        <hr>
     </div>
 
     <!-- ------------- Footer ------------- -->

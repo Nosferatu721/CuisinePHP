@@ -46,4 +46,28 @@ class VentaController
     $v = $venHP-> find();
     require_once 'views/venta/ventaHP.php';
   }
+
+  //PDF For Date
+  public function PDFFecha()
+  {
+    Utils::isCocina();
+    if (isset($_POST) && !empty($_POST['fechaInicial']) && !empty($_POST['fechaFinal'])) {
+      $fechaIni = $_POST['fechaInicial'];
+      $fechaFin = $_POST['fechaFinal'];
+      $ven = new Venta();
+      $ven = $ven -> findForDate($fechaIni, $fechaFin);
+      require_once 'lib/pdf/venta/pdfVenta.php';
+    } else {
+      $_SESSION['pdfFechas'] = 'FechasVacias';
+      header('Location: ' . baseUrl . 'venta/gestion');
+    }
+  }
+
+  //PDF
+  public function pdf()
+  {
+    $vHP = new VentaHP();
+    $venHp = $vHP->All();
+    require_once 'lib/pdf/venta/pdfVenta.php';
+  }
 }
