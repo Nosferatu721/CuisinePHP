@@ -19,9 +19,9 @@
     <?php elseif (isset($_SESSION['save']) && $_SESSION['save'] == 'YaExiste') : ?>
       <?= Utils::alerta('warning', 'Ya existe el archivo', 'far fa-times-circle') ?>
     <?php elseif (isset($_SESSION['save']) && $_SESSION['save'] == 'NoAdmitido') : ?>
-      <?= Utils::alerta('success', 'Seleccione Un Archivo Apropiado', 'fas fa-ban') ?>
+      <?= Utils::alerta('danger', 'Seleccione Un Archivo Apropiado', 'fas fa-ban') ?>
     <?php elseif (isset($_SESSION['notData']) && $_SESSION['notData'] == 'ErrorDatos') : ?>
-      <?= Utils::alerta('success', vacios) ?>
+      <?= Utils::alerta('danger', vacios) ?>
     <?php else : ?>
       <hr>
     <?php endif; ?>
