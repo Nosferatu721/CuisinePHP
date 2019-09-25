@@ -59,12 +59,23 @@
         </li>
       <?php endif; ?>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?= menaje; ?>
+        <a class="nav-link dropdown-toggle" href="#" id="Stock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-cubes"></i> 
+          Pedido
         </a>
-        <div class="dropdown-menu" aria-labelledby="merma">
-          <a class="dropdown-item" href="#">Registrar Eventualidad</a>
-          <div class="dropdown-divider"></div>
+        <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
+          <a class="dropdown-item" href="<?= baseUrl; ?>pedido/gestion">Consultar Pedido</a>
+          <a class="dropdown-item" href="#">Otro</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="Stock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-cubes"></i> 
+          Venta
+        </a>
+        <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
+          <a class="dropdown-item" href="<?= baseUrl; ?>venta/gestion">Consultar Ventas</a>
+
           <a class="dropdown-item" href="#">Otro</a>
         </div>
       </li>
