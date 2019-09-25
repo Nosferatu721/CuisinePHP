@@ -204,3 +204,38 @@ define('reporte', 'Report');
 define('activado', 'Active');
 define('inactivado', 'Inactive');
 define('generado', 'Generated');
+
+//TODO: variables venta Traduccion.
+define('regisVen', 'Create Sale');
+define('newSale', 'New Sale');
+define('sales', 'Sale Control');
+define('saleRegis', 'Sale created sucessfully');
+define('saleList', 'Sale List');
+define('saleDate', 'Sale Date');
+define('saleAction', 'Action');
+define('saleView', 'Consult');
+define('sale', 'Sales');
+define('prodVen', 'Product On Sales Added Sucessfully!');
+define('prodVen1', 'Product On Sales Edited Sucessfully!');
+define('prodVen2', 'Product On Sales Deleted Sucessfully!');
+define('prodVen3', 'Can not Be Deleted!');
+define('prodVen4', 'There is Empty Fields');
+define('saleId', 'Sale ID');
+define('canSale', 'Sold Amount');
+define('prod', 'Product');
+define('proyDate', 'Date Projection');
+define('proyAmount', 'Amount Projected');
+define('prodSale', 'Sale Products');
+define('conSale', 'View Sales');
+define('otro', 'Other');
+define('addSale', 'Add To Sale');
+
+
+
+
+//TODO:Variables Pedido
+define('pedido', 'Orders');
+define('viewOrd', 'View Orders');
+
+//TODO: Archivos
+define('subir', 'Upload Files');

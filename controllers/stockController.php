@@ -106,8 +106,6 @@ class stockController
       $id = $_GET['id'];
       $st = new Stock();
       $st->setIdProducto($id);
-      // var_dump($usuario2);
-      // die();
       $delete = $st->delete();
       $_SESSION['delete'] = 'Eliminado';
       if (!$delete) {

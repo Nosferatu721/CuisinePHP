@@ -43,7 +43,7 @@
         </thead>
         <tbody>
           <?php while ($s = $sto->fetch_object()) : ?>
-            <?php var_dump($s); ?>
+            <?php  ?>
             <tr>
               <td><?= $s->nombreProducto; ?></td>
               <td><?= $s->cantidadProducto; ?></td>

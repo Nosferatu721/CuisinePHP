@@ -29,7 +29,7 @@
           <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
             <a class="dropdown-item" href="<?= baseUrl; ?>producto/gestion"><?= registrarProduct; ?></a>
             <div class="dropdown-divider border-warning"></div>
-            <a class="dropdown-item" href="#">Otro</a>
+            <a class="dropdown-item" href="#"><?= otro ?></a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -42,7 +42,7 @@
             <div class="dropdown-divider border-warning"></div>
             <a class="dropdown-item" href="<?= baseUrl; ?>tipoMerma/gestion"><?= gestionTipoMerma; ?></a>
             <div class="dropdown-divider border-warning"></div>
-            <a class="dropdown-item" href="#">Otro</a>
+            <a class="dropdown-item" href="#"><?= otro ?></a>
           </div>
         </li>
       <?php elseif ($_SESSION['identity']->nombreCargo == 'Jefe de Cocina') : ?>
@@ -54,34 +54,34 @@
             <a class="dropdown-item" href="<?= baseUrl; ?>stock/consultar"><?= consultStock ?></a>
             <a class="dropdown-item" href="<?= baseUrl; ?>stock/registro"><?= registrarStock ?></a>
             <div class="dropdown-divider border-warning"></div>
-            <a class="dropdown-item" href="#">Otro</a>
+            <a class="dropdown-item" href="#"><?= otro ?></a>
           </div>
         </li>
       <?php endif; ?>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="Stock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-cubes"></i> 
-          Pedido
-        </a>
+          <i class="fas fa-cubes"></i>
+          <?= pedido ?> </a>
         <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
-          <a class="dropdown-item" href="<?= baseUrl; ?>pedido/gestion">Consultar Pedido</a>
-          <a class="dropdown-item" href="#">Otro</a>
+          <a class="dropdown-item" href="<?= baseUrl; ?>pedido/gestion"><?= viewOrd ?></a>
+          <div class="dropdown-divider border-warning"></div>
+          <a class="dropdown-item" href="#"><?= otro ?></a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="Stock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-cubes"></i> 
-          Venta
+          <i class="fas fa-cubes"></i>
+          <?= sale ?>
         </a>
         <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
-          <a class="dropdown-item" href="<?= baseUrl; ?>venta/gestion">Consultar Ventas</a>
-
-          <a class="dropdown-item" href="#">Otro</a>
+          <a class="dropdown-item" href="<?= baseUrl; ?>venta/gestion"><?= conSale ?></a>
+          <div class="dropdown-divider border-warning"></div>
+          <a class="dropdown-item" href="#"><?= otro ?></a>
         </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?= baseUrl; ?>archivo/gestion">
-          Subir Archivos
+          <?= subir ?>
         </a>
       </li>
     </ul>

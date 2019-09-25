@@ -52,7 +52,6 @@ class PedidoHP
     return $result;
   }
 
-  //FIXME: crear las consultas SQL
   public function findID()
   {
     $sql = "SELECT * FROM pedido_has_producto WHERE pedido_idpedido={$this->getIdPedido()}";
