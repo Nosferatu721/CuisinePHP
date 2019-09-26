@@ -136,6 +136,12 @@ ob_start();
           <?php endwhile; ?>
         </tbody>
       </table>
+      <hr>
+      <p>Podemos observar los datos del producto el cual tuvo una merma, el tipo de esta merma 
+        si pudo hacerse un reproceso o se tuvo que desperdiciar, si es el segundo caso este causo
+        una perdida reflejada en la columna Perdida, el motivo de la merma para entender e; porque y tomar 
+        medidas preventivas con el producto.
+      </p>
     </div>
     <div class="Footer">
       <h5><?= generado ?> <?= date('d-m-Y'); ?></h5>

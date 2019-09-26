@@ -130,6 +130,12 @@ ob_start();
                     <?php endwhile; ?>
                 </tbody>
             </table>
+            <hr>
+            <p>En este reporte podemos observar la cantidad total de venta entre las fechas ingresadas.
+                De igual forma vemos la proyeccion de dichas fechas pero a la semana siguiente ya que 
+                se proyecta la venta a la semana siguente. Esto se hace para el restaurante al que el 
+                usuario pertenece.
+            </p>
         </div>
         <div class="Footer">
             <h5><?= generado ?> <?= date('d-m-Y'); ?></h5>
