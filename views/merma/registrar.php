@@ -68,8 +68,8 @@
   <!-- ------------- Footer ------------- -->
   <?php require_once 'views/layout/footer2.php'; ?>
   <?php if (isset($mr)) : ?>
-    <!-- <script src="<?= baseUrl; ?>assets/js/validarMermaEdit.js"></script> -->
+    <script src="<?= baseUrl; ?>assets/js/validarMermaEdit.js"></script>
   <?php else : ?>
-    <!-- <script src="<?= baseUrl; ?>assets/js/validarMerma.js"></script> -->
+    <script src="<?= baseUrl; ?>assets/js/validarMerma.js"></script>
   <?php endif; ?>
 </body>

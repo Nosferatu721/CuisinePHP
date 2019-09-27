@@ -4,7 +4,7 @@ define('idioma', 'INGLES');
 define('lang', 'en');
 define('color', 'secondary');
 define('salir', 'Salir');
-define('theme', 'cosmo');
+define('theme', 'lumen');
 
 // Roles
 define('admin', 'Administrador');

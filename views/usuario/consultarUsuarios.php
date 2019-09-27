@@ -90,10 +90,6 @@
         <div class="progress mb-4">
           <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?= $porcentaje[1][0]; ?>%"></div>
         </div>
-        <h6>Jefes de Zona - <?= $porcentaje[2][0] ?>%</h6>
-        <div class="progress mb-4">
-          <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:<?= $porcentaje[2][0]; ?>%"></div>
-        </div>
       </div>
       <div class="col-12 col-md-6">
         <div id="container" style="height: 250px" class="my-3"></div>
