@@ -1,6 +1,6 @@
 <?php
 
-define('idioma', 'Spanish');
+define('idioma', 'SPANISH');
 define('lang', 'es');
 define('color', 'secondary');
 define('salir', 'Logout');
@@ -37,7 +37,7 @@ define('restaurantes', 'Restaurants');
 // ------
 define('gestionRestaurante', 'Manage Restaurants');
 define('registrarUsuario', 'Create User');
-define('consultUsuarios', 'Consult User');
+define('consultUsuarios', 'Consult Users');
 define('gestionCargos', 'Manage Positions');
 //
 define('productos', 'Products');

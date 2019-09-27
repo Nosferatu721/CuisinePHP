@@ -1,4 +1,5 @@
 <?php
+require_once 'models/venta.php';
 require_once 'models/ventaHP.php';
 
 class VentaHPController
@@ -17,15 +18,37 @@ class VentaHPController
   }
 
   //Funcion ver
-  public function ver(){
+  public function ver()
+  {
     Utils::isCocina();
-    require_once 'views/venta/ventaHP.php';
+    if (isset($_GET['id']) && $_GET['id'] != '') {
+      $id = $_GET['id'];
+      $ven = new Venta();
+      $ventas = $ven->find();
+      ///
+      $exist = false;
+      foreach ($ventas as $p) {
+        $idped = (int) $p['idventa'];
+        if ($id == $idped) {
+          $exist = true;
+          break;
+        }
+      }
+      ///
+      if ($exist) {
+        require_once 'views/venta/ventaHP.php';
+      } else {
+        header('Location: ' . baseUrl . 'error/index');
+      }
+    } else {
+      header('Location: ' . baseUrl . 'error/index');
+    }
   }
   // Registrar
   public function registrar()
   {
     Utils::isCocina();
-    if (isset($_POST) && !empty($_POST['producto']) && !empty($_POST['cantidad'])){
+    if (isset($_POST) && !empty($_POST['producto']) && !empty($_POST['cantidad'])) {
       //Almacenar datos en variables
       $producto = $_POST['producto'];
       $cantidad = $_POST['cantidad'];
@@ -37,15 +60,17 @@ class VentaHPController
       $venHP->setCantVend($cantidad);
       // Almacenamos los Datos
       // Realizamos el INSERT O UPDATE
-        $save = $venHP->save();
+      $save = $venHP->save();
       // Verificamos si fue Exitoso :v
       if ($save) {
-          $_SESSION['saveEdit'] = 'Registrado';
+        $_SESSION['save'] = 'Registrado';
       } else {
-        $_SESSION['error'] = 'ErrorRegistro';
+        echo 'ErrorRegistro';
       }
-    header('Location: ' . baseUrl . 'ventaHP/ver&id=' . $_GET['id']);
+    } else {
+      $_SESSION['save'] = 'Vacios';
     }
+    header('Location: ' . baseUrl . 'ventaHP/ver&id=' . $_GET['id']);
   }
 
   public function eliminar()
@@ -69,5 +94,5 @@ class VentaHPController
     }
   }
   //TODO:Cambiar metodos a VENTA!!!
-  
+
 }

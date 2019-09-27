@@ -27,7 +27,6 @@ class VentaController
       // Realizamos el INSERT O UPDATE
         $save = $ven->save();
     
-
       // Verificamos si fue Exitoso :v
       if ($save) {
           $_SESSION['saveEdit'] = 'Registrado';

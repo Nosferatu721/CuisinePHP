@@ -64,7 +64,7 @@
             <td><?= $doc->idUser == $_SESSION['identity']->idusuarios ? 'Yo' : $doc->nombre . ' ' . $doc->apellido ?></td>
             <td class="d-flex justify-content-around border border-light">
               <!-- Boton Eliminar -->
-              <button class="btn btn-outline-danger btn-sm <?= $doc->idUser == $_SESSION['identity']->idusuarios ? '' : 'disabled' ?>" data-toggle="modal" data-target=".modal<?= $doc->idArchivo ?>"> <?= eliminar ?> <i class="far fa-trash-alt"></i></button>
+              <button class="btn btn-outline-<?= $doc->idUser == $_SESSION['identity']->idusuarios ? 'danger' : 'dark' ?> btn-sm" data-toggle="modal" <?= $doc->idUser == $_SESSION['identity']->idusuarios ? '' : 'disabled' ?> data-target=".modal<?= $doc->idArchivo ?>"> <?= eliminar ?> <i class="far fa-trash-alt"></i></button>
               <!-- Modal Eliminar -->
               <div class="modal fade modal<?= $doc->idArchivo ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-sm" role="document">

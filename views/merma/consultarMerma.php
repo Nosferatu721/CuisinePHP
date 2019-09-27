@@ -124,7 +124,7 @@
           }
         },
         title: {
-          text: 'Merma Registrada'
+          text: '<?= lang == 'es' ? 'Waste Created' : 'Merma Registrada' ?>'
         },
         plotOptions: {
           column: {
@@ -139,7 +139,6 @@
 
               ['<?php echo $m['nombreProducto']; ?>'],
 
-
             <?php
             }
             ?>
@@ -147,11 +146,11 @@
         },
         yAxis: {
           title: {
-            text: 'Cantidad'
+            text: '<?= cantidad ?>'
           }
         },
         series: [{
-          name: 'Productos',
+          name: '<?= producto ?>s',
           data: [
             <?php
             foreach ($merma as $m) {

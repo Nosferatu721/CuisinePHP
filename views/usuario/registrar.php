@@ -19,7 +19,7 @@
       <?= Utils::alerta('danger', vacios) ?>
     <?php elseif (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Existe') : ?>
       <div class="alert alert-secondary p-1 text-center animated zoomIn faster" role="alert">
-        <?= existUser ?> <i class="fas fa-user-slash"></i> <a href="<?= baseUrl ?>usuario/consultarUsuarios" class="btn btn-outline-dark btn-sm">Consultar</a>
+        <?= existUser ?> <i class="fas fa-user-slash"></i> <a href="<?= baseUrl ?>usuario/consultarUsuarios" class="btn btn-outline-dark btn-sm"><?= consultUsuarios ?></a>
       </div>
     <?php else : ?>
       <hr>
@@ -31,7 +31,7 @@
           <span class=""><?= selectCargo; ?> <i class="fas fa-user-tag"></i></span><br>
           <?php $c = CargoController::getAll(); ?>
           <select class="custom-select my-1 mr-sm-2" name="rol" id="rol">
-            <option>Elija...</option>
+            <option><?= elija ?></option>
             <?php while ($car = $c->fetch_object()) : ?>
               <option <?= isset($user) && is_object($user) && (int) $user->idcargo == (int) $car->idcargo ? 'selected' : ''; ?> value="<?= $car->idcargo; ?>"><?= $car->nombreCargo; ?></option>
             <?php endwhile; ?>
@@ -41,7 +41,7 @@
           <span class=""><?= selectRestaurante; ?> <i class="fas fa-utensils"></i></span><br>
           <?php $restaurants = RestauranteController::getAll(); ?>
           <select class="custom-select my-1 mr-sm-2" name="restaurante" id="restaurante">
-            <option>Elija...</option>
+            <option><?= elija ?></option>
             <?php while ($rest = $restaurants->fetch_object()) : ?>
               <option <?= isset($user) && is_object($user) && (int) $user->idrestaurante == (int) $rest->idrestaurante ? 'selected' : ''; ?> value="<?= $rest->idrestaurante; ?>"><?= $rest->nombreRestaurante; ?></option>
             <?php endwhile; ?>

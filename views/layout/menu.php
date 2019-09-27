@@ -32,6 +32,18 @@
             <a class="dropdown-item" href="#"><?= otro ?></a>
           </div>
         </li>
+      <?php elseif ($_SESSION['identity']->nombreCargo == 'Jefe de Cocina') : ?>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-cubes"></i> <?= stock; ?>
+          </a>
+          <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
+            <a class="dropdown-item" href="<?= baseUrl; ?>stock/consultar"><?= consultStock ?></a>
+            <a class="dropdown-item" href="<?= baseUrl; ?>stock/registro"><?= registrarStock ?></a>
+            <div class="dropdown-divider border-warning"></div>
+            <a class="dropdown-item" href="#"><?= otro ?></a>
+          </div>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-cubes"></i> <?= merma; ?>
@@ -45,40 +57,28 @@
             <a class="dropdown-item" href="#"><?= otro ?></a>
           </div>
         </li>
-      <?php elseif ($_SESSION['identity']->nombreCargo == 'Jefe de Cocina') : ?>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-cubes"></i> <?= stock; ?>
+          <a class="nav-link dropdown-toggle" href="#" id="Stock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-cubes"></i>
+            <?= pedido ?> </a>
+          <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
+            <a class="dropdown-item" href="<?= baseUrl; ?>pedido/gestion"><?= viewOrd ?></a>
+            <div class="dropdown-divider border-warning"></div>
+            <a class="dropdown-item" href="#"><?= otro ?></a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="Stock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-cubes"></i>
+            <?= sale ?>
           </a>
           <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
-            <a class="dropdown-item" href="<?= baseUrl; ?>stock/consultar"><?= consultStock ?></a>
-            <a class="dropdown-item" href="<?= baseUrl; ?>stock/registro"><?= registrarStock ?></a>
+            <a class="dropdown-item" href="<?= baseUrl; ?>venta/gestion"><?= conSale ?></a>
             <div class="dropdown-divider border-warning"></div>
             <a class="dropdown-item" href="#"><?= otro ?></a>
           </div>
         </li>
       <?php endif; ?>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="Stock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-cubes"></i>
-          <?= pedido ?> </a>
-        <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
-          <a class="dropdown-item" href="<?= baseUrl; ?>pedido/gestion"><?= viewOrd ?></a>
-          <div class="dropdown-divider border-warning"></div>
-          <a class="dropdown-item" href="#"><?= otro ?></a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="Stock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-cubes"></i>
-          <?= sale ?>
-        </a>
-        <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
-          <a class="dropdown-item" href="<?= baseUrl; ?>venta/gestion"><?= conSale ?></a>
-          <div class="dropdown-divider border-warning"></div>
-          <a class="dropdown-item" href="#"><?= otro ?></a>
-        </div>
-      </li>
       <li class="nav-item">
         <a class="nav-link" href="<?= baseUrl; ?>archivo/gestion">
           <?= subir ?>
@@ -86,10 +86,10 @@
       </li>
     </ul>
     <div class="btn-group" role="group">
-      <a href="<?= baseUrl; ?>usuario/lang&lang=<?= lang; ?>" class="btn btn-<?= color; ?>" type="button">
-        <i class="fas fa-globe-americas"> <?= idioma; ?></i>
+      <a href="<?= baseUrl; ?>usuario/lang&lang=<?= lang; ?>" class="btn btn-<?= color; ?>" role="button">
+        <i class="fas fa-globe-americas"></i> <span id="btnLang"><?= idioma; ?></span>
       </a>
-      <a class="btn btn-outline-danger" type="button" href="<?= baseUrl; ?>usuario/logout"><i class="fas fa-door-open"></i> <?= salir ?></a>
+      <a class="btn btn-outline-danger" role="button" href="<?= baseUrl; ?>usuario/logout"><i class="fas fa-door-open"></i> <?= salir ?></a>
     </div>
   </div>
 </nav>

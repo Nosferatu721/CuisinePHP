@@ -1,6 +1,6 @@
 <?php
 
-define('idioma', 'Ingles');
+define('idioma', 'INGLES');
 define('lang', 'en');
 define('color', 'secondary');
 define('salir', 'Salir');
@@ -86,7 +86,7 @@ define('motivo', 'Motivo');
 define('perdida', 'Perdida');
 define('tipoMerma', 'Tipo de Merma');
 define('precio', 'Precio');
-define('email', 'Email');
+define('email', 'Correo');
 define('contraseña', 'Contraseña');
 define('cargo', 'Cargo');
 define('restaurante', 'Restaurante');
@@ -121,7 +121,7 @@ define('elija', 'Elija...');
 define('selectRestaurante', 'Seleccionar Restaurante');
 define('nombreUsuario', 'Nombre');
 define('apellidoUsuario', 'Apellido');
-define('emailUsuario', 'Email');
+define('emailUsuario', 'Correo');
 define('passUsuario', 'Contraseña');
 define('regisNuevoUsuario', 'Registrar Nuevo Usuario');
 define('existUser', 'El Usuario Ya Existe');

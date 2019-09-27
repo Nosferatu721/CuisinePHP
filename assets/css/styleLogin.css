@@ -62,7 +62,7 @@
   /* Override default `<label>` margin */
   line-height: 1.5;
   color: #495057c4;
-  text-shadow: 1px 3px 1px rgb(158, 158, 158);
+  text-shadow: 1px 1px 1px rgb(187, 187, 187);
   cursor: text;
   /* Match the input under the label */
   border: 1px solid transparent;
@@ -76,7 +76,7 @@ form > button{
 
 .form-label-group>input:hover{
   border: 0.5px solid transparent;
-  box-shadow: 1px 1px 3px black;
+  box-shadow: 1px 1px 5px gray;
 }
 .form-label-group input::-webkit-input-placeholder {
   color: transparent;

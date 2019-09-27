@@ -12,9 +12,7 @@
   <div class="container">
     <p class="titulo">Control de Pedido</p>
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Registrado') : ?>
-      <div class="alert alert-secondary text-success p-1 text-center animated zoomIn faster" role="alert">
-        <b>Pedido Registrado Exitosamente <i class="fas fa-check-double"></i></b>
-      </div>
+      <?= Utils::alerta('success', 'Pedido Registrado Exitosamente', 'fas fa-check-double') ?>
     <?php else : ?>
       <hr>
     <?php endif; ?>
@@ -23,11 +21,9 @@
       <div class="col-md-4 d-flex justify-content-center">
         <div class="card mb-3 border-0">
           <div class="card-header font-italic text-center bg-secondary text-danger">
-            
-              <span class="titulo text-success">Nuevo Pedido</span>
+            <span class="titulo text-success">Nuevo Pedido</span>
           </div>
-          <form action="<?=baseUrl?>pedido/registrar" method="POST">
-            
+          <form action="<?= baseUrl ?>pedido/registrar" method="POST">
             <div class="p-2 border-top">
               <input type="submit" class="btn btn-outline-success btn-block" id="enviar" value="Crear Pedido">
             </div>
@@ -66,7 +62,6 @@
   <?php require_once 'views/layout/footer2.php'; ?>
 
   <script type="text/javascript" src="<?= baseUrl; ?>assets/js/tablas.js"></script>
-  <script src="<?= baseUrl; ?>assets/js/validacionRestaurante.js"></script>
 
 </body>
 

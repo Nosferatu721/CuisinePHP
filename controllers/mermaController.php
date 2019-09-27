@@ -6,7 +6,7 @@ class MermaController
 {
   public function consultarMerma()
   {
-    Utils::isAdmin();
+    Utils::isCocina();
     $m = new Merma();
     $merma = $m->All();
     require_once 'views/merma/consultarMerma.php';
@@ -14,14 +14,14 @@ class MermaController
   // Registro
   public function registro()
   {
-    Utils::isAdmin();
+    Utils::isCocina();
     require_once 'views/merma/registrar.php';
   }
 
   //PDF For Date
   public function PDFFecha()
   {
-    Utils::isAdmin();
+    Utils::isCocina();
     if (isset($_POST) && !empty($_POST['fechaInicial']) && !empty($_POST['fechaFinal'])) {
       $fechaIni = $_POST['fechaInicial'];
       $fechaFin = $_POST['fechaFinal'];
@@ -37,6 +37,7 @@ class MermaController
   //PDF
   public function pdf()
   {
+    Utils::isCocina();
     $mr = new Merma();
     $merma = $mr->All();
     require_once 'lib/pdf/merma/pdfMerma.php';
@@ -44,7 +45,7 @@ class MermaController
 
   public function registrar()
   {
-    Utils::isAdmin();
+    Utils::isCocina();
     // Verificamos si hay datos por POST
     if (isset($_POST) && (!empty($_POST['producto']) || !empty($_GET['id'])) && !empty($_POST['cantidad']) && !empty($_POST['motivo']) && !empty($_POST['tipoMerma'])) {
       // Creamos el contenedor
@@ -116,7 +117,7 @@ class MermaController
   // Editar
   public function editar()
   {
-    Utils::isAdmin();
+    Utils::isCocina();
     if (isset($_GET['id']) && $_GET['id'] != '') {
       $editar = true;
       //
@@ -133,7 +134,7 @@ class MermaController
   // Eliminar
   public function eliminar()
   {
-    Utils::isAdmin();
+    Utils::isCocina();
     if (isset($_GET['id'])) {
       $id = $_GET['id'];
       $mr = new Merma();

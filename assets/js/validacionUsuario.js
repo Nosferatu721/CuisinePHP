@@ -4,13 +4,31 @@ function iniciar() {
   document.getElementById("enviar").addEventListener('click', validar, false);
 }
 
+var spam = document.getElementById('btnLang');
+var txt = spam.innerText;
+console.log(txt);
+if (txt == 'INGLES') {
+  var Rol = 'Elija Cargo';
+  var Restaurante = 'Elija Restaurante';
+  var Nombre = 'Nombre Erroneo';
+  var Apellido = 'Apellido Erroneo';
+  var Correo = 'Correo Erroneo';
+  var Contraseña = 'Contraseña Erroneo';
+} else {
+  var Rol = 'Choose Position';
+  var Restaurante = 'Choose restaurant';
+  var Nombre = 'Worng Name';
+  var Apellido = 'Worng Last Name';
+  var Correo = 'Worng Mail';
+  var Contraseña = 'Worng Password';
+}
 //Formato Correo
 var expresion = /\w+@\w+\.+[a-z]/;
 
 function validarNombre() {
   var elemento = document.getElementById("nombres");
   if (elemento.value == "" || !isNaN(elemento.value)) {
-    alertica('Nombre Erroneo');
+    alertica(Nombre);
     return false;
   }
   return true;
@@ -18,7 +36,7 @@ function validarNombre() {
 function validarApellidos() {
   var elemento = document.getElementById("apellidos");
   if (elemento.value == "" || !isNaN(elemento.value)) {
-    alertica('Apellido Erroneo');
+    alertica(Apellido);
     return false;
   }
   return true;
@@ -26,8 +44,7 @@ function validarApellidos() {
 function validarEmail() {
   var elemento = document.getElementById("email");
   if (elemento.value == "" || !expresion.test(elemento.value)) {
-    console.log(elemento.value);
-    alertica('Email Erroneo');
+    alertica(Correo);
     return false;
   }
   return true;
@@ -35,7 +52,7 @@ function validarEmail() {
 function validarPass() {
   var elemento = document.getElementById("pass");
   if (elemento.value == "") {
-    alertica('Contraseña Erronea');
+    alertica(Contraseña);
     return false;
   }
   return true;
@@ -44,7 +61,7 @@ function validarPass() {
 function validarRestaurante() {
   var elemento = document.getElementById("restaurante");
   if (elemento.value == "Elija..." || elemento.value == "Choose...") {
-    alertica('Elija Restaurante');
+    alertica(Restaurante);
     return false;
   }
   return true;
@@ -52,7 +69,7 @@ function validarRestaurante() {
 function validarCargo() {
   var elemento = document.getElementById("rol");
   if (elemento.value == "Elija..." || elemento.value == "Choose...") {
-    alertica('Elija Cargo');
+    alertica(Rol);
     return false;
   }
   return true;
