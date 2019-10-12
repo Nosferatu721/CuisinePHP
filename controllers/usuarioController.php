@@ -6,6 +6,7 @@ class usuarioController
   {
     require_once 'views/usuario/index.php';
   }
+
   public function login()
   {
     if (!isset($_SESSION['identity'])) {
@@ -14,10 +15,12 @@ class usuarioController
       $this->index();
     }
   }
+
   public function olvidoPass()
   {
     require_once 'views/olvidePass.php';
   }
+
   public function d()
   {
     if (isset($_POST) && !empty($_POST['id'])) {
@@ -56,6 +59,7 @@ class usuarioController
     $userActivos = $usuario3->activos();
     require_once 'views/usuario/consultarUsuarios.php';
   }
+
   // Registro
   public function registro()
   {
@@ -107,6 +111,7 @@ class usuarioController
       header('Location: ' . baseUrl . 'usuario/registro');
     }
   }
+
   // Login
   public function logear()
   {
@@ -138,14 +143,7 @@ class usuarioController
       header('Location: ' . baseUrl);
     }
   }
-  public function logout()
-  {
-    if (isset($_SESSION['identity'])) {
-      $_SESSION['identity'] = null;
-      unset($_SESSION['identity']);
-    }
-    header('Location: ' . baseUrl);
-  }
+
   // Editar
   public function editar()
   {
@@ -163,6 +161,7 @@ class usuarioController
       header('Location: ' . baseUrl . 'error/index');
     }
   }
+
   // Eliminar
   public function eliminar()
   {
@@ -185,7 +184,7 @@ class usuarioController
       $delete = $usuario2->delete();
       $_SESSION['estado'] = 'Cambiado';
       if (!$delete) {
-        $_SESSION['estado'] = 'Error';
+        echo 'Error';
       }
     } else {
       $_SESSION['estado'] = 'Vacios';
@@ -207,5 +206,37 @@ class usuarioController
     } else {
       header('Location: ' . baseUrl . 'error/index');
     }
+  }
+
+  public function logout()
+  {
+    if (isset($_SESSION['identity'])) {
+      $_SESSION['identity'] = null;
+      unset($_SESSION['identity']);
+    }
+    header('Location: ' . baseUrl);
+  }
+
+  public function updatePass()
+  {
+    if (isset($_POST) && !empty($_POST['newPass']) && !empty($_POST['newPassC'])) {
+      $newPass = $_POST['newPass'];
+      $newPassC = $_POST['newPassC'];
+      if ($newPass == $newPassC) {
+        $u = new Usuario();
+        $u->setId($_SESSION['identity']->idusuarios);
+        $u->setPass($newPass);
+        $r = $u->updatePass();
+        if ($r) {
+          $_SESSION['passUpdated'] = true;
+          $this->logout();
+        } else {
+          echo 'Algun Error Pendejo';
+        }
+      } else {
+        header('Location: ' . baseUrl . 'usuario/index');
+      }
+    }
+    die();
   }
 }

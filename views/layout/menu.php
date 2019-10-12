@@ -89,7 +89,6 @@
       <a href="<?= baseUrl; ?>usuario/lang&lang=<?= lang; ?>" class="btn btn-<?= color; ?>" role="button">
         <i class="fas fa-globe-americas"></i> <span id="btnLang"><?= idioma; ?></span>
       </a>
-      <a class="btn btn-outline-danger" role="button" href="<?= baseUrl; ?>usuario/logout"><i class="fas fa-door-open"></i> <?= salir ?></a>
     </div>
   </div>
 </nav>

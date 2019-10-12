@@ -5,14 +5,10 @@ require_once 'autoload.php';
 require_once 'config/parameters.php';
 // Cargamos helpers :v
 require_once 'helpers/utils.php';
-
-if (isset($_SESSION['lang']) && $_SESSION['lang'] == 'es') {
-  require_once 'assets/lang/es.php';
-} elseif (isset($_SESSION['lang']) && $_SESSION['lang'] == 'en') {
-  require_once 'assets/lang/en.php';
-} else {
-  require_once 'assets/lang/en.php';
-}
+// Cargamos las variables dependiendo del Idioma
+Utils::callLanguaje();
+// Cargamos el Header.php
+Utils::traerHeader();
 
 // Mostrar Error 404
 function showError()
@@ -42,16 +38,11 @@ if (class_exists($nombreController)) {
   if (isset($_GET['action']) && method_exists($controller, $_GET['action'])) {
     // Guardamos el action
     $action = $_GET['action'];
+    // Verificar si esta logeado antes de ejecutar cualquier peticion
+    Utils::verifySession();
     // Ejecutar peticion
-    if ($action != 'olvidoPass') {
-      Utils::verifySession();
-    }
-    if (!($action == 'pdf' || $action == 'PDFFecha')) {
-      require_once 'views/layout/header.php';
-    }
     $controller->$action();
   } elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
-    require_once 'views/layout/header.php';
     $actionDefault = actionDefault;
     $controller->$actionDefault();
   } else {

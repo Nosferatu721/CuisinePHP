@@ -146,12 +146,25 @@ class Usuario
     return $result;
   }
 
+  // Actualizar Usuario
   public function update()
   {
     $sql = "UPDATE usuarios SET nombre='{$this->getNombre()}', apellido='{$this->getApellido()}', email='{$this->getEmail()}', contrasena='{$this->getPass()}', cargo_idcargo='{$this->getCargo()}', restaurante_idrestaurante='{$this->getRestaurante()}' WHERE idusuarios='{$this->id}'";
     $update = $this->db->query($sql);
     $result = false;
     if ($update) {
+      $result = true;
+    }
+    return $result;
+  }
+
+  // Cambiar Contraseña
+  public function updatePASS()
+  {
+    $sql = "UPDATE usuarios SET contrasena='{$this->getPass()}' WHERE idusuarios='{$this->id}'";
+    $updatePASS = $this->db->query($sql);
+    $result = false;
+    if ($updatePASS) {
       $result = true;
     }
     return $result;
@@ -206,7 +219,7 @@ class Usuario
   // Exist
   public function exist()
   {
-    $sql = "SELECT * FROM usuarios WHERE nombre = '{$this->getNombre()}' OR email = '{$this->getEmail()}';";
+    $sql = "SELECT * FROM usuarios WHERE email = '{$this->getEmail()}';";
     $r = $this->db->query($sql);
     return $r;
   }

@@ -10,10 +10,32 @@ class Utils
     return $name;
   }
 
+  public static function callLanguaje()
+  {
+    if (isset($_SESSION['lang']) && $_SESSION['lang'] == 'es') {
+      require_once 'assets/lang/es.php';
+    } elseif (isset($_SESSION['lang']) && $_SESSION['lang'] == 'en') {
+      require_once 'assets/lang/en.php';
+    } else {
+      require_once 'assets/lang/es.php';
+    }
+  }
+  
+  public static function traerHeader()
+  {
+    $action = isset($_GET['action']) ? $_GET['action']: '';
+    if (!($action == 'pdf' || $action == 'PDFFecha')) {
+      require_once 'views/layout/header.php';
+    }
+  }
+
   public static function verifySession()
   {
     if (!isset($_SESSION['identity'])) {
-      header('Location: ' . baseUrl);
+      $action = $_GET['action'];
+      if ($action != 'olvidoPass') {
+        header('Location: ' . baseUrl);
+      }
     }
   }
 
@@ -38,8 +60,7 @@ class Utils
   // Alerts
   public static function alerta($color, $texto, $icon = '')
   {
-    echo '
-      <div class="alert alert-secondary  text-' . $color . ' p-1 text-center animated zoomIn faster" role="alert">'
+    echo '<div class="alert alert-secondary  text-' . $color . ' p-1 text-center animated zoomIn faster" role="alert">'
       . $texto . ' <i class="' . $icon . '"></i></div>';
   }
 }

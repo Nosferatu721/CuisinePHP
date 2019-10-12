@@ -19,6 +19,8 @@
                   <?= Utils::alerta('danger', vacios) ?>
                 <?php elseif (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'Enviado') : ?>
                   <?= Utils::alerta('success', sendEmail, 'fas fa-envelope-open-text') ?>
+                <?php elseif (isset($_SESSION['passUpdated'])) : ?>
+                  <?= Utils::alerta('info', 'Contraseña Cambiada - Ingrese Por Favor', 'fas fa-redo-alt') ?>
                 <?php elseif (isset($_SESSION['login']) && $_SESSION['login'] == 'Inactivo') : ?>
                   <?= Utils::alerta('primary', inactivo, 'fas fa-user-times') ?>
                 <?php else : ?>
@@ -26,6 +28,7 @@
                 <?php endif; ?>
                 <?php Utils::deleteSession('login') ?>
                 <?php Utils::deleteSession('recuperar') ?>
+                <?php Utils::deleteSession('passUpdated') ?>
                 <form action="<?= baseUrl; ?>usuario/logear" method="POST">
                   <div class="form-label-group">
                     <input type="text" id="id" name="id" class="form-control" placeholder="Code User">
