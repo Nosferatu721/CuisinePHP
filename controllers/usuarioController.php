@@ -1,6 +1,6 @@
 <?php
 require_once 'models/usuario.php';
-class usuarioController
+class UsuarioController
 {
   public function index()
   {
@@ -208,6 +208,24 @@ class usuarioController
     }
   }
 
+  // Tema
+  public static function theme()
+  {
+    if (isset($_GET['t']) && $_GET['t'] != '') {
+      $tema = $_GET['t'];
+      if ($tema == 'light') {
+        $_SESSION['theme'] = $tema;
+      } elseif ($tema == 'dark') {
+        $_SESSION['theme'] = $tema;
+      } else {
+        $_SESSION['theme'] = themeDefault;
+      }
+      header('Location: ' . baseUrl . 'usuario/index');
+    } else {
+      header('Location: ' . baseUrl . 'error/index');
+    }
+  }
+
   public function logout()
   {
     if (isset($_SESSION['identity'])) {
@@ -236,7 +254,8 @@ class usuarioController
       } else {
         header('Location: ' . baseUrl . 'usuario/index');
       }
+    } else {
+      header('Location: ' . baseUrl . 'usuario/index');
     }
-    die();
   }
 }

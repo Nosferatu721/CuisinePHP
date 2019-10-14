@@ -21,6 +21,17 @@ class Utils
     }
   }
   
+  public static function defineTheme()
+  {
+    if (isset($_SESSION['theme']) && $_SESSION['theme'] == 'light') {
+      define('theme', 'light');
+    } elseif (isset($_SESSION['theme']) && $_SESSION['theme'] == 'dark') {
+      define('theme', 'dark');
+    } else {
+      define('theme', 'light');
+    }
+  }
+  
   public static function traerHeader()
   {
     $action = isset($_GET['action']) ? $_GET['action']: '';

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light navbar-expand-lg shadow container my-2">
+<nav class="navbar navbar-<?= theme == 'light' ? 'light' : 'dark' ?> bg-<?= theme == 'light' ? 'light' : 'dark' ?> navbar-expand-lg shadow container my-2">
   <span class="navbar-brand mb-0 h1"><i class="fas fa-angle-double-down"></i></span>
   <button class="navbar-toggler btn-outline-danger" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -86,8 +86,11 @@
       </li>
     </ul>
     <div class="btn-group" role="group">
-      <a href="<?= baseUrl; ?>usuario/lang&lang=<?= lang; ?>" class="btn btn-<?= color; ?>" role="button">
+      <a href="<?= baseUrl; ?>usuario/lang&lang=<?= lang; ?>" class="btn btn-outline-dark" role="button">
         <i class="fas fa-globe-americas"></i> <span id="btnLang"><?= idioma; ?></span>
+      </a>
+      <a href="<?= baseUrl; ?>usuario/theme&t=<?= theme == 'light' ? 'dark' : 'light' ?>" class="btn btn-dark" role="button">
+        <i class="<?= theme == 'light' ? 'far fa-moon' : 'fas fa-sun' ?>"></i>
       </a>
     </div>
   </div>

@@ -45,7 +45,7 @@ class Venta
   public function find()
   {
     // Crear Sentencia
-    $sql = "SELECT * FROM venta WHERE restaurante_idrestaurante={$_SESSION['identity']->idrestaurante}";
+    $sql = "SELECT idventa, fechaVenta, (SELECT count(*) FROM venta_has_producto WHERE idventa = venta_has_producto.venta_idventa) AS PVendidos FROM venta WHERE restaurante_idrestaurante = {$_SESSION['identity']->idrestaurante}";
     // Enviamos La Sentencia
     $result = $this->db->query($sql);
     return $result;

@@ -5,6 +5,9 @@ require_once 'autoload.php';
 require_once 'config/parameters.php';
 // Cargamos helpers :v
 require_once 'helpers/utils.php';
+
+// Definir tema del SI
+Utils::defineTheme();
 // Cargamos las variables dependiendo del Idioma
 Utils::callLanguaje();
 // Cargamos el Header.php

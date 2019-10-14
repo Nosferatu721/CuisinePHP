@@ -4,7 +4,6 @@ define('idioma', 'SPANISH');
 define('lang', 'es');
 define('color', 'secondary');
 define('salir', 'Logout');
-define('theme', 'cosmo');
 
 // Roles
 define('admin', 'Administrator');

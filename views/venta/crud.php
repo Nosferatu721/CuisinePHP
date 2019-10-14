@@ -21,15 +21,15 @@
 			<div class="col-md-4 d-flex justify-content-center">
 				<div class="card mb-3 border-0">
 					<div class="card-header font-italic text-center bg-secondary text-danger">
-
 						<span class="titulo text-success"><?= newSale ?></span>
 					</div>
-					<form action="<?= baseUrl ?>venta/registrar" method="POST">
-
-						<div class="p-2 border-top">
-							<input type="submit" class="btn btn-outline-success btn-block" id="enviar" value="<?= regisVen ?>">
-						</div>
-					</form>
+					<div class="card-body">
+						<form action="<?= baseUrl ?>venta/registrar" method="POST">
+							<div class="p-2 border-top">
+								<input type="submit" class="btn btn-outline-success btn-block" id="enviar" value="<?= regisVen ?>">
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-8">
@@ -39,6 +39,7 @@
 						<tr class="font-italic">
 							<th scope="col">ID</th>
 							<th scope="col"><?= saleDate ?></th>
+							<th scope="col">Productos Vendidos</th>
 							<th scope="col"><?= saleAction ?></th>
 						</tr>
 					</thead>
@@ -48,8 +49,9 @@
 							<tr>
 								<th scope="row"><?= $v->idventa; ?></th>
 								<td><?= $v->fechaVenta; ?></td>
+								<td><?= $v->PVendidos; ?></td>
 								<td class="d-flex justify-content-around border border-light">
-									<a href="<?= baseUrl; ?>ventaHP/ver&id=<?= $v->idventa; ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> <?= saleView ?></a>
+									<a href="<?= baseUrl; ?>ventaHP/ver&id=<?= $v->idventa; ?>" class="btn btn-outline-danger btn-sm"><i class="fas fa-search"></i> <?= saleView ?></a>
 								</td>
 							</tr>
 						<?php endwhile; ?>
@@ -85,6 +87,7 @@
 
 	<script type="text/javascript" src="<?= baseUrl; ?>assets/js/tablas.js"></script>
 	<script src="<?= baseUrl; ?>assets/js/validacionRestaurante.js"></script>
+	<script src="<?= baseUrl; ?>assets/js/validarFechasPDF.js"></script>
 
 </body>
 
