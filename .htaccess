@@ -1,12 +1,12 @@
 <IfModule mod_rewrite.c>
 
- # Activar Rewrite
- RewriteEngine on
- ErrorDocument 404 http://localhost/Nueva/error/index
+# Activar Rewrite
+RewriteEngine on
+ErrorDocument 404 http://localhost/Nueva/error/index
 
- RewriteCond %{SCRIPT_FILENAME} !-d
- RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
 
- RewriteRule ^(.*)/(.*) index.php?controller=$1&action=$2
+RewriteRule ^(.*)/(.*) index.php?controller=$1&action=$2
 
 </IfModule>

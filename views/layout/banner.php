@@ -27,6 +27,10 @@
       <div class="modal-body py-2">
         <form action="<?= baseUrl ?>usuario/updatePass" method="POST">
           <div class="form-label-group">
+            <label for="passOld" class="my-1">Contraseña Actual</label>
+            <input type="text" id="passOld" name="passOld" class="form-control">
+          </div>
+          <div class="form-label-group">
             <label for="newPass" class="my-1">Contraseña Nueva</label>
             <input type="text" id="newPass" name="newPass" class="form-control">
           </div>

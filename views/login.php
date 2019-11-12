@@ -4,13 +4,13 @@
 <body class="animated fadeIn faster">
   <div class="container-fluid">
     <div class="row no-gutter">
-      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image imagen"></div>
-      <div class="col-md-8 col-lg-6 elForm">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image imagen" style="box-shadow: 1px 0px 10px <?= theme == 'light' ? 'black' : 'gray' ?>"></div>
+      <div class="col-md-8 col-lg-6 elForm" style="background: <?= theme == 'light' ? 'white' : 'black' ?>">
         <div class="login d-flex align-items-center py-5">
           <div class="container">
             <div class="row">
               <div class="col-md-9 col-lg-8 mx-auto">
-                <h3 class="login-heading mb-4"><?= titulo; ?></h3>
+                <h3 class="login-heading mb-4 <?= theme == 'light' ? 'text-dark' : 'text-light' ?>"><?= titulo; ?></h3>
                 <?php if (isset($_SESSION['login']) && $_SESSION['login'] == 'ErrorDatos') : ?>
                   <?= Utils::alerta('danger', notExists, 'fas fa-poo') ?>
                 <?php elseif (isset($_SESSION['login']) && $_SESSION['login'] == 'ErrorPass') : ?>
@@ -20,11 +20,11 @@
                 <?php elseif (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'Enviado') : ?>
                   <?= Utils::alerta('success', sendEmail, 'fas fa-envelope-open-text') ?>
                 <?php elseif (isset($_SESSION['passUpdated'])) : ?>
-                  <?= Utils::alerta('info', 'Contraseña Cambiada - Ingrese Por Favor', 'fas fa-redo-alt') ?>
+                  <?= Utils::alerta('primary', 'Contraseña Cambiada - Ingrese Por Favor', 'fas fa-redo-alt') ?>
                 <?php elseif (isset($_SESSION['login']) && $_SESSION['login'] == 'Inactivo') : ?>
                   <?= Utils::alerta('primary', inactivo, 'fas fa-user-times') ?>
                 <?php else : ?>
-                  <hr>
+                  <hr class="border-secondary">
                 <?php endif; ?>
                 <?php Utils::deleteSession('login') ?>
                 <?php Utils::deleteSession('recuperar') ?>
@@ -34,7 +34,6 @@
                     <input type="text" id="id" name="id" class="form-control" placeholder="Code User">
                     <label for="id"><i class="fab fa-keycdn"></i> <?= codigo; ?></label>
                   </div>
-
                   <div class="form-label-group">
                     <input type="password" id="pass" name="pass" class="form-control" placeholder="Password">
                     <label for="pass"><i class="fas fa-fingerprint"></i> <?= pass; ?></label>
@@ -47,7 +46,7 @@
                   <button type="submit" class="btn btn-outline-primary btn-block"><i class="fas fa-person-booth"></i> <?= btnIngresar; ?></button>
                 </form>
                 <div class="alert text-center alert-secondary p-0 mt-3 shadow" role="alert">
-                  <a href="<?= baseUrl; ?>usuario/olvidoPass" style="color: red"><?= btnOlvidoPass; ?></a>
+                  <a href="<?= baseUrl; ?>usuario/olvidoPass" class="text-danger"><?= btnOlvidoPass; ?></a>
                 </div>
               </div>
             </div>

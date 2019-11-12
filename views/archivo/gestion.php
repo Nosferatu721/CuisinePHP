@@ -28,6 +28,7 @@
     <?php Utils::deleteSession('save') ?>
     <?php Utils::deleteSession('delete') ?>
     <?php Utils::deleteSession('notData') ?>
+    <!-- Formulario Para Subir Archivos -->
     <form action="<?= baseUrl; ?>archivo/registrar" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="form-label-group col-12 col-lg-6 py-2">
@@ -44,6 +45,7 @@
       </div>
     </form>
     <hr>
+    <!-- Tabla de Documentos -->
     <table class="table table-bordered table-hover" id="tabla">
       <caption class="text-center">Lista De Documentos</caption>
       <thead class="table-dark">
@@ -60,27 +62,34 @@
           <tr>
             <th scope="row"><?= $doc->idArchivo; ?></th>
             <td><?= $doc->descripcion; ?></td>
-            <td><?= $doc->document; ?></td>
+            <td>
+              <div class="d-flex justify-content-between">
+                <?= $doc->document; ?>
+                <a href="<?= baseUrl ?>dist/public/<?= $doc->document; ?>" class="btn btn-outline-success btn-sm" target="mostrar"><i class="far fa-eye"></i></a>
+              </div>
+            </td>
             <td><?= $doc->idUser == $_SESSION['identity']->idusuarios ? 'Yo' : $doc->nombre . ' ' . $doc->apellido ?></td>
-            <td class="d-flex justify-content-around border border-light">
-              <!-- Boton Eliminar -->
-              <button class="btn btn-outline-<?= $doc->idUser == $_SESSION['identity']->idusuarios ? 'danger' : 'dark' ?> btn-sm" data-toggle="modal" <?= $doc->idUser == $_SESSION['identity']->idusuarios ? '' : 'disabled' ?> data-target=".modal<?= $doc->idArchivo ?>"> <?= eliminar ?> <i class="far fa-trash-alt"></i></button>
-              <!-- Modal Eliminar -->
-              <div class="modal fade modal<?= $doc->idArchivo ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalCenterTitle"><?= confirmar ?></h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      Desea eliminar el archivo?
-                    </div>
-                    <div class="modal-footer p-2">
-                      <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal"><?= cancelar ?></button>
-                      <a href="<?= baseUrl; ?>archivo/eliminar&id=<?= $doc->idArchivo; ?>" class="btn btn-outline-danger btn-sm"> <?= eliminar ?> <i class="fas fa-exchange-alt"></i></a>
+            <td>
+              <div class="d-flex justify-content-center">
+                <!-- Boton Eliminar -->
+                <button class="btn btn-outline-<?= $doc->idUser == $_SESSION['identity']->idusuarios ? 'danger' : 'dark' ?> btn-sm" data-toggle="modal" <?= $doc->idUser == $_SESSION['identity']->idusuarios ? '' : 'disabled' ?> data-target=".modal<?= $doc->idArchivo ?>"> <?= eliminar ?> <i class="far fa-trash-alt"></i></button>
+                <!-- Modal Eliminar -->
+                <div class="modal fade modal<?= $doc->idArchivo ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle"><?= confirmar ?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Desea eliminar el archivo?
+                      </div>
+                      <div class="modal-footer p-2">
+                        <button type="button" class="btn btn-dark btn-sm" data-dismiss="modal"><?= cancelar ?></button>
+                        <a href="<?= baseUrl; ?>archivo/eliminar&id=<?= $doc->idArchivo; ?>" class="btn btn-outline-danger btn-sm"> <?= eliminar ?> <i class="far fa-trash-alt"></i></a>
+                      </div>
                     </div>
                   </div>
                 </div>

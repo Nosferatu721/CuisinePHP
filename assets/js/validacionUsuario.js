@@ -13,7 +13,8 @@ if (txt == 'INGLES') {
   var Nombre = 'Nombre Erroneo';
   var Apellido = 'Apellido Erroneo';
   var Correo = 'Correo Erroneo';
-  var Contraseña = 'Contraseña Erroneo';
+  var Contraseña = 'Contraseña Erronea';
+  var ContraseñaMin = 'Contraseña: Mínimo 5 Caracteres';
 } else {
   var Rol = 'Choose Position';
   var Restaurante = 'Choose restaurant';
@@ -21,6 +22,7 @@ if (txt == 'INGLES') {
   var Apellido = 'Worng Last Name';
   var Correo = 'Worng Mail';
   var Contraseña = 'Worng Password';
+  var ContraseñaMin = 'Password: 5 characters minimum';
 }
 //Formato Correo
 var expresion = /\w+@\w+\.+[a-z]/;
@@ -53,6 +55,9 @@ function validarPass() {
   var elemento = document.getElementById("pass");
   if (elemento.value == "") {
     alertica(Contraseña);
+    return false;
+  } else if (elemento.textLength <= 4) {
+    alertica(ContraseñaMin);
     return false;
   }
   return true;
@@ -94,7 +99,7 @@ function alertica(mensaje) {
   });
   Toast.fire({
     type: 'error',
-    title: '<span style="color: white">' + mensaje + '</span>',
-    background: 'rgba(0,0,0,0.8)'
+    title: '<span style="color: white; font-weight: 300; font-size: 14px;">' + mensaje + '</span>',
+    background: 'rgba(0,0,0,0.9)'
   });
 }

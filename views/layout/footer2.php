@@ -1,9 +1,5 @@
-<footer>
-  <div class="bg-dark text-light p-3 text-center">
-    Todos los derechos Reservados &copy; <?= date('d - m - Y') ?>
-  </div>
-</footer>
-
+<!-- JS -->
+<script src="<?= baseUrl ?>assets/js/validarPass.js"></script>
 <!-- El Pooper -->
 <script src="<?= baseUrl ?>assets/js/popper.min.js"></script>
 <!-- Bootstrap JS -->

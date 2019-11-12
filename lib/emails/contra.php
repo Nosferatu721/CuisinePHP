@@ -19,14 +19,14 @@ try {
   $mail->Host = 'smtp.gmail.com';
   $mail->SMTPAuth = true;
 
-  $mail->Username = 'cuisinesoftpro@gmail.com';
+  $mail->Username = 'elkintorres721@gmail.com';
   $mail->Password = 'Nosferatu72121';
 
   $mail->SMTPSecure = 'tls';
   $mail->Port = 587;
 
   // Mensaje pa enviar
-  $mail->setFrom('cuisinesoftpro@gmail.com', 'CuisineSoft');
+  $mail->setFrom('elkintorres721@gmail.com', 'CuisineSoft');
   $mail->addAddress($email);
 
   $mail->isHTML(true);

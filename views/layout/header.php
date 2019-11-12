@@ -15,9 +15,16 @@
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/<?= theme == 'light' ? 'lumen' : 'cyborg' ?>/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/<?= theme == 'light' ? 'lumen' : 'darkly' ?>/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="<?= baseUrl; ?>assets/bootstrap/css/bootstrap.min.css"> -->
   <!-- Jquery -->
   <script src="<?= baseUrl ?>assets/js/jquery-3.3.1.min.js"></script>
   <link rel="stylesheet" href="<?= baseUrl; ?>assets/css/styleAll.css">
   <title>CuisineSoft</title>
+  <?php if (theme != 'light') : ?>
+    <style>
+      .card-body {
+        background: #0000004d;
+      }
+    </style>
+  <?php endif; ?>

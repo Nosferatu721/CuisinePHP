@@ -237,19 +237,24 @@ class UsuarioController
 
   public function updatePass()
   {
-    if (isset($_POST) && !empty($_POST['newPass']) && !empty($_POST['newPassC'])) {
+    if (isset($_POST) && !empty($_POST['passOld']) && !empty($_POST['newPass']) && !empty($_POST['newPassC'])) {
+      $passOld = $_POST['passOld'];
       $newPass = $_POST['newPass'];
       $newPassC = $_POST['newPassC'];
-      if ($newPass == $newPassC) {
-        $u = new Usuario();
-        $u->setId($_SESSION['identity']->idusuarios);
-        $u->setPass($newPass);
-        $r = $u->updatePass();
-        if ($r) {
-          $_SESSION['passUpdated'] = true;
-          $this->logout();
+      if ($passOld == $_SESSION['identity']->contrasena) {
+        if ($newPass == $newPassC) {
+          $u = new Usuario();
+          $u->setId($_SESSION['identity']->idusuarios);
+          $u->setPass($newPass);
+          $r = $u->updatePass();
+          if ($r) {
+            $_SESSION['passUpdated'] = true;
+            $this->logout();
+          } else {
+            echo 'Algun Error Pendejo';
+          }
         } else {
-          echo 'Algun Error Pendejo';
+          header('Location: ' . baseUrl . 'usuario/index');
         }
       } else {
         header('Location: ' . baseUrl . 'usuario/index');

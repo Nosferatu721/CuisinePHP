@@ -52,7 +52,7 @@
 				</div>
 			</div>
 			<div class="col-md-8">
-				<table class="table table-bordered table-hover" id="tabla">
+				<table class="table table-responsive-sm table-bordered table-hover" id="tabla">
 					<caption class="text-center"><?= tittleTableProducto ?></caption>
 					<thead class="table-dark">
 						<tr class="font-italic">
@@ -64,7 +64,6 @@
 						</tr>
 					</thead>
 					<tbody>
-
 						<?php $v = VentaHPController::getAll($_GET['id']) ?>
 						<?php while ($venHP = $v->fetch_object()) : ?>
 							<tr>

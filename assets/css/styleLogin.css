@@ -4,28 +4,31 @@
 }
 
 .elForm{
-  background: white;
+  /* background: white; */
   color: rgb(73, 72, 72);
 }
+
 .login{
   min-height: 100vh;
   z-index: 2;
 }
+
 .imagen{
-  box-shadow: 1px 0px 10px black;
   z-index: 1;
 }
+
 .bg-image {
   background-image: url(../img/Pantheon.jpg);
   background-size: cover;
   background-position: center;
   transition: filter 3s;
-  
 }
+
 .bg-image:hover{
   filter: grayscale(80%);
   transition: 0.5s;
 }
+
 .login-heading {
   text-align: center;
   font-family: 'Pacifico', cursive;
@@ -68,10 +71,6 @@
   border: 1px solid transparent;
   border-radius: .25rem;
   transition: all .1s ease-in-out;
-}
-
-form > button{
-  text-shadow: 1px 3px 2px rgb(173, 173, 173);
 }
 
 .form-label-group>input:hover{

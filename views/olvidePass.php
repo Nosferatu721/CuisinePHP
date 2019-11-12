@@ -4,13 +4,13 @@
 <body class="animated fadeIn faster">
   <div class="container-fluid">
     <div class="row no-gutter">
-      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image imagen"></div>
-      <div class="col-md-8 col-lg-6 elForm">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image imagen" style="box-shadow: 1px 0px 10px <?= theme == 'light' ? 'black' : 'gray' ?>"></div>
+      <div class="col-md-8 col-lg-6 elForm" style="background: <?= theme == 'light' ? 'white' : 'black' ?>;">
         <div class="login d-flex align-items-center py-5">
           <div class="container">
             <div class="row">
               <div class="col-md-9 col-lg-8 mx-auto">
-                <h3 class="login-heading mb-4"><?= tituloRecuperarPass; ?></h3>
+                <h3 class="login-heading mb-4 <?= theme == 'light' ? 'text-dark' : 'text-ligth' ?>"><?= tituloRecuperarPass; ?></h3>
                 <?php if (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'ErrorDatos') : ?>
                   <?= Utils::alerta('danger', notExists, 'fas fa-poo') ?>
                 <?php elseif (isset($_SESSION['recuperar']) && $_SESSION['recuperar'] == 'Vacios') : ?>
@@ -30,7 +30,7 @@
                     <label class="custom-control-label" for="customCheck1">Recordarme</label>
                   </div> -->
                   <div class="row">
-                    <a href="<?= baseUrl; ?>" class="btn btn-outline-dark col-3"><i class="fas fa-arrow-left"></i> <?= regresar; ?></a>
+                    <a href="<?= baseUrl; ?>" class="btn btn-outline-dark col-3"><i class="fas fa-arrow-left"></i></a>
                     <button type="submit" class="btn btn-outline-success btn-block col-9"><i class="far fa-paper-plane"></i> <?= btnEnviarEmail; ?></button>
                   </div>
                 </form>

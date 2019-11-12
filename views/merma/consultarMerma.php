@@ -104,7 +104,6 @@
         <button type="submit" id="generarPDF" class="btn btn-outline-danger"><?= generarPDF ?> <i class="fas fa-file-pdf"></i></button>
       </div>
     </form>
-
     <hr>
     <div id="container" style="height: 400px" class="my-3"></div>
   </div>
