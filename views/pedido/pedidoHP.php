@@ -8,9 +8,10 @@
   <?php require_once 'views/layout/banner.php'; ?>
   <!-- ------------- Nav ------------- -->
   <?php require_once 'views/layout/menu.php'; ?>
+  <?php require_once 'controllers/productoController.php'; ?>
 
   <div class="container">
-    <p class="titulo">Control de Pedido</p>
+	  <p class="titulo"> <?=controlped?></p>
     <?php if (isset($_SESSION['save']) && $_SESSION['save'] == 'Registrado') : ?>
       <?= Utils::alerta('success', 'Producto Añadido Al Pedido Exitosamente', 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'Eliminado') : ?>
@@ -26,7 +27,7 @@
       <div class="col-md-4 d-flex justify-content-center">
         <div class="card mb-3 border-0">
           <div class="card-header font-italic text-center bg-secondary text-danger">
-            <span class="titulo text-success">Nuevo Producto en Pedido <b><?= $_GET['id'] ?></b></span>
+	    <span class="titulo text-success"><?=newprodped?> <b><?= $_GET['id'] ?></b></span>
           </div>
           <div class="card-body">
             <form action="<?= baseUrl ?>pedidoHP/registrar&id=<?= $_GET['id']; ?>" method="POST">
@@ -41,11 +42,11 @@
                 </select>
               </div>
               <div class="form-label-group p-2">
-                <label for="cantidad">Cantidad Pedida</label>
+	      <label for="cantidad"><?=cantidad?></label>
                 <input type="text" id="cantidad" name="cantidad" class="form-control">
               </div>
               <div class="p-2 border-top">
-                <input type="submit" class="btn btn-outline-success btn-block" id="enviar" value="Agregar a pedido">
+	      <input type="submit" class="btn btn-outline-success btn-block" id="enviar" value="<?=addPed?>">
               </div>
             </form>
           </div>
@@ -89,7 +90,7 @@
           plotShadow: false
         },
         title: {
-          text: 'Productos En El Pedido'
+	text: '<?=prodped?>'
         },
         tooltip: {
           pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

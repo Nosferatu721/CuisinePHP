@@ -6,6 +6,7 @@
   <?php require_once 'views/layout/banner.php'; ?>
   <!-- ------------- Nav ------------- -->
   <?php require_once 'views/layout/menu.php'; ?>
+  <?php require_once 'controllers/productoController.php'; ?>
 
   <div class="container">
     <p class="titulo"><?= tittleProducto ?></p>
@@ -107,47 +108,6 @@
 
     <div id="container2" style="height: 400px" class="my-3"></div>
 
-    <script type="text/javascript">
-      $(function() {
-        $('#container2').highcharts({
-          chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false
-          },
-          title: {
-            text: 'Stock del Restaurante'
-          },
-          tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-          },
-          plotOptions: {
-            pie: {
-              allowPointSelect: true,
-              cursor: 'pointer',
-              dataLabels: {
-                enabled: true,
-                style: {
-                  color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                }
-              }
-            }
-          },
-          series: [{
-            type: 'pie',
-            name: 'Cantidad',
-            data: [
-              <?php
-              foreach ($p as $pr) {
-                ?>['<?= $pr['nombreProducto'] ?>', <?= $pr['precioProducto'] ?>],
-              <?php
-              }
-              ?>
-            ]
-          }]
-        });
-      });
-    </script>
 
   </div>
 

@@ -82,11 +82,11 @@
 
     <form action="<?= baseUrl; ?>stock/PDFFecha" method="POST" target="black" class="row justify-content-around">
       <div class="form-label-group col-3">
-        <label for="fechaInicial">Fech Inicial </label>
+      <label for="fechaInicial"><?=fechai?> </label>
         <input type="date" id="fechaInicial" name="fechaInicial" class="form-control">
       </div>
       <div class="form-label-group col-3">
-        <label for="fechaFinal">Fecha Final </label>
+      <label for="fechaFinal"><?=fechaf?> </label>
         <input type="date" id="fechaFinal" name="fechaFinal" class="form-control">
       </div>
       <div class="d-flex align-items-center">
@@ -113,7 +113,7 @@
           }
         },
         title: {
-          text: 'Productos en el Restaurante'
+	text: '<?=prodpdf?>'
         },
         plotOptions: {
           column: {
@@ -140,7 +140,7 @@
           }
         },
         series: [{
-          name: 'Productos',
+	name: '<?=productos?>',
           data: [
             <?php
             foreach ($sto as $p) {
@@ -167,7 +167,7 @@
           plotShadow: false
         },
         title: {
-          text: 'Stock del Restaurante'
+	text: '<?=stockpdf?>'
         },
         tooltip: {
           pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -186,7 +186,7 @@
         },
         series: [{
           type: 'pie',
-          name: 'Cantidad',
+		  name: '<?=cantidad?>',
           data: [
             <?php
             foreach ($sto as $p) {

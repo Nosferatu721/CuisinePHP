@@ -93,7 +93,7 @@ class Merma
   //Registrar
   public function save()
   {
-    $sql = "INSERT INTO merma VALUES (NULL, '{$this->getCantidad()}', '{$this->getPerdida()}', CURDATE(), '{$this->getMotivo()}', '{$this->getIdTipoMerma()}', {$_SESSION['identity']->idrestaurante}, '{$this->getIdProducto()}')";
+    $sql = "CALL insertUpdmerma ('{$this->getCantidad()}', '{$this->getPerdida()}','{$this->getMotivo()}', '{$this->getIdTipoMerma()}', {$_SESSION['identity']->idrestaurante}, '{$this->getIdProducto()}')";
     $saved = $this->db->query($sql);
     $result = false;
     if ($saved) {
@@ -115,7 +115,7 @@ class Merma
   // Eliminar
   public function delete()
   {
-    $sql = "DELETE FROM merma WHERE idmerma = '{$this->idMerma}'";
+    $sql = "CALL deleteUpdmerma ({$this->idMerma})";
     $delete = $this->db->query($sql);
     $result = false;
     if ($delete) {

@@ -8,6 +8,7 @@
 	<?php require_once 'views/layout/banner.php'; ?>
 	<!-- ------------- Nav ------------- -->
 	<?php require_once 'views/layout/menu.php'; ?>
+        <?php require_once 'controllers/productoController.php'; ?>
 
 	<div class="container">
 		<p class="titulo"><?= sales ?></p>
@@ -99,7 +100,7 @@
 					}
 				},
 				title: {
-					text: 'Productos en la Venta'
+				text: '<?=prodvenpdf?>'
 				},
 				plotOptions: {
 					column: {
@@ -122,11 +123,11 @@
 				},
 				yAxis: {
 					title: {
-						text: 'Cantidad'
+					text: '<?=cantidad?>'
 					}
 				},
 				series: [{
-					name: 'Productos',
+				name: '<?=productos?>',
 					data: [
 						<?php
 						foreach ($v as $vHP) {
@@ -154,7 +155,7 @@
 					}
 				},
 				title: {
-					text: 'Productos Venta Vs Proyección'
+				text: '<?=proyvsprod?>'
 				},
 				plotOptions: {
 					column: {
@@ -173,11 +174,11 @@
 				},
 				yAxis: {
 					title: {
-						text: 'Cantidad'
+					text: '<?=cantidad?>'
 					}
 				},
 				series: [{
-						name: 'Venta',
+				name: '<?=sale?>',
 						data: [
 							<?php
 							foreach ($v as $vHP) {
@@ -188,7 +189,7 @@
 						]
 					},
 					{
-						name: 'Proyeccion',
+						name: '<?=proy?>',
 						data: [
 							<?php
 							foreach ($v as $vHP) {

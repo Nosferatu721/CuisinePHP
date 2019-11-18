@@ -228,13 +228,51 @@ define('prodSale', 'Sale Products');
 define('conSale', 'View Sales');
 define('otro', 'Other');
 define('addSale', 'Add To Sale');
+define('prodven', 'Sold Products');
 
 
 
 
-//TODO:Variables Pedido
+//Variables Pedido
 define('pedido', 'Orders');
 define('viewOrd', 'View Orders');
+define('controlped', 'Orders Control');
+define('nuevoped', 'New Order');
+define('listped', 'Orders List');
+define('idped', 'Order ID');
+define('fechaped', 'Order Date');
+define('crearped', 'Create Order');
+define('newprodped', 'Add New Product To Order');
+define('addPed', 'Add To Order');
+define('proped', 'Products On Order');
 
-//TODO: Archivos
+//Archivos
 define('subir', 'Upload Files');
+define('controlfile', 'File Control');
+define('fileup', 'File Uploaded.');
+define('filedel', 'File Deleted.');
+define('nodel', 'File can\'t be deleted.');
+define('filerep', 'File already uploaded.');
+define('noext', 'Review file extension.');
+define('selectfile', 'Browse File');
+define('listfile', 'File List');
+define('descr', 'File Description');
+define('subidopor', 'Uploaded By');
+define('filename', 'Filename');
+//Texto pagina principal
+define('text1','What started in a few tables made by himself with his carpenter skills, a handmade sign, the sun, the mooon, and a star,it became little by little with initiative
+            ,
+            talent and strenght, in an universe that shines and give warm with own fire.');
+define('especial','Month Specials');
+define('espec1','Sweet And Sour Pork');
+define('espec2','Ceviche');
+
+
+//PDF var
+define('fechai','Start Date');
+define('fechaf','End Date');
+define('prodpdf','Products On Stock');
+define('stockpdf','Restaurant Stock');
+define('prodvenpdf','Sold Products');
+define('proyvsprod','Products VS Proyection');
+define('proy','Projection');

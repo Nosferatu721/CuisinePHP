@@ -26,8 +26,6 @@
           </a>
           <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
             <a class="dropdown-item" href="<?= baseUrl; ?>producto/gestion"><?= registrarProduct; ?></a>
-            <div class="dropdown-divider border-warning"></div>
-            <a class="dropdown-item" href="#"><?= otro ?></a>
           </div>
         </li>
       <?php elseif ($_SESSION['identity']->nombreCargo == 'Jefe de Cocina') : ?>
@@ -38,8 +36,6 @@
           <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
             <a class="dropdown-item" href="<?= baseUrl; ?>stock/consultar"><?= consultStock ?></a>
             <a class="dropdown-item" href="<?= baseUrl; ?>stock/registro"><?= registrarStock ?></a>
-            <div class="dropdown-divider border-warning"></div>
-            <a class="dropdown-item" href="#"><?= otro ?></a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -49,10 +45,6 @@
           <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
             <a class="dropdown-item" href="<?= baseUrl; ?>merma/registro"><?= registrarMerma; ?></a>
             <a class="dropdown-item" href="<?= baseUrl; ?>merma/consultarMerma"><?= consultMerma; ?></a>
-            <div class="dropdown-divider border-warning"></div>
-            <a class="dropdown-item" href="<?= baseUrl; ?>tipoMerma/gestion"><?= gestionTipoMerma; ?></a>
-            <div class="dropdown-divider border-warning"></div>
-            <a class="dropdown-item" href="#"><?= otro ?></a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -61,8 +53,6 @@
             <?= pedido ?> </a>
           <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
             <a class="dropdown-item" href="<?= baseUrl; ?>pedido/gestion"><?= viewOrd ?></a>
-            <div class="dropdown-divider border-warning"></div>
-            <a class="dropdown-item" href="#"><?= otro ?></a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -72,8 +62,6 @@
           </a>
           <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
             <a class="dropdown-item" href="<?= baseUrl; ?>venta/gestion"><?= conSale ?></a>
-            <div class="dropdown-divider border-warning"></div>
-            <a class="dropdown-item" href="#"><?= otro ?></a>
           </div>
         </li>
       <?php endif; ?>

@@ -10,9 +10,8 @@ $pass = $dataUser->contrasena;
 
 require 'lib/vendor/autoload.php';
 require 'lib/emails/constante.php';
-
+require 'opt/lampp/htdocs/lib/vendor/phpmailer/phpmailer/src/PHPMailer.php';
 $mail = new PHPMailer(true);
-
 try {
   $mail->SMTPDebug = 2;
   $mail->isSMTP();
@@ -22,8 +21,8 @@ try {
   $mail->Username = 'elkintorres721@gmail.com';
   $mail->Password = 'Nosferatu72121';
 
-  $mail->SMTPSecure = 'tls';
-  $mail->Port = 587;
+  $mail->SMTPSecure = 'tsl';
+  $mail->Port = 25;
 
   // Mensaje pa enviar
   $mail->setFrom('elkintorres721@gmail.com', 'CuisineSoft');
@@ -36,7 +35,8 @@ try {
   if ($mail->send()) {
     $_SESSION['recuperar'] = 'Enviado';
     header('Location: ' . baseUrl);
-  }
+  }else
+	  $_SESSION['recuperar'] = 'No Enviado';
 } catch (Exception $e) {
   echo 'Algo salio mal' . $e->getMessage();
 }

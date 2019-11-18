@@ -5,6 +5,8 @@
   <?php require_once 'views/layout/banner.php'; ?>
   <!-- ------------- Nav ------------- -->
   <?php require_once 'views/layout/menu.php'; ?>
+  <?php require_once 'controllers/cargoController.php'; ?>
+  <?php require_once 'controllers/restauranteController.php'; ?>
 
   <div class="container p-3">
     <?php if (isset($editar) && isset($user) && is_object($user)) : ?>

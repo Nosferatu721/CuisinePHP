@@ -8,18 +8,17 @@
   <?php require_once 'views/layout/menu.php'; ?>
 
   <div class="container">
-    <p class="titulo">Control de Archivos</p>
-    <!-- TODO: Poner En Inglesh -->
+	  <p class="titulo"><?=controlfile?></p>
     <?php if (isset($_SESSION['save']) && $_SESSION['save'] == 'Registrado') : ?>
-      <?= Utils::alerta('success', 'Subido', 'fas fa-check-double') ?>
+      <?= Utils::alerta('success', fileup, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'Eliminado') : ?>
-      <?= Utils::alerta('danger', 'Eliminado', 'fas fa-check-double') ?>
+      <?= Utils::alerta('danger',filedel, 'fas fa-check-double') ?>
     <?php elseif (isset($_SESSION['delete']) && $_SESSION['delete'] == 'NoSePuede') : ?>
-      <?= Utils::alerta('danger', 'No Se Puede Eliminar - No es tuyo', 'far fa-surprise') ?>
+      <?= Utils::alerta('danger',nodel, 'far fa-surprise') ?>
     <?php elseif (isset($_SESSION['save']) && $_SESSION['save'] == 'YaExiste') : ?>
-      <?= Utils::alerta('warning', 'Ya existe el archivo', 'far fa-times-circle') ?>
+      <?= Utils::alerta('warning', filerep, 'far fa-times-circle') ?>
     <?php elseif (isset($_SESSION['save']) && $_SESSION['save'] == 'NoAdmitido') : ?>
-      <?= Utils::alerta('danger', 'Seleccione Un Archivo Apropiado', 'fas fa-ban') ?>
+      <?= Utils::alerta('danger', noext, 'fas fa-ban') ?>
     <?php elseif (isset($_SESSION['notData']) && $_SESSION['notData'] == 'ErrorDatos') : ?>
       <?= Utils::alerta('danger', vacios) ?>
     <?php else : ?>
@@ -32,14 +31,14 @@
     <form action="<?= baseUrl; ?>archivo/registrar" method="POST" enctype="multipart/form-data">
       <div class="row">
         <div class="form-label-group col-12 col-lg-6 py-2">
-          <label for="descripcion">Descripción del Archivo <span class="maxN"></span></label>
+	<label for="descripcion"><?=descr?> <span class="maxN"></span></label>
           <textarea class="form-control" id="descripcion" name="descripcion"></textarea>
         </div>
         <div class="form-label-group col-12 col-lg-6 py-2">
-          <label>Seleccionar Archivo - Word <i class="fas fa-file-word"></i> - PDF <i class="fas fa-file-pdf"></i></label>
+	<label><?=selectfile?><i class="fas fa-file-word"></i> - PDF <i class="fas fa-file-pdf"></i></label>
           <input type="file" class="form-control-file btn btn-outline-dark" id="archivo" name="archivo">
           <div class="col-4 offset-4 py-2">
-            <input type="submit" class="btn btn-outline-primary btn-block" id="enviar" value="Subir">
+	  <input type="submit" class="btn btn-outline-primary btn-block" id="enviar" value="<?=subir?>">
           </div>
         </div>
       </div>
@@ -47,13 +46,13 @@
     <hr>
     <!-- Tabla de Documentos -->
     <table class="table table-bordered table-hover" id="tabla">
-      <caption class="text-center">Lista De Documentos</caption>
+      <caption class="text-center">listfile</caption>
       <thead class="table-dark">
         <tr class="font-italic">
           <th scope="col">ID</th>
-          <th scope="col">Descripción</th>
-          <th scope="col">Nombre Archivo</th>
-          <th scope="col">Subido Por</th>
+	  <th scope="col"><?=descr?></th>
+	  <th scope="col"><?=filename?></th>
+	  <th scope="col"><?=subidopor?></th>
           <th scope="col"><?= acciones ?></th>
         </tr>
       </thead>

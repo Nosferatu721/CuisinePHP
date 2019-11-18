@@ -39,7 +39,7 @@
 						<tr class="font-italic">
 							<th scope="col">ID</th>
 							<th scope="col"><?= saleDate ?></th>
-							<th scope="col">Productos Vendidos</th>
+							<th scope="col"><?=prodven?></th>
 							<th scope="col"><?= saleAction ?></th>
 						</tr>
 					</thead>
@@ -68,11 +68,11 @@
 
 		<form action="<?= baseUrl; ?>venta/PDFFecha" method="POST" class="row justify-content-around">
 			<div class="form-label-group col-3">
-				<label for="fechaInicial">Fecha Inicial </label>
+			<label for="fechaInicial"><?=fechai?> </label>
 				<input type="date" id="fechaInicial" name="fechaInicial" class="form-control">
 			</div>
 			<div class="form-label-group col-3">
-				<label for="fechaFinal">Fecha Final </label>
+			<label for="fechaFinal"><?=fechaf?> </label>
 				<input type="date" id="fechaFinal" name="fechaFinal" class="form-control">
 			</div>
 			<div class="d-flex align-items-center">

@@ -10,7 +10,7 @@
   <?php require_once 'views/layout/menu.php'; ?>
 
   <div class="container">
-    <p class="titulo">Control de Pedido</p>
+	  <p class="titulo"><?= controlped?></p>
     <?php if (isset($_SESSION['saveEdit']) && $_SESSION['saveEdit'] == 'Registrado') : ?>
       <?= Utils::alerta('success', 'Pedido Registrado Exitosamente', 'fas fa-check-double') ?>
     <?php else : ?>
@@ -21,23 +21,23 @@
       <div class="col-md-4 d-flex justify-content-center">
         <div class="card mb-3 border-0">
           <div class="card-header font-italic text-center bg-secondary text-danger">
-            <span class="titulo text-success">Nuevo Pedido</span>
+	  <span class="titulo text-success"><?= nuevoped ?></span>
           </div>
           <form action="<?= baseUrl ?>pedido/registrar" method="POST">
             <div class="p-2 border-top">
-              <input type="submit" class="btn btn-outline-success btn-block" id="enviar" value="Crear Pedido">
+	    <input type="submit" class="btn btn-outline-success btn-block" id="enviar" value="<?=crearped?>">
             </div>
           </form>
         </div>
       </div>
       <div class="col-md-8">
         <table class="table table-bordered table-hover" id="tabla">
-          <caption class="text-center">Lista de Pedidos</caption>
+	<caption class="text-center"><?=listped?></caption>
           <thead class="table-dark">
             <tr class="font-italic">
-              <th scope="col">ID</th>
-              <th scope="col">Fecha Pedido</th>
-              <th scope="col">Acciones</th>
+	    <th scope="col"><?=idped?></th>
+	    <th scope="col"><?= fechaped?></th>
+	    <th scope="col"><?=acciones?></th>
             </tr>
           </thead>
           <tbody>
@@ -47,7 +47,7 @@
                 <th scope="row"><?= $p->idpedido; ?></th>
                 <td><?= $p->fechaPedido; ?></td>
                 <td class="d-flex justify-content-around border border-light">
-                  <a href="<?= baseUrl; ?>pedidoHP/ver&id=<?= $p->idpedido; ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i> Ver</a>
+		<a href="<?= baseUrl; ?>pedidoHP/ver&id=<?= $p->idpedido; ?>" class="btn btn-outline-danger btn-sm"><i class="far fa-trash-alt"></i><?=saleView?></a>
                 </td>
               </tr>
             <?php endwhile; ?>

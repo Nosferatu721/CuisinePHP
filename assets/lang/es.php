@@ -203,7 +203,7 @@ define('activado', 'Activo');
 define('inactivado', 'Inactivo');
 define('generado', 'Generado');
 
-//TODO:Variables Ventas
+//Variables Ventas
 define('regisVen','Registrar Venta');
 define('newSale', 'Nueva Venta');
 define('sales', 'Control Ventas');
@@ -227,12 +227,50 @@ define('prodSale', 'Productos de la Venta');
 define('conSale', 'Consultar Ventas');
 define('otro', 'Otros');
 define('addSale', 'Agregar a la Venta');
+define('prodven','Productos Vendidos');
 
 
-
-//TODO:Variables Pedido
+//Variables Pedido
 define('pedido', 'Pedido');
 define('viewOrd', 'Consultar Pedidos');
+define('controlped', 'Control Pedidos');
+define('nuevoped', 'Nuevo Pedido');
+define('listped', 'Lista Pedidos');
+define('idped', ' ID Pedido');
+define('fechaped', 'Fecha Pedido');
+define('crearped', 'Crear Pedido');
+define('newprodped', 'Agregar Producto al Pedido');
+define('addPed', 'Agregar Al Pedido');
+define('proped', 'Productos En Pedido');
 
 //TODO: Archivos
 define('subir', 'Subir Archivos');
+define('controlfile', 'Control De Archivos');
+define('fileup', 'Archivo Subido.');
+define('filedel', 'Archivo Eliminado.');
+define('nodel', 'No lo puede eliminar.');
+define('filerep', 'El archivo ya se encuentra registrado.');
+define('noext', 'El tipo de archivo no se puede usar.');
+define('selectfile', 'Seleccione el Archivo');
+define('listfile', 'Lista de Archivos');
+define('descr', 'Descripcion del Archivo');
+define('subidopor', 'Subido Por');
+define('filename', 'Nombre Archivo');
+
+//Texto pagina principal
+define('text1','Lo que comenzó con unas pocas mesas, fabricadas por él mismo con sus dotes de
+            carpintero, un letrero hecho a mano, un sol, una luna, y una estrella, se comvirtió poco a poco, con
+            empuje,
+            talento y verraquera, en un universo que brillo y da calor con su propio fuego.');
+define('especial','Especiales del Mes');
+define('espec1','Cerdo Agridulce');
+define('espec2','Ceviche');
+
+//PDF var
+define('fechai','Fecha Inicial');
+define('fechaf','Fecha Final');
+define('prodpdf','Productos En El Restaurante');
+define('stockpdf','Stock Del Restaurante');
+define('prodvenpdf','Productos Vendidos');
+define('proyvsprod','Productos VS Proyeccion');
+define('proy','Proyeccion');

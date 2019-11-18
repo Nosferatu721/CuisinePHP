@@ -1,7 +1,6 @@
 <?php
 
 require 'lib/vendor/autoload.php';
-
 use Spipu\Html2Pdf\Html2Pdf;
 
 $html2pdf = new Html2Pdf();
@@ -97,7 +96,7 @@ ob_start();
 
 <body>
   <div class="Box">
-    <img src="assets/img/LogoCui.jpg" alt="">
+    <img src="assets/img/LogoCui.png" alt="">
     <h1><?= reporte ?></h1>
     <hr>
     <div class="Head">

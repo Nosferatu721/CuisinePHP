@@ -20,38 +20,21 @@
           <img src="<?= baseUrl; ?>assets/img/logo-AR.png" alt="" class="img__descrip">
         </div>
         <div class="column column--50">
-          <h3 class="column__title">Al Inicio</h3>
-          <p class="column__txt">Lo que comenzó con unas pocas mesas, fabricadas por él mismo con sus dotes de
-            carpintero, un letrero hecho a mano, un sol, una luna, y una estrella, se comvirtió poco a poco, con
-            empuje,
-            talento y verraquera, en un universo que brillo y da calor con su propio fuego.</p>
-          <a href="#" class="btn btn-danger">Contact</a>
+	  <p class="column__txt"><?= text1 ?></p>
         </div>
       </div>
     </section>
     <!---------------------------------->
     <section class="group today-special">
-      <h2 class="group__title">Especial de hoy</h2>
+    <h2 class="group__title"><?= especial?></h2>
       <div class="containersito container--flex">
         <div class="column column--50--25">
-          <img src="<?= baseUrl; ?>assets/img/Plato1.jpeg" alt="" class="today-special__img">
-          <div class="today-special__title">Algun Titulo</div>
-          <div class="today-special__price">$1</div>
-        </div>
-        <div class="column column--50--25">
           <img src="<?= baseUrl; ?>assets/img/Plato2.jpeg" alt="" class="today-special__img">
-          <div class="today-special__title">Algun Titulo</div>
-          <div class="today-special__price">$1</div>
+	  <div class="today-special__title"><?=espec1?></div>
         </div>
         <div class="column column--50--25">
           <img src="<?= baseUrl; ?>assets/img/Plato3.jpeg" alt="" class="today-special__img">
-          <div class="today-special__title">Algun Titulo</div>
-          <div class="today-special__price">$1</div>
-        </div>
-        <div class="column column--50--25">
-          <img src="<?= baseUrl; ?>assets/img/Plato4.jpeg" alt="" class="today-special__img">
-          <div class="today-special__title">Algun Titulo</div>
-          <div class="today-special__price">$1</div>
+	  <div class="today-special__title"><?= espec2 ?></div>
         </div>
       </div>
     </section>

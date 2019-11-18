@@ -83,11 +83,8 @@ class VentaHP
   //Registrar
   public function save()
   {
-    $sql = "INSERT INTO venta_has_producto VALUES ({$this->getIdVenta()},
-    {$this->getIdProducto()},{$this->getCantVend()},
-    DATE_ADD((SELECT fechaVenta FROM venta 
-    WHERE idventa={$this->getIdVenta()}),INTERVAL 7 DAY),
-    CEILING(({$this->getCantVend()}+{$this->getCantVend()}*0.2)))";
+    $sql = "CALL insertUpdatevenHP ({$this->getIdVenta()},
+  {$this->getIdProducto()},{$this->getCantVend()})";
     $saved = $this->db->query($sql);
     $result = false;
     if ($saved) {
@@ -109,7 +106,7 @@ class VentaHP
   // Eliminar
   public function delete()
   {
-  $sql = "DELETE FROM venta_has_producto WHERE venta_idventa = {$this->getIDVenta()} AND producto_idproducto = {$this->getIdProducto()}";
+  $sql = "CALL deleteUpdvenHP ({$this->getIDVenta()},{$this->getIdProducto()})";
   $delete = $this->db->query($sql);
   $result = false;
     if ($delete) {
