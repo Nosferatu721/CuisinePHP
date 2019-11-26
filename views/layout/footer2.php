@@ -7,7 +7,7 @@
 <!-- DataTables -->
 <script src="<?= baseUrl ?>assets/datatables/datatables.min.js"></script>
 <script type="text/javascript">
-    var IDLE_TIMEOUT = 20; // 10 minutes of inactivity
+    var IDLE_TIMEOUT = 600; // 10 minutes of inactivity
     var _idleSecondsCounter = 0;
     document.onclick = function() {
         _idleSecondsCounter = 0;
@@ -27,7 +27,7 @@
             oPanel.innerHTML = (IDLE_TIMEOUT - _idleSecondsCounter) + "";
         if (_idleSecondsCounter >= IDLE_TIMEOUT) {
             // destroy the session in logout.php
-            document.location.href = "logout";
+            document.location.href = "../usuario/logout";
         }
     }
 </script>
