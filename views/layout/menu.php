@@ -64,6 +64,15 @@
             <a class="dropdown-item" href="<?= baseUrl; ?>venta/gestion"><?= conSale ?></a>
           </div>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="Stock" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-cubes"></i>
+            Almuerzos
+          </a>
+          <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
+            <a class="dropdown-item" href="<?= baseUrl; ?>almuerzo/gestion">Registrar Almuerzo</a>
+          </div>
+        </li>
       <?php endif; ?>
       <li class="nav-item">
         <a class="nav-link" href="<?= baseUrl; ?>archivo/gestion">
