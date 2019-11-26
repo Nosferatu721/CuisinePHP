@@ -5,7 +5,7 @@
     </button>
     <div class="dropdown-menu">
       <!-- Boton Llama Modal -->
-      <button class="dropdown-item animated fadeInUp faster py-0 my-0" type="button" data-toggle="modal" data-target="#modalsito">Cambiar Contraseña</button>
+      <button class="dropdown-item animated fadeInUp faster py-0 my-0" type="button" data-toggle="modal" data-target="#modalsito"><?=changePass?></button>
       <div class="dropdown-divider bg-dark" style="border-bottom: 0.5px dotted orange"></div>
       <a class="dropdown-item animated fadeInUp faster py-0 my-0" role="button" href="<?= baseUrl; ?>usuario/logout"><i class="fas fa-door-open"></i> <?= salir ?></a>
     </div>
@@ -19,7 +19,7 @@
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header py-2">
-        <h6 class="py-1 text-uppercase" id="ModalLabel">Cambiar Contraseña</h6>
+      <h6 class="py-1 text-uppercase" id="ModalLabel"><?=changePass?></h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -27,19 +27,19 @@
       <div class="modal-body py-2">
         <form action="<?= baseUrl ?>usuario/updatePass" method="POST">
           <div class="form-label-group">
-            <label for="passOld" class="my-1">Contraseña Actual</label>
+          <label for="passOld" class="my-1"><?=actualPass?></label>
             <input type="text" id="passOld" name="passOld" class="form-control">
           </div>
           <div class="form-label-group">
-            <label for="newPass" class="my-1">Contraseña Nueva</label>
+          <label for="newPass" class="my-1"><?=newPass?></label>
             <input type="text" id="newPass" name="newPass" class="form-control">
           </div>
           <div class="form-label-group">
-            <label for="newPassC" class="my-1">Confirmar Contraseña Nueva</label>
+          <label for="newPassC" class="my-1"><?=confPass?></label>
             <input type="password" id="newPassC" name="newPassC" class="form-control">
           </div>
           <hr>
-          <button type="submit" class="btn btn-outline-success btn-block" id="cambiarPass">Cambiar <i class="fas fa-pen-nib"></i></button>
+          <button type="submit" class="btn btn-outline-success btn-block" id="cambiarPass"><?=change?> <i class="fas fa-pen-nib"></i></button>
         </form>
       </div>
       <div class="modal-footer py-2">
