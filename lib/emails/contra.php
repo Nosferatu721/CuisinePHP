@@ -10,18 +10,17 @@ $pass = $dataUser->contrasena;
 
 require 'lib/vendor/autoload.php';
 require 'lib/emails/constante.php';
-require 'opt/lampp/htdocs/lib/vendor/phpmailer/phpmailer/src/PHPMailer.php';
 $mail = new PHPMailer(true);
 try {
   $mail->SMTPDebug = 2;
   $mail->isSMTP();
-  $mail->Host = 'smtp.gmail.com';
+  $mail->Host = 'email-smtp.us-east-1.amazonaws.com';
   $mail->SMTPAuth = true;
 
-  $mail->Username = 'elkintorres721@gmail.com';
-  $mail->Password = 'Nosferatu72121';
+  $mail->Username = 'AKIASVEVFLQXTNO2BV3G';
+  $mail->Password = 'BKezM/p6x0qk92aRHeL/xuSNjEE0DZeTBYNI02ORo2rb';
 
-  $mail->SMTPSecure = 'tsl';
+  $mail->SMTPSecure = 'tls';
   $mail->Port = 25;
 
   // Mensaje pa enviar

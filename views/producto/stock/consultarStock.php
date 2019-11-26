@@ -80,19 +80,6 @@
     </div>
     <hr>
 
-    <form action="<?= baseUrl; ?>stock/PDFFecha" method="POST" target="black" class="row justify-content-around">
-      <div class="form-label-group col-3">
-      <label for="fechaInicial"><?=fechai?> </label>
-        <input type="date" id="fechaInicial" name="fechaInicial" class="form-control">
-      </div>
-      <div class="form-label-group col-3">
-      <label for="fechaFinal"><?=fechaf?> </label>
-        <input type="date" id="fechaFinal" name="fechaFinal" class="form-control">
-      </div>
-      <div class="d-flex align-items-center">
-        <button target="blank" id="generarPDF" class="btn btn-outline-danger"><?= generarPDF ?> <i class="fas fa-file-pdf"></i></button>
-      </div>
-    </form>
 
     <hr>
     <div id="container" style="height: 400px" class="my-3"></div>
