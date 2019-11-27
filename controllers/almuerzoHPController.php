@@ -77,7 +77,7 @@ class AlmuerzoHPController
 		} else {
 			$_SESSION['estado'] = 'Vacios';
 		}
-		$link = baseUrl . 'almuerzoHP/ver&id=' . $id;
+		$link = baseUrl . 'almuerzoHP/ver&id=' . $idA;
 		header('Location: ' . $link);
 	}
 }
