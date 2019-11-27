@@ -55,8 +55,8 @@
       </div>
       <div class="col-md-8">
         <table class="table table-responsive-sm table-bordered table-hover" id="tabla">
-          <caption class="text-center"><?= tittleTableProducto ?></caption>
           <thead class="table-dark">
+        <caption class="text-center py-1"><?= tittleTableProducto ?> <a href="<?= baseUrl; ?>almuerzo/pdf" target="blank" class="btn btn-danger"><?= generarPDF ?> <i class="fas fa-file-pdf"></i></a></caption>
             <tr class="font-italic">
               <th scope="col"><?= prod ?></th>
               <th scope="col"><?= cantidad ?></th>
@@ -81,9 +81,65 @@
           </tbody>
         </table>
       </div>
-    </div>
+	 </div>
     <hr>
   </div>
+
+	<script type="text/javascript">
+		$(function() {
+			$('#container').highcharts({
+				chart: {
+					type: 'column',
+					margin: 75,
+					options3d: {
+						enabled: true,
+						alpha: 10,
+						beta: 25,
+						depth: 70
+					}
+				},
+				title: {
+				text: '<?=almuerzoPersonal?>'
+				},
+				plotOptions: {
+					column: {
+						depth: 20,
+					},
+				},
+				xAxis: {
+					categories: [
+						<?php
+						foreach ($v as $vHP) {
+							?>
+
+							['<?php echo $vHP['nombreProducto']; ?>'],
+
+
+						<?php
+						}
+						?>
+					]
+				},
+				yAxis: {
+					title: {
+					text: '<?=cantidad?>'
+					}
+				},
+				series: [{
+				name: '<?=productos?>',
+					data: [
+						<?php
+						foreach ($v as $vHP) {
+							?>[<?= $vHP['cantidadProducto'] ?>],
+						<?php
+						}
+						?>
+					]
+				}]
+			});
+		});
+	</script>
+
 
   <!-- ------------- Footer ------------- -->
   <?php require_once 'views/layout/footer2.php'; ?>
