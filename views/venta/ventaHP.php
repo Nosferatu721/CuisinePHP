@@ -8,7 +8,7 @@
 	<?php require_once 'views/layout/banner.php'; ?>
 	<!-- ------------- Nav ------------- -->
 	<?php require_once 'views/layout/menu.php'; ?>
-        <?php require_once 'controllers/productoController.php'; ?>
+    <?php require_once 'controllers/productoController.php'; ?>
 
 	<div class="container">
 		<p class="titulo"><?= sales ?></p>
