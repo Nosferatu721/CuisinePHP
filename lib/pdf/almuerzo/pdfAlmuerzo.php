@@ -122,19 +122,19 @@ ob_start();
           </tr>
         </thead>
         <tbody>
-          <?php while ($v = $venHP->fetch_object()) : ?>
+          <?php while ($pa = $ptAl->fetch_object()) : ?>
             <tr>
-                <td><?= $v->nombreProducto; ?></td>
-                <td><?= $v->cantidadProducto; ?></td>
-                <td><?= $v->cantidadIndividual; ?></td>
-                <td>$<?= $v->precioTotal; ?></td>
+              <td><?= $pa->nombreProducto; ?></td>
+              <td><?= $pa->cantidadProducto; ?></td>
+              <td><?= $pa->cantidadIndividual; ?></td>
+              <td>$<?= $pa->precioTotal; ?></td>
             </tr>
           <?php endwhile; ?>
         </tbody>
       </table>
       <hr>
-      <p> 
-            En este informe se observa la cantidad de materiales usados en el almuerzo de personal con su costo por producto usado y la cantidad que se uso para cada persona.
+      <p>
+        En este informe se observa la cantidad de materiales usados en el almuerzo de personal con su costo por producto usado y la cantidad que se uso para cada persona.
       </p>
     </div>
     <div class="Footer">
@@ -151,3 +151,4 @@ $content = ob_get_clean();
 $html2pdf->setDefaultFont('Arial');
 $html2pdf->writeHTML($content);
 $html2pdf->output("PDFAlmuerzo.pdf");
+

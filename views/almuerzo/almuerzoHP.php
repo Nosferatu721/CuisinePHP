@@ -1,13 +1,13 @@
-<link rel="stylesheet" type="text/css" href="<?= baseUrl; ?>assets/datatables/datatables.min.css" />
+<link rel="stylesheet" type="text/css" href="<?= baseUrl; ?>assets/datatables/datatables.min.css" />
 <link rel="stylesheet" href="<?= baseUrl; ?>assets/css/styleAll.css">
 <title>CusineSoft - <?= almuerzoPersonal ?></title>
 </head>
-<?php require_once 'controllers/almuerzoHPController.php'; ?>
-<?php require_once 'controllers/productoController.php'; ?>
 
 <body class="animated fadeIn faster">
   <!-- ------------ Header ------------ -->
   <?php require_once 'views/layout/banner.php'; ?>
+  <?php require_once 'controllers/almuerzoHPController.php'; ?>
+  <?php require_once 'controllers/productoController.php'; ?>
   <!-- ------------- Nav ------------- -->
   <?php require_once 'views/layout/menu.php'; ?>
 
@@ -28,7 +28,7 @@
       <div class="col-md-4 d-flex justify-content-center">
         <div class="card mb-3 border-0">
           <div class="card-header font-italic text-center bg-secondary text-danger">
-            <span class="titulo text-success"><?=almuerzoId?> = <b><?= $_GET['id'] ?></b></span>
+            <span class="titulo text-success"><?= almuerzoId ?> = <b><?= $_GET['id'] ?></b></span>
           </div>
           <div class="card-body">
             <form action="<?= baseUrl ?>almuerzoHP/registrar&id=<?= $_GET['id']; ?>" method="POST">
@@ -43,7 +43,7 @@
                 </select>
               </div>
               <div class="form-label-group p-2">
-              <label for="cantidad"><?=cantidad?></label>
+                <label for="cantidad"><?= cantidad ?></label>
                 <input type="number" id="cantidad" name="cantidad" class="form-control">
               </div>
               <div class="p-2 border-top">
@@ -55,13 +55,13 @@
       </div>
       <div class="col-md-8">
         <table class="table table-responsive-sm table-bordered table-hover" id="tabla">
+          <caption class="text-center py-1"><?= tittleTableProducto ?> <a href="<?= baseUrl; ?>almuerzoHP/pdf&id=<?= $_GET['id'] ?>" target="blank" class="btn btn-danger"><?= generarPDF ?> <i class="fas fa-file-pdf"></i></a></caption>
           <thead class="table-dark">
-        <caption class="text-center py-1"><?= tittleTableProducto ?> <a href="<?= baseUrl; ?>almuerzo/pdf" target="blank" class="btn btn-danger"><?= generarPDF ?> <i class="fas fa-file-pdf"></i></a></caption>
             <tr class="font-italic">
               <th scope="col"><?= prod ?></th>
               <th scope="col"><?= cantidad ?></th>
-              <th scope="col"><?=cantidadIndividual?></th>
-              <th scope="col"><?=precioTotal?></th>
+              <th scope="col"><?= cantidadIndividual ?></th>
+              <th scope="col"><?= precioTotal ?></th>
               <th scope="col"><?= saleAction ?></th>
             </tr>
           </thead>
@@ -81,64 +81,65 @@
           </tbody>
         </table>
       </div>
-	 </div>
+    </div>
     <hr>
+    <div id="container" style="height: 400px" class="my-3"></div>
   </div>
 
-	<script type="text/javascript">
-		$(function() {
-			$('#container').highcharts({
-				chart: {
-					type: 'column',
-					margin: 75,
-					options3d: {
-						enabled: true,
-						alpha: 10,
-						beta: 25,
-						depth: 70
-					}
-				},
-				title: {
-				text: '<?=almuerzoPersonal?>'
-				},
-				plotOptions: {
-					column: {
-						depth: 20,
-					},
-				},
-				xAxis: {
-					categories: [
-						<?php
-						foreach ($v as $vHP) {
-							?>
+  <script type="text/javascript">
+    $(function() {
+      $('#container').highcharts({
+        chart: {
+          type: 'column',
+          margin: 75,
+          options3d: {
+            enabled: true,
+            alpha: 10,
+            beta: 25,
+            depth: 70
+          }
+        },
+        title: {
+          text: '<?= almuerzoPersonal ?>'
+        },
+        plotOptions: {
+          column: {
+            depth: 20,
+          },
+        },
+        xAxis: {
+          categories: [
+            <?php
+            foreach ($v as $vHP) {
+              ?>
 
-							['<?php echo $vHP['nombreProducto']; ?>'],
+              ['<?php echo $vHP['nombreProducto']; ?>'],
 
 
-						<?php
-						}
-						?>
-					]
-				},
-				yAxis: {
-					title: {
-					text: '<?=cantidad?>'
-					}
-				},
-				series: [{
-				name: '<?=productos?>',
-					data: [
-						<?php
-						foreach ($v as $vHP) {
-							?>[<?= $vHP['cantidadProducto'] ?>],
-						<?php
-						}
-						?>
-					]
-				}]
-			});
-		});
-	</script>
+            <?php
+            }
+            ?>
+          ]
+        },
+        yAxis: {
+          title: {
+            text: '<?= cantidad ?>'
+          }
+        },
+        series: [{
+          name: '<?= productos ?>',
+          data: [
+            <?php
+            foreach ($v as $vHP) {
+              ?>[<?= $vHP['cantidadProducto'] ?>],
+            <?php
+            }
+            ?>
+          ]
+        }]
+      });
+    });
+  </script>
 
 
   <!-- ------------- Footer ------------- -->

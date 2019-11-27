@@ -42,7 +42,7 @@ class AlmuerzoHP{
                 return $result;
         }
 
-        public function findID(){
+        public function findId(){
                 $sql = "SELECT * FROM almuerzopersonal_has_producto WHERE almuerzoPersonal_idalmuerzoPersonal = {$this->getIdAlmuerzo()}";
                 $result = $this->db->query($sql);
                 return $result->fetch_object();

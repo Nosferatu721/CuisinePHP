@@ -1,7 +1,9 @@
 <?php
+
 require_once 'models/almuerzo.php';
 require_once 'models/producto.php';
 require_once 'models/almuerzoHP.php';
+
 class AlmuerzoHPController
 {
 	public function gestion()
@@ -9,6 +11,7 @@ class AlmuerzoHPController
 		Utils::isCocina();
 		require_once 'views/almuerzo/almuerzoHP.php';
 	}
+
 	public static function getAll($id)
 	{
 		$a = new AlmuerzoHP();
@@ -16,6 +19,29 @@ class AlmuerzoHPController
 		$alHP = $a->find();
 		return $alHP;
 	}
+
+	//PDF
+	public function pdf()
+	{
+		Utils::isCocina();
+		if (!empty($_GET['id'])) {
+			$almuerzo = $_GET['id'];
+			$a = new Almuerzo();
+			$a->setIdAlmuerzo($almuerzo);
+			$r = $a->findId();
+			if ($r->restaurante_idrestaurante == $_SESSION['identity']->idrestaurante) {
+				$alvHP = new AlmuerzoHP();
+				$alvHP->setIdAlmuerzo($almuerzo);
+				$ptAl = $alvHP->find();
+				require_once 'lib/pdf/almuerzo/pdfAlmuerzo.php';
+			} else {
+				header('Location: ' . baseUrl . 'error/index');
+			}
+		} else {
+			header('Location: ' . baseUrl . 'error/index');
+		}
+	}
+
 	public function ver()
 	{
 		Utils::isCocina();
@@ -81,3 +107,4 @@ class AlmuerzoHPController
 		header('Location: ' . $link);
 	}
 }
+
