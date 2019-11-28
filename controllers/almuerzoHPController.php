@@ -6,7 +6,6 @@ require_once 'models/almuerzoHP.php';
 
 class AlmuerzoHPController
 {
-
 	public function gestion()
 	{
 		Utils::isCocina();
@@ -19,6 +18,28 @@ class AlmuerzoHPController
 		$a->setIdAlmuerzo($id);
 		$alHP = $a->find();
 		return $alHP;
+	}
+
+	//PDF
+	public function pdf()
+	{
+		Utils::isCocina();
+		if (!empty($_GET['id'])) {
+			$almuerzo = $_GET['id'];
+			$a = new Almuerzo();
+			$a->setIdAlmuerzo($almuerzo);
+			$r = $a->findId();
+			if ($r->restaurante_idrestaurante == $_SESSION['identity']->idrestaurante) {
+				$alvHP = new AlmuerzoHP();
+				$alvHP->setIdAlmuerzo($almuerzo);
+				$ptAl = $alvHP->find();
+				require_once 'lib/pdf/almuerzo/pdfAlmuerzo.php';
+			} else {
+				header('Location: ' . baseUrl . 'error/index');
+			}
+		} else {
+			header('Location: ' . baseUrl . 'error/index');
+		}
 	}
 
 	public function ver()
@@ -45,7 +66,6 @@ class AlmuerzoHPController
 			header('Location: ' . baseUrl . 'error/index');
 		}
 	}
-
 	public function registrar()
 	{
 		Utils::isCocina();
@@ -54,35 +74,17 @@ class AlmuerzoHPController
 			$alvHP->setIdAlmuerzo($_GET['id']);
 			$alvHP->setIdProducto($_POST['producto']);
 			$alvHP->setCantidadProducto($_POST['cantidad']);
-
-			$alm = new Almuerzo();
-			$alm->setIdAlmuerzo($_GET['id']);
-			$al = $alm->findId();
-			$cantPersonas = (int) $al->cantidadPersonas;
-
-			$alvHP->setCantidadIndividual($_POST['cantidad'] / $cantPersonas);
-
-			$pts = new Producto();
-			$pts->setId($_POST['producto']);
-			$pt = $pts->findProductoID();
-			$precioU = (int) $pt->precioProducto;
-
-			$alvHP->setPrecioT($_POST['cantidad'] * $precioU);
-
 			$r = $alvHP->save();
-
 			if ($r) {
 				$_SESSION['save'] = 'Registrado';
 			} else {
 				echo 'Error No registro';
 			}
-
 			header('Location: ' . baseUrl . 'almuerzoHP/ver&id=' . $_GET['id']);
 		} else {
 			header('Location: ' . baseUrl . 'almuerzoHP/ver&id=' . $_GET['id']);
 		}
 	}
-
 	public function eliminar()
 	{
 		Utils::isCocina();
@@ -101,7 +103,8 @@ class AlmuerzoHPController
 		} else {
 			$_SESSION['estado'] = 'Vacios';
 		}
-		$link = baseUrl . 'almuerzoHP/ver&id=' . $id;
+		$link = baseUrl . 'almuerzoHP/ver&id=' . $idA;
 		header('Location: ' . $link);
 	}
 }
+

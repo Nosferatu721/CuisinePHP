@@ -274,3 +274,22 @@ define('stockpdf','Stock Del Restaurante');
 define('prodvenpdf','Productos Vendidos');
 define('proyvsprod','Productos VS Proyeccion');
 define('proy','Proyeccion');
+
+//Modal y cambio contrasena
+define('actualPass', 'Contraseña Actual');
+define('newPass', 'Contraseña Nueva');
+define('confPass', 'Confirmar Contraseña');
+define('change', 'Cambiar');
+define('changePass', 'Cambiar Contraseña');
+//Almuerzo
+define('consultarAlmuerzo','Consultar Almuerzo');
+define('almuerzoPersonal','Almuerzo Personal');
+define('controlAlmuerzo','Control Almuerzo');
+define('crearAlmuerzo', 'Crear Almuerzo');
+define('cantidadPersonas','Cantidad Personas');
+define('listaAlmuerzo','Lista Almuerzos');
+define('fechaAlmuerzo','Fecha del Almuerzo');
+define('almuerzoId','ID Almuerzo');
+define('addLunch','Agregar al Almuerzo');
+define('cantidadIndividual','Cantidad por Persona');
+define('precioTotal','Costo Producto');

@@ -6,8 +6,6 @@ class AlmuerzoHP
 	private $idalmuerzo;
 	private $idproducto;
 	private $cantidadProducto;
-	private $cantidadIndividual;
-	private $precioTotal;
 
 	public function __construct()
 	{
@@ -45,44 +43,24 @@ class AlmuerzoHP
 		$this->cantidadProducto = $cantidadProducto;
 	}
 
-	function getCantidadIndividual()
-	{
-		return $this->cantidadIndividual;
-	}
-
-	function setCantidadIndividual($cantidadIndividual)
-	{
-		$this->cantidadIndividual = $cantidadIndividual;
-	}
-
-	function getPrecioT()
-	{
-		return $this->precioTotal;
-	}
-
-	function setPrecioT($precioTotal)
-	{
-		$this->precioTotal = $precioTotal;
-	}
-
 	//Crear sentencias SQL
 	public function find()
 	{
-		$sql = "SELECT * FROM almuerzoPersonal_has_producto INNER JOIN producto ON almuerzoPersonal_has_producto.producto_idproducto = producto.idproducto  WHERE almuerzoPersonal_idalmuerzoPersonal = {$this->getIdAlmuerzo()}";
+		$sql = "SELECT * FROM almuerzopersonal_has_producto INNER JOIN producto on idproducto=producto_idproducto WHERE almuerzoPersonal_idalmuerzoPersonal = {$this->getIdAlmuerzo()}";
 		$result = $this->db->query($sql);
 		return $result;
 	}
 
-	public function findID()
+	public function findId()
 	{
-		$sql = "SELECT * FROM almuerzoPersonal_has_producto WHERE almuerzoPersonal_idalmuerzoPersonal = {$this->getIdAlmuerzo()}";
+		$sql = "SELECT * FROM almuerzopersonal_has_producto WHERE almuerzoPersonal_idalmuerzoPersonal = {$this->getIdAlmuerzo()}";
 		$result = $this->db->query($sql);
 		return $result->fetch_object();
 	}
 
 	public function save()
 	{
-		$sql = "INSERT INTO almuerzopersonal_has_producto VALUES ({$this->getIdAlmuerzo()}, {$this->getIdProducto()}, {$this->getCantidadProducto()}, {$this->getCantidadIndividual()}, {$this->getPrecioT()})";
+		$sql = "INSERT INTO almuerzopersonal_has_producto VALUES ({$this->getIdAlmuerzo()}, {$this->getIdProducto()}, {$this->getCantidadProducto()},((SELECT {$this->getCantidadProducto()}/cantidadPersonas FROM almuerzopersonal WHERE idalmuerzoPersonal = {$this->getIdAlmuerzo()})),((SELECT precioProducto*{$this->getCantidadProducto()} FROM producto WHERE idproducto = {$this->getIdProducto()})))";
 		$saved = $this->db->query($sql);
 		$result = false;
 		if ($saved) {
@@ -93,7 +71,7 @@ class AlmuerzoHP
 
 	public function delete()
 	{
-		$sql = "DELETE FROM almuerzoPersonal_has_producto WHERE almuerzoPersonal_idalmuerzoPersonal = {$this->getIdAlmuerzo()} AND producto_idproducto = {$this->getIdProducto()}";
+		$sql = "DELETE FROM almuerzopersonal_has_producto WHERE almuerzoPersonal_idalmuerzoPersonal= {$this->getIdAlmuerzo()}";
 		$delete = $this->db->query($sql);
 		$result = false;
 		if ($delete) {

@@ -1,10 +1,8 @@
 <?php
 require_once 'models/almuerzo.php';
 require_once 'models/almuerzoHP.php';
-
 class AlmuerzoController
 {
-
 	public function gestion()
 	{
 		Utils::isCocina();
@@ -12,14 +10,12 @@ class AlmuerzoController
 		$alm = $a->findAlmuerzo();
 		require_once 'views/almuerzo/crud.php';
 	}
-
 	public function getAll()
 	{
 		$a = new Almuerzo();
 		$alm = $a->findAlmuerzo();
 		return $alm;
 	}
-
 	//Registrar
 	public function registrar()
 	{

@@ -33,10 +33,7 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-cubes"></i> <?= stock; ?>
           </a>
-          <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock">
-            <a class="dropdown-item" href="<?= baseUrl; ?>stock/consultar"><?= consultStock ?></a>
-            <a class="dropdown-item" href="<?= baseUrl; ?>stock/registro"><?= registrarStock ?></a>
-          </div>
+          <div class="dropdown-menu animated jackInTheBox faster" aria-labelledby="Stock"> <a class="dropdown-item" href="<?= baseUrl; ?>stock/consultar"><?= consultStock ?></a> <a class="dropdown-item" href="<?= baseUrl; ?>stock/registro"><?= registrarStock ?></a> </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

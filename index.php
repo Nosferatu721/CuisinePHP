@@ -21,6 +21,13 @@ function showError()
   $error->index();
 }
 
+if (isset($_GET['id'])) {
+  if (!is_numeric($_GET['id'])) {
+    showError();
+    exit();
+  }
+}
+
 // Comprobamos si existe algun Controlador
 if (isset($_GET['controller'])) {
   // Guardamos el Controlador en una Variable
