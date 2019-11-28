@@ -1,6 +1,6 @@
 <?php
 
-define('idioma', 'INGLES');
+define('idioma', 'INGLÉS');
 define('lang', 'en');
 define('color', 'secondary');
 define('salir', 'Salir');
@@ -253,7 +253,7 @@ define('filerep', 'El archivo ya se encuentra registrado.');
 define('noext', 'El tipo de archivo no se puede usar.');
 define('selectfile', 'Seleccione el Archivo');
 define('listfile', 'Lista de Archivos');
-define('descr', 'Descripcion del Archivo');
+define('descr', 'Descripción del Archivo');
 define('subidopor', 'Subido Por');
 define('filename', 'Nombre Archivo');
 
@@ -272,8 +272,8 @@ define('fechaf','Fecha Final');
 define('prodpdf','Productos En El Restaurante');
 define('stockpdf','Stock Del Restaurante');
 define('prodvenpdf','Productos Vendidos');
-define('proyvsprod','Productos VS Proyeccion');
-define('proy','Proyeccion');
+define('proyvsprod','Productos VS Proyección');
+define('proy','Proyección');
 
 //Modal y cambio contrasena
 define('actualPass', 'Contraseña Actual');
