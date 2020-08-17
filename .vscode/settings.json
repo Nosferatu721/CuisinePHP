@@ -1,14 +1,63 @@
 {
-  "sqltools.connections": [
-    {
-      "askForPassword": false,
-      "connectionTimeout": 30,
-      "database": "cuisinesoft1.0",
-      "dialect": "MySQL",
-      "name": "Hola",
-      "port": 3306,
-      "server": "127.0.0.1",
-      "username": "root"
-    }
-  ]
+  "workbench.colorTheme": "Electron",
+  "vsicons.dontShowNewVersionMessage": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 10000,
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "Fira Code Medium,  'Courier New', monospace",
+  "editor.fontWeight": "300",
+  "editor.cursorBlinking": "expand",
+  "editor.cursorStyle": "line-thin",
+  "window.menuBarVisibility": "default",
+  "indentRainbow.colors": [
+    "rgba(200,200,200,0.07)",
+    "rgba(25,114,120,0.07)",
+    "rgba(158,31,119,0.07)",
+    "rgba(196,69,54,0.07)"
+  ],
+  "bracketPairColorizer.scopeLineCSS": [
+    "borderStyle : dashed",
+    "borderWidth : 1px",
+    "borderColor : {color}; opacity: 1"
+  ],
+  "bracketPairColorizer.consecutivePairColors": [
+    "()",
+    "[]",
+    "{}",
+    [
+      "rgb(200,200,200)",
+      "rgb(25,114,120)",
+      "rgb(158,31,119)",
+      "rgb(196,69,54)"
+    ],
+    "Red"
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  "todo-tree.tree.showScanModeButton": false,
+  "window.zoomLevel": 0,
+  "editor.fontSize": 14,
+  "explorer.confirmDelete": false,
+  "editor.tabSize": 2,
+  "atomKeymap.promptV3Features": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.formatOnPaste": true,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.AdvanceCustomBrowserCmdLine": "C:\\Program Files\\Firefox Developer Edition\\firefox.exe",
+  "editor.codeActionsOnSave": {},
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "explorer.confirmDragAndDrop": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "color-highlight.markerType": "underline",
+  "color-highlight.markRuler": false,
+  "color-highlight.matchWords": true
 }

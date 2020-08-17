@@ -2,7 +2,7 @@
 
 # Activar Rewrite
 RewriteEngine on
-ErrorDocument 404 http://localhost/Nueva/error/index
+ErrorDocument 404 http://localhost/CuisinePHP/error/index
 
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
